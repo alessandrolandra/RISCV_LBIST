@@ -8,23 +8,100 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use ieee.std_logic_textio.all;
 
-entity b06_testbench is
-end b06_testbench;
+entity riscv_testbench is
+end riscv_testbench;
 
 
-architecture tb of b06_testbench is
-    component b06
-        port (cc_mux       : out std_logic_vector(2 downto 1);
-              eql          : in std_logic;
-              uscite       : out std_logic_vector(2 downto 1);
-              clock        : in std_logic;
-              enable_count : out std_logic;
-              ackout       : out std_logic;
-              reset        : in std_logic;
-              cont_eql     : in std_logic;
-              test_si      : in std_logic;
-              test_se      : in std_logic);
-    end component;
+architecture tb of riscv_testbench is
+    module riscv_core
+		#(
+		  parameter N_EXT_PERF_COUNTERS =  0,
+		  parameter INSTR_RDATA_WIDTH   = 32,
+		  parameter PULP_SECURE         =  0,
+		  parameter N_PMP_ENTRIES       = 16,
+		  parameter USE_PMP             =  1, //if PULP_SECURE is 1, you can still not use the PMP
+		  parameter PULP_CLUSTER        =  1,
+		  parameter FPU                 =  0,
+		  parameter Zfinx               =  0,
+		  parameter FP_DIVSQRT          =  0,
+		  parameter SHARED_FP           =  0,
+		  parameter SHARED_DSP_MULT     =  0,
+		  parameter SHARED_INT_MULT     =  0,
+		  parameter SHARED_INT_DIV      =  0,
+		  parameter SHARED_FP_DIVSQRT   =  0,
+		  parameter WAPUTYPE            =  0,
+		  parameter APU_NARGS_CPU       =  3,
+		  parameter APU_WOP_CPU         =  6,
+		  parameter APU_NDSFLAGS_CPU    = 15,
+		  parameter APU_NUSFLAGS_CPU    =  5,
+		  parameter DM_HaltAddress      = 32'h1A110800
+		)
+		(
+		  // Clock and Reset
+		  input  logic        clk_i,
+		  input  logic        rst_ni,
+
+		  input  logic        clock_en_i,    // enable clock, otherwise it is gated
+		  input  logic        test_en_i,     // enable all clock gates for testing
+
+		  input  logic        fregfile_disable_i,  // disable the fp regfile, using int regfile instead
+
+		  // Core ID, Cluster ID and boot address are considered more or less static
+		  input  logic [31:0] boot_addr_i,
+		  input  logic [ 3:0] core_id_i,
+		  input  logic [ 5:0] cluster_id_i,
+
+		  // Instruction memory interface
+		  output logic                         instr_req_o,
+		  input  logic                         instr_gnt_i,
+		  input  logic                         instr_rvalid_i,
+		  output logic                  [31:0] instr_addr_o,
+		  input  logic [INSTR_RDATA_WIDTH-1:0] instr_rdata_i,
+
+		  // Data memory interface
+		  output logic        data_req_o,
+		  input  logic        data_gnt_i,
+		  input  logic        data_rvalid_i,
+		  output logic        data_we_o,
+		  output logic [3:0]  data_be_o,
+		  output logic [31:0] data_addr_o,
+		  output logic [31:0] data_wdata_o,
+		  input  logic [31:0] data_rdata_i,
+
+		  // apu-interconnect
+		  // handshake signals
+		  output logic                           apu_master_req_o,
+		  output logic                           apu_master_ready_o,
+		  input logic                            apu_master_gnt_i,
+		  // request channel
+		  output logic [APU_NARGS_CPU-1:0][31:0] apu_master_operands_o,
+		  output logic [APU_WOP_CPU-1:0]         apu_master_op_o,
+		  output logic [WAPUTYPE-1:0]            apu_master_type_o,
+		  output logic [APU_NDSFLAGS_CPU-1:0]    apu_master_flags_o,
+		  // response channel
+		  input logic                            apu_master_valid_i,
+		  input logic [31:0]                     apu_master_result_i,
+		  input logic [APU_NUSFLAGS_CPU-1:0]     apu_master_flags_i,
+
+		  // Interrupt inputs
+		  input  logic        irq_i,                 // level sensitive IR lines
+		  input  logic [4:0]  irq_id_i,
+		  output logic        irq_ack_o,
+		  output logic [4:0]  irq_id_o,
+		  input  logic        irq_sec_i,
+
+		  output logic        sec_lvl_o,
+
+		  // Debug Interface
+		  input  logic        debug_req_i,
+
+
+		  // CPU Control Signals
+		  input  logic        fetch_enable_i,
+		  output logic        core_busy_o,
+
+		  input  logic [N_EXT_PERF_COUNTERS-1:0] ext_perf_counters_i
+    );
 
     component lfsr
         generic (N    : integer;
@@ -114,7 +191,7 @@ begin
 
 end tb;
 
-configuration cfg_b06_testbench of b06_testbench is
+configuration cfg_riscv_testbench of riscv_testbench is
     for tb
     end for;
-end cfg_b06_testbench;
+end cfg_riscv_testbench;
