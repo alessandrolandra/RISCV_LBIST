@@ -10,7 +10,7 @@ entity clk_divisor is
 		clk : in std_logic;
 		q : out std_logic
 	);
-end mux;
+end clk_divisor;
 
 architecture beh of clk_divisor is
 	signal cnt: unsigned(N-1 downto 0) := 0;
