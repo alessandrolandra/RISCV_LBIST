@@ -1,6 +1,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
+use work.constants.all;
 
 entity riscv_core_bist is
 	port (
@@ -57,7 +58,7 @@ end riscv_core_bist;
 architecture rtl of riscv_core_bist is
 
 	-- add components
-	-- misr, controller, clock_divisor
+	-- controller, clock_divisor
 
 	-- riscv_core
 	component riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800 
@@ -263,7 +264,7 @@ architecture rtl of riscv_core_bist is
 	component misr
 	generic (
 		N 		: integer := 64;
-		SEED 	: integer
+		SEED 	: std_logic_vector(N_MISR downto 0)
 	);
 	port (
 		clk			: in std_logic;
@@ -275,12 +276,17 @@ architecture rtl of riscv_core_bist is
 
 	-- clock_divisor
 	component clk_divisor
-	port (
-
+	generic (
+		N		: integer
 	);
+	port (
+		clk : in std_logic;
+		q	: out std_logic
+	);
+	end component;
 
 begin
 
-	--
+
 
 end rtl;
