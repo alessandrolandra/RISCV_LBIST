@@ -4,10 +4,9 @@ use IEEE.numeric_std.all;
 
 entity riscv_core_bist is
 	port (
-		clk_ctrl				: in std_logic;
-		rst_ctrl				: in std_logic;
-		clk_bist				: in std_logic;
-		rst_bist				: in std_logic;
+		clk						: in std_logic;
+		rst						: in std_logic;
+		test_mode				: in std_logic;
 		
 		boot_addr_i 			: in std_logic_vector (31 downto 0);
 		core_id_i				: in std_logic_vector (3 downto 0);
@@ -42,14 +41,14 @@ entity riscv_core_bist is
 		apu_master_type_o		: out std_logic_vector (1 to 2);
 		apu_master_flags_o		: out std_logic_vector (14 downto 0);
 		irq_id_o				: out std_logic_vector (4 downto 0);
-		instr_req_o				: out std_logic_vector;
- 		data_req_o				: out std_logic_vector;
- 		data_we_o				: out std_logic_vector;
- 		apu_master_req_o		: out std_logic_vector;
-        apu_master_ready_o		: out std_logic_vector;
- 		irq_ack_o				: out std_logic_vector;
- 		sec_lvl_o				: out std_logic_vector;
- 		core_busy_o				: out std_logic_vector;
+		instr_req_o				: out std_logic;
+ 		data_req_o				: out std_logic;
+ 		data_we_o				: out std_logic;
+ 		apu_master_req_o		: out std_logic;
+        apu_master_ready_o		: out std_logic;
+ 		irq_ack_o				: out std_logic;
+ 		sec_lvl_o				: out std_logic;
+ 		core_busy_o				: out std_logic;
 
 		go_nogo					: out std_logic
 	);
@@ -58,7 +57,7 @@ end riscv_core_bist;
 architecture rtl of riscv_core_bist is
 
 	-- add components
-	-- misr, controller
+	-- misr, controller, clock_divisor
 
 	-- riscv_core
 	component riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800 
@@ -161,78 +160,78 @@ architecture rtl of riscv_core_bist is
 			apu_master_type_o		: out std_logic_vector (1 to 2);
 			apu_master_flags_o		: out std_logic_vector (14 downto 0);
 			irq_id_o				: out std_logic_vector (4 downto 0);
-			instr_req_o				: out std_logic_vector;
- 			data_req_o				: out std_logic_vector;
- 			data_we_o				: out std_logic_vector;
- 			apu_master_req_o		: out std_logic_vector;
-        	apu_master_ready_o		: out std_logic_vector;
- 			irq_ack_o				: out std_logic_vector;
- 			sec_lvl_o				: out std_logic_vector;
- 			core_busy_o				: out std_logic_vector;
- 			test_so1				: out std_logic_vector;
-         	test_so2				: out std_logic_vector;
- 			test_so3				: out std_logic_vector;
- 			test_so4				: out std_logic_vector;
- 			test_so5				: out std_logic_vector;
- 			test_so6				: out std_logic_vector;
- 			test_so7				: out std_logic_vector;
- 			test_so8				: out std_logic_vector;
-        	test_so9				: out std_logic_vector;
- 			test_so10				: out std_logic_vector;
- 			test_so11				: out std_logic_vector;
- 			test_so12				: out std_logic_vector;
-			test_so13				: out std_logic_vector;
- 			test_so14				: out std_logic_vector;
-         	test_so15				: out std_logic_vector;
- 			test_so16				: out std_logic_vector;
- 			test_so17				: out std_logic_vector;
- 			test_so18				: out std_logic_vector;
- 			test_so19				: out std_logic_vector;
- 			test_so20				: out std_logic_vector;
-	        test_so21				: out std_logic_vector;
- 			test_so22				: out std_logic_vector;
- 			test_so23				: out std_logic_vector;
- 			test_so24				: out std_logic_vector;
-			test_so25				: out std_logic_vector;
- 			test_so26				: out std_logic_vector;
-      		test_so27				: out std_logic_vector;
- 			test_so28				: out std_logic_vector;
- 			test_so29				: out std_logic_vector;
- 			test_so30				: out std_logic_vector;
- 			test_so31				: out std_logic_vector;
- 			test_so32				: out std_logic_vector;
-        	test_so33				: out std_logic_vector;
- 			test_so34				: out std_logic_vector;
- 			test_so35				: out std_logic_vector;
- 			test_so36				: out std_logic_vector;
-			test_so37				: out std_logic_vector;
- 			test_so38				: out std_logic_vector;
-        	test_so39				: out std_logic_vector;
-			test_so40				: out std_logic_vector;
- 			test_so41				: out std_logic_vector;
-			test_so42				: out std_logic_vector;
- 			test_so43				: out std_logic_vector;
- 			test_so44				: out std_logic_vector;
-        	test_so45				: out std_logic_vector;
- 			test_so46				: out std_logic_vector;
-			test_so47				: out std_logic_vector;
- 			test_so48				: out std_logic_vector;
- 			test_so49				: out std_logic_vector;
- 			test_so50				: out std_logic_vector;
-      	 	test_so51				: out std_logic_vector;
-			test_so52				: out std_logic_vector;
- 			test_so53				: out std_logic_vector;
- 			test_so54				: out std_logic_vector;
-			test_so55				: out std_logic_vector;
-			test_so56				: out std_logic_vector;
-         	test_so57				: out std_logic_vector;
- 			test_so58				: out std_logic_vector;
- 			test_so59				: out std_logic_vector;
-			test_so60				: out std_logic_vector;
-			test_so61				: out std_logic_vector;
- 			test_so62				: out std_logic_vector;
-        	test_so63				: out std_logic_vector;
- 			test_so64				: out std_logic_vector
+			instr_req_o				: out std_logic;
+ 			data_req_o				: out std_logic;
+ 			data_we_o				: out std_logic;
+ 			apu_master_req_o		: out std_logic;
+        	apu_master_ready_o		: out std_logic;
+ 			irq_ack_o				: out std_logic;
+ 			sec_lvl_o				: out std_logic;
+ 			core_busy_o				: out std_logic;
+ 			test_so1				: out std_logic;
+         	test_so2				: out std_logic;
+ 			test_so3				: out std_logic;
+ 			test_so4				: out std_logic;
+ 			test_so5				: out std_logic;
+ 			test_so6				: out std_logic;
+ 			test_so7				: out std_logic;
+ 			test_so8				: out std_logic;
+        	test_so9				: out std_logic;
+ 			test_so10				: out std_logic;
+ 			test_so11				: out std_logic;
+ 			test_so12				: out std_logic;
+			test_so13				: out std_logic;
+ 			test_so14				: out std_logic;
+         	test_so15				: out std_logic;
+ 			test_so16				: out std_logic;
+ 			test_so17				: out std_logic;
+ 			test_so18				: out std_logic;
+ 			test_so19				: out std_logic;
+ 			test_so20				: out std_logic;
+	        test_so21				: out std_logic;
+ 			test_so22				: out std_logic;
+ 			test_so23				: out std_logic;
+ 			test_so24				: out std_logic;
+			test_so25				: out std_logic;
+ 			test_so26				: out std_logic;
+      		test_so27				: out std_logic;
+ 			test_so28				: out std_logic;
+ 			test_so29				: out std_logic;
+ 			test_so30				: out std_logic;
+ 			test_so31				: out std_logic;
+ 			test_so32				: out std_logic;
+        	test_so33				: out std_logic;
+ 			test_so34				: out std_logic;
+ 			test_so35				: out std_logic;
+ 			test_so36				: out std_logic;
+			test_so37				: out std_logic;
+ 			test_so38				: out std_logic;
+        	test_so39				: out std_logic;
+			test_so40				: out std_logic;
+ 			test_so41				: out std_logic;
+			test_so42				: out std_logic;
+ 			test_so43				: out std_logic;
+ 			test_so44				: out std_logic;
+        	test_so45				: out std_logic;
+ 			test_so46				: out std_logic;
+			test_so47				: out std_logic;
+ 			test_so48				: out std_logic;
+ 			test_so49				: out std_logic;
+ 			test_so50				: out std_logic;
+      	 	test_so51				: out std_logic;
+			test_so52				: out std_logic;
+ 			test_so53				: out std_logic;
+ 			test_so54				: out std_logic;
+			test_so55				: out std_logic;
+			test_so56				: out std_logic;
+         	test_so57				: out std_logic;
+ 			test_so58				: out std_logic;
+ 			test_so59				: out std_logic;
+			test_so60				: out std_logic;
+			test_so61				: out std_logic;
+ 			test_so62				: out std_logic;
+        	test_so63				: out std_logic;
+ 			test_so64				: out std_logic
 		);
 	end component;
 
@@ -258,6 +257,26 @@ architecture rtl of riscv_core_bist is
 		B		: in std_logic_vector (N-1 downto 0);
 		S		: in std_logic;
 		Y		: out std_logic_vector (N-1 downto 0);
+	);
+
+	-- misr 
+	component misr
+	generic (
+		N 		: integer := 64;
+		SEED 	: integer
+	);
+	port (
+		clk			: in std_logic;
+		rst			: in std_logic;
+		DATA_IN		: in std_logic_vector (N-1 downto 0);
+		SIGNATURE	: out std_logic_vector (N-1 downto 0);
+	);
+	end component;
+
+	-- clock_divisor
+	component clk_divisor
+	port (
+
 	);
 
 begin
