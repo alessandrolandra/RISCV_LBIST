@@ -30,26 +30,19 @@ architecture tb of riscv_testbench is
 
 	signal tester_clock : std_logic := '0';
 
-    signal dut_clock  : std_logic := '0';
-    signal dut_reset  : std_logic;
+    signal dut_clock : std_logic := '0';
+    signal dut_reset : std_logic;
 
     -- DUT outputs
-    signal cc_mux       : std_logic_vector(2 downto 1);
-    signal uscite       : std_logic_vector(2 downto 1);
-    signal enable_count : std_logic;
-    signal ackout       : std_logic;
+    signal dut_go_nogo : std_logic;
 
 begin
 
-    bist : riscv_core_bist
+    dut : riscv_core_bist
 		generic map (SEED => "10101010101010101010101010101010101010101010101010101010101010101")
-		port map (clk => bist_clock,
-            reset => bist_reset,
-            go_nogo => bist_go_nogo);
-
-    dut : riscv_core
-		port map (clock    => dut_clock,
-            reset    => dut_reset);
+		port map (clk => dut_clock,
+            reset => dut_reset,
+            go_nogo => dut_go_nogo);
 
 -- ***** CLOCK/RESET ***********************************
 
@@ -66,10 +59,10 @@ begin
 -- lfsr /----\____ ___/----\____ ___/----\____ ___/--
 
     dut_clock <= transport tester_clock after apply_period;
-    bist_clock <= transport tester_clock after apply_period - clock_t1 + apply_offset;
+    --bist_clock <= transport tester_clock after apply_period - clock_t1 + apply_offset;
 
     dut_reset <= '0', '1' after clock_t1, '0' after clock_t1 + clock_t2;
-    bist_reset <= '1', '0' after clock_t1 + clock_t2;
+    --bist_reset <= '1', '0' after clock_t1 + clock_t2;
 
 
 -- ***** MONITOR **********
