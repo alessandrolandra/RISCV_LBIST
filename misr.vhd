@@ -1,11 +1,12 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
+use work.constants.all;
 
 entity misr is
     generic (
         N : integer := 64;
-        SEED : integer
+        SEED : std_logic_vector(N_MISR downto 0)
     );
     port (
         clk,rst : in std_logic;
@@ -23,7 +24,7 @@ begin
     begin
         if rising_edge(clk) then
             if rst='1' then
-                reg_outs<=std_logic_vector(to_unsigned(SEED,reg_outs'length));
+                reg_outs<=SEED;
             else
                 reg_outs(N downto 1)<=xnors(N-1 downto 0);
             end if;
