@@ -15,7 +15,7 @@ end riscv_testbench;
 architecture tb of riscv_testbench is
     
 	component riscv_core_bist
-		generic (SEED = "00000000000000000000000000000000000000000000000000000000000000000")
+		generic (SEED = 1)
 		port();
 	end component;
 
