@@ -1,0 +1,1937 @@
+STIL 1.0 {
+    Design 2005;
+}
+Header {
+    Title 
+    "Minimal STIL for design `riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800'"
+    ;
+    Date "Thu Dec 23 16:16:45 2021";
+    Source "DFT Compiler O-2018.06-SP4";
+}
+Signals {
+    "apu_master_flags_i[0]" In;
+    "apu_master_flags_i[1]" In;
+    "apu_master_flags_i[2]" In;
+    "apu_master_flags_i[3]" In;
+    "apu_master_flags_i[4]" In;
+    "apu_master_gnt_i" In;
+    "apu_master_result_i[0]" In;
+    "apu_master_result_i[10]" In;
+    "apu_master_result_i[11]" In;
+    "apu_master_result_i[12]" In;
+    "apu_master_result_i[13]" In;
+    "apu_master_result_i[14]" In;
+    "apu_master_result_i[15]" In;
+    "apu_master_result_i[16]" In;
+    "apu_master_result_i[17]" In;
+    "apu_master_result_i[18]" In;
+    "apu_master_result_i[19]" In;
+    "apu_master_result_i[1]" In;
+    "apu_master_result_i[20]" In;
+    "apu_master_result_i[21]" In;
+    "apu_master_result_i[22]" In;
+    "apu_master_result_i[23]" In;
+    "apu_master_result_i[24]" In;
+    "apu_master_result_i[25]" In;
+    "apu_master_result_i[26]" In;
+    "apu_master_result_i[27]" In;
+    "apu_master_result_i[28]" In;
+    "apu_master_result_i[29]" In;
+    "apu_master_result_i[2]" In;
+    "apu_master_result_i[30]" In;
+    "apu_master_result_i[31]" In;
+    "apu_master_result_i[3]" In;
+    "apu_master_result_i[4]" In;
+    "apu_master_result_i[5]" In;
+    "apu_master_result_i[6]" In;
+    "apu_master_result_i[7]" In;
+    "apu_master_result_i[8]" In;
+    "apu_master_result_i[9]" In;
+    "apu_master_valid_i" In;
+    "boot_addr_i[0]" In;
+    "boot_addr_i[10]" In;
+    "boot_addr_i[11]" In;
+    "boot_addr_i[12]" In;
+    "boot_addr_i[13]" In;
+    "boot_addr_i[14]" In;
+    "boot_addr_i[15]" In;
+    "boot_addr_i[16]" In;
+    "boot_addr_i[17]" In;
+    "boot_addr_i[18]" In;
+    "boot_addr_i[19]" In;
+    "boot_addr_i[1]" In;
+    "boot_addr_i[20]" In;
+    "boot_addr_i[21]" In;
+    "boot_addr_i[22]" In;
+    "boot_addr_i[23]" In;
+    "boot_addr_i[24]" In;
+    "boot_addr_i[25]" In;
+    "boot_addr_i[26]" In;
+    "boot_addr_i[27]" In;
+    "boot_addr_i[28]" In;
+    "boot_addr_i[29]" In;
+    "boot_addr_i[2]" In;
+    "boot_addr_i[30]" In;
+    "boot_addr_i[31]" In;
+    "boot_addr_i[3]" In;
+    "boot_addr_i[4]" In;
+    "boot_addr_i[5]" In;
+    "boot_addr_i[6]" In;
+    "boot_addr_i[7]" In;
+    "boot_addr_i[8]" In;
+    "boot_addr_i[9]" In;
+    "clk_i" In;
+    "clock_en_i" In;
+    "cluster_id_i[0]" In;
+    "cluster_id_i[1]" In;
+    "cluster_id_i[2]" In;
+    "cluster_id_i[3]" In;
+    "cluster_id_i[4]" In;
+    "cluster_id_i[5]" In;
+    "core_id_i[0]" In;
+    "core_id_i[1]" In;
+    "core_id_i[2]" In;
+    "core_id_i[3]" In;
+    "data_gnt_i" In;
+    "data_rdata_i[0]" In;
+    "data_rdata_i[10]" In;
+    "data_rdata_i[11]" In;
+    "data_rdata_i[12]" In;
+    "data_rdata_i[13]" In;
+    "data_rdata_i[14]" In;
+    "data_rdata_i[15]" In;
+    "data_rdata_i[16]" In;
+    "data_rdata_i[17]" In;
+    "data_rdata_i[18]" In;
+    "data_rdata_i[19]" In;
+    "data_rdata_i[1]" In;
+    "data_rdata_i[20]" In;
+    "data_rdata_i[21]" In;
+    "data_rdata_i[22]" In;
+    "data_rdata_i[23]" In;
+    "data_rdata_i[24]" In;
+    "data_rdata_i[25]" In;
+    "data_rdata_i[26]" In;
+    "data_rdata_i[27]" In;
+    "data_rdata_i[28]" In;
+    "data_rdata_i[29]" In;
+    "data_rdata_i[2]" In;
+    "data_rdata_i[30]" In;
+    "data_rdata_i[31]" In;
+    "data_rdata_i[3]" In;
+    "data_rdata_i[4]" In;
+    "data_rdata_i[5]" In;
+    "data_rdata_i[6]" In;
+    "data_rdata_i[7]" In;
+    "data_rdata_i[8]" In;
+    "data_rdata_i[9]" In;
+    "data_rvalid_i" In;
+    "debug_req_i" In;
+    "ext_perf_counters_i[1]" In;
+    "ext_perf_counters_i[2]" In;
+    "fetch_enable_i" In;
+    "fregfile_disable_i" In;
+    "instr_gnt_i" In;
+    "instr_rdata_i[0]" In;
+    "instr_rdata_i[100]" In;
+    "instr_rdata_i[101]" In;
+    "instr_rdata_i[102]" In;
+    "instr_rdata_i[103]" In;
+    "instr_rdata_i[104]" In;
+    "instr_rdata_i[105]" In;
+    "instr_rdata_i[106]" In;
+    "instr_rdata_i[107]" In;
+    "instr_rdata_i[108]" In;
+    "instr_rdata_i[109]" In;
+    "instr_rdata_i[10]" In;
+    "instr_rdata_i[110]" In;
+    "instr_rdata_i[111]" In;
+    "instr_rdata_i[112]" In;
+    "instr_rdata_i[113]" In;
+    "instr_rdata_i[114]" In;
+    "instr_rdata_i[115]" In;
+    "instr_rdata_i[116]" In;
+    "instr_rdata_i[117]" In;
+    "instr_rdata_i[118]" In;
+    "instr_rdata_i[119]" In;
+    "instr_rdata_i[11]" In;
+    "instr_rdata_i[120]" In;
+    "instr_rdata_i[121]" In;
+    "instr_rdata_i[122]" In;
+    "instr_rdata_i[123]" In;
+    "instr_rdata_i[124]" In;
+    "instr_rdata_i[125]" In;
+    "instr_rdata_i[126]" In;
+    "instr_rdata_i[127]" In;
+    "instr_rdata_i[12]" In;
+    "instr_rdata_i[13]" In;
+    "instr_rdata_i[14]" In;
+    "instr_rdata_i[15]" In;
+    "instr_rdata_i[16]" In;
+    "instr_rdata_i[17]" In;
+    "instr_rdata_i[18]" In;
+    "instr_rdata_i[19]" In;
+    "instr_rdata_i[1]" In;
+    "instr_rdata_i[20]" In;
+    "instr_rdata_i[21]" In;
+    "instr_rdata_i[22]" In;
+    "instr_rdata_i[23]" In;
+    "instr_rdata_i[24]" In;
+    "instr_rdata_i[25]" In;
+    "instr_rdata_i[26]" In;
+    "instr_rdata_i[27]" In;
+    "instr_rdata_i[28]" In;
+    "instr_rdata_i[29]" In;
+    "instr_rdata_i[2]" In;
+    "instr_rdata_i[30]" In;
+    "instr_rdata_i[31]" In;
+    "instr_rdata_i[32]" In;
+    "instr_rdata_i[33]" In;
+    "instr_rdata_i[34]" In;
+    "instr_rdata_i[35]" In;
+    "instr_rdata_i[36]" In;
+    "instr_rdata_i[37]" In;
+    "instr_rdata_i[38]" In;
+    "instr_rdata_i[39]" In;
+    "instr_rdata_i[3]" In;
+    "instr_rdata_i[40]" In;
+    "instr_rdata_i[41]" In;
+    "instr_rdata_i[42]" In;
+    "instr_rdata_i[43]" In;
+    "instr_rdata_i[44]" In;
+    "instr_rdata_i[45]" In;
+    "instr_rdata_i[46]" In;
+    "instr_rdata_i[47]" In;
+    "instr_rdata_i[48]" In;
+    "instr_rdata_i[49]" In;
+    "instr_rdata_i[4]" In;
+    "instr_rdata_i[50]" In;
+    "instr_rdata_i[51]" In;
+    "instr_rdata_i[52]" In;
+    "instr_rdata_i[53]" In;
+    "instr_rdata_i[54]" In;
+    "instr_rdata_i[55]" In;
+    "instr_rdata_i[56]" In;
+    "instr_rdata_i[57]" In;
+    "instr_rdata_i[58]" In;
+    "instr_rdata_i[59]" In;
+    "instr_rdata_i[5]" In;
+    "instr_rdata_i[60]" In;
+    "instr_rdata_i[61]" In;
+    "instr_rdata_i[62]" In;
+    "instr_rdata_i[63]" In;
+    "instr_rdata_i[64]" In;
+    "instr_rdata_i[65]" In;
+    "instr_rdata_i[66]" In;
+    "instr_rdata_i[67]" In;
+    "instr_rdata_i[68]" In;
+    "instr_rdata_i[69]" In;
+    "instr_rdata_i[6]" In;
+    "instr_rdata_i[70]" In;
+    "instr_rdata_i[71]" In;
+    "instr_rdata_i[72]" In;
+    "instr_rdata_i[73]" In;
+    "instr_rdata_i[74]" In;
+    "instr_rdata_i[75]" In;
+    "instr_rdata_i[76]" In;
+    "instr_rdata_i[77]" In;
+    "instr_rdata_i[78]" In;
+    "instr_rdata_i[79]" In;
+    "instr_rdata_i[7]" In;
+    "instr_rdata_i[80]" In;
+    "instr_rdata_i[81]" In;
+    "instr_rdata_i[82]" In;
+    "instr_rdata_i[83]" In;
+    "instr_rdata_i[84]" In;
+    "instr_rdata_i[85]" In;
+    "instr_rdata_i[86]" In;
+    "instr_rdata_i[87]" In;
+    "instr_rdata_i[88]" In;
+    "instr_rdata_i[89]" In;
+    "instr_rdata_i[8]" In;
+    "instr_rdata_i[90]" In;
+    "instr_rdata_i[91]" In;
+    "instr_rdata_i[92]" In;
+    "instr_rdata_i[93]" In;
+    "instr_rdata_i[94]" In;
+    "instr_rdata_i[95]" In;
+    "instr_rdata_i[96]" In;
+    "instr_rdata_i[97]" In;
+    "instr_rdata_i[98]" In;
+    "instr_rdata_i[99]" In;
+    "instr_rdata_i[9]" In;
+    "instr_rvalid_i" In;
+    "irq_i" In;
+    "irq_id_i[0]" In;
+    "irq_id_i[1]" In;
+    "irq_id_i[2]" In;
+    "irq_id_i[3]" In;
+    "irq_id_i[4]" In;
+    "irq_sec_i" In;
+    "rst_ni" In;
+    "test_en_i" In;
+    "apu_master_flags_o[0]" Out;
+    "apu_master_flags_o[10]" Out;
+    "apu_master_flags_o[11]" Out;
+    "apu_master_flags_o[12]" Out;
+    "apu_master_flags_o[13]" Out;
+    "apu_master_flags_o[14]" Out;
+    "apu_master_flags_o[1]" Out;
+    "apu_master_flags_o[2]" Out;
+    "apu_master_flags_o[3]" Out;
+    "apu_master_flags_o[4]" Out;
+    "apu_master_flags_o[5]" Out;
+    "apu_master_flags_o[6]" Out;
+    "apu_master_flags_o[7]" Out;
+    "apu_master_flags_o[8]" Out;
+    "apu_master_flags_o[9]" Out;
+    "apu_master_op_o[0]" Out;
+    "apu_master_op_o[1]" Out;
+    "apu_master_op_o[2]" Out;
+    "apu_master_op_o[3]" Out;
+    "apu_master_op_o[4]" Out;
+    "apu_master_op_o[5]" Out;
+    "apu_master_operands_o[0]" Out;
+    "apu_master_operands_o[10]" Out;
+    "apu_master_operands_o[11]" Out;
+    "apu_master_operands_o[12]" Out;
+    "apu_master_operands_o[13]" Out;
+    "apu_master_operands_o[14]" Out;
+    "apu_master_operands_o[15]" Out;
+    "apu_master_operands_o[16]" Out;
+    "apu_master_operands_o[17]" Out;
+    "apu_master_operands_o[18]" Out;
+    "apu_master_operands_o[19]" Out;
+    "apu_master_operands_o[1]" Out;
+    "apu_master_operands_o[20]" Out;
+    "apu_master_operands_o[21]" Out;
+    "apu_master_operands_o[22]" Out;
+    "apu_master_operands_o[23]" Out;
+    "apu_master_operands_o[24]" Out;
+    "apu_master_operands_o[25]" Out;
+    "apu_master_operands_o[26]" Out;
+    "apu_master_operands_o[27]" Out;
+    "apu_master_operands_o[28]" Out;
+    "apu_master_operands_o[29]" Out;
+    "apu_master_operands_o[2]" Out;
+    "apu_master_operands_o[30]" Out;
+    "apu_master_operands_o[31]" Out;
+    "apu_master_operands_o[32]" Out;
+    "apu_master_operands_o[33]" Out;
+    "apu_master_operands_o[34]" Out;
+    "apu_master_operands_o[35]" Out;
+    "apu_master_operands_o[36]" Out;
+    "apu_master_operands_o[37]" Out;
+    "apu_master_operands_o[38]" Out;
+    "apu_master_operands_o[39]" Out;
+    "apu_master_operands_o[3]" Out;
+    "apu_master_operands_o[40]" Out;
+    "apu_master_operands_o[41]" Out;
+    "apu_master_operands_o[42]" Out;
+    "apu_master_operands_o[43]" Out;
+    "apu_master_operands_o[44]" Out;
+    "apu_master_operands_o[45]" Out;
+    "apu_master_operands_o[46]" Out;
+    "apu_master_operands_o[47]" Out;
+    "apu_master_operands_o[48]" Out;
+    "apu_master_operands_o[49]" Out;
+    "apu_master_operands_o[4]" Out;
+    "apu_master_operands_o[50]" Out;
+    "apu_master_operands_o[51]" Out;
+    "apu_master_operands_o[52]" Out;
+    "apu_master_operands_o[53]" Out;
+    "apu_master_operands_o[54]" Out;
+    "apu_master_operands_o[55]" Out;
+    "apu_master_operands_o[56]" Out;
+    "apu_master_operands_o[57]" Out;
+    "apu_master_operands_o[58]" Out;
+    "apu_master_operands_o[59]" Out;
+    "apu_master_operands_o[5]" Out;
+    "apu_master_operands_o[60]" Out;
+    "apu_master_operands_o[61]" Out;
+    "apu_master_operands_o[62]" Out;
+    "apu_master_operands_o[63]" Out;
+    "apu_master_operands_o[64]" Out;
+    "apu_master_operands_o[65]" Out;
+    "apu_master_operands_o[66]" Out;
+    "apu_master_operands_o[67]" Out;
+    "apu_master_operands_o[68]" Out;
+    "apu_master_operands_o[69]" Out;
+    "apu_master_operands_o[6]" Out;
+    "apu_master_operands_o[70]" Out;
+    "apu_master_operands_o[71]" Out;
+    "apu_master_operands_o[72]" Out;
+    "apu_master_operands_o[73]" Out;
+    "apu_master_operands_o[74]" Out;
+    "apu_master_operands_o[75]" Out;
+    "apu_master_operands_o[76]" Out;
+    "apu_master_operands_o[77]" Out;
+    "apu_master_operands_o[78]" Out;
+    "apu_master_operands_o[79]" Out;
+    "apu_master_operands_o[7]" Out;
+    "apu_master_operands_o[80]" Out;
+    "apu_master_operands_o[81]" Out;
+    "apu_master_operands_o[82]" Out;
+    "apu_master_operands_o[83]" Out;
+    "apu_master_operands_o[84]" Out;
+    "apu_master_operands_o[85]" Out;
+    "apu_master_operands_o[86]" Out;
+    "apu_master_operands_o[87]" Out;
+    "apu_master_operands_o[88]" Out;
+    "apu_master_operands_o[89]" Out;
+    "apu_master_operands_o[8]" Out;
+    "apu_master_operands_o[90]" Out;
+    "apu_master_operands_o[91]" Out;
+    "apu_master_operands_o[92]" Out;
+    "apu_master_operands_o[93]" Out;
+    "apu_master_operands_o[94]" Out;
+    "apu_master_operands_o[95]" Out;
+    "apu_master_operands_o[9]" Out;
+    "apu_master_ready_o" Out;
+    "apu_master_req_o" Out;
+    "apu_master_type_o[1]" Out;
+    "apu_master_type_o[2]" Out;
+    "core_busy_o" Out;
+    "data_addr_o[0]" Out;
+    "data_addr_o[10]" Out;
+    "data_addr_o[11]" Out;
+    "data_addr_o[12]" Out;
+    "data_addr_o[13]" Out;
+    "data_addr_o[14]" Out;
+    "data_addr_o[15]" Out;
+    "data_addr_o[16]" Out;
+    "data_addr_o[17]" Out;
+    "data_addr_o[18]" Out;
+    "data_addr_o[19]" Out;
+    "data_addr_o[1]" Out;
+    "data_addr_o[20]" Out;
+    "data_addr_o[21]" Out;
+    "data_addr_o[22]" Out;
+    "data_addr_o[23]" Out;
+    "data_addr_o[24]" Out;
+    "data_addr_o[25]" Out;
+    "data_addr_o[26]" Out;
+    "data_addr_o[27]" Out;
+    "data_addr_o[28]" Out;
+    "data_addr_o[29]" Out;
+    "data_addr_o[2]" Out;
+    "data_addr_o[30]" Out;
+    "data_addr_o[31]" Out;
+    "data_addr_o[3]" Out;
+    "data_addr_o[4]" Out;
+    "data_addr_o[5]" Out;
+    "data_addr_o[6]" Out;
+    "data_addr_o[7]" Out;
+    "data_addr_o[8]" Out;
+    "data_addr_o[9]" Out;
+    "data_be_o[0]" Out;
+    "data_be_o[1]" Out;
+    "data_be_o[2]" Out;
+    "data_be_o[3]" Out;
+    "data_req_o" Out;
+    "data_wdata_o[0]" Out;
+    "data_wdata_o[10]" Out;
+    "data_wdata_o[11]" Out;
+    "data_wdata_o[12]" Out;
+    "data_wdata_o[13]" Out;
+    "data_wdata_o[14]" Out;
+    "data_wdata_o[15]" Out;
+    "data_wdata_o[16]" Out;
+    "data_wdata_o[17]" Out;
+    "data_wdata_o[18]" Out;
+    "data_wdata_o[19]" Out;
+    "data_wdata_o[1]" Out;
+    "data_wdata_o[20]" Out;
+    "data_wdata_o[21]" Out;
+    "data_wdata_o[22]" Out;
+    "data_wdata_o[23]" Out;
+    "data_wdata_o[24]" Out;
+    "data_wdata_o[25]" Out;
+    "data_wdata_o[26]" Out;
+    "data_wdata_o[27]" Out;
+    "data_wdata_o[28]" Out;
+    "data_wdata_o[29]" Out;
+    "data_wdata_o[2]" Out;
+    "data_wdata_o[30]" Out;
+    "data_wdata_o[31]" Out;
+    "data_wdata_o[3]" Out;
+    "data_wdata_o[4]" Out;
+    "data_wdata_o[5]" Out;
+    "data_wdata_o[6]" Out;
+    "data_wdata_o[7]" Out;
+    "data_wdata_o[8]" Out;
+    "data_wdata_o[9]" Out;
+    "data_we_o" Out;
+    "instr_addr_o[0]" Out;
+    "instr_addr_o[10]" Out;
+    "instr_addr_o[11]" Out;
+    "instr_addr_o[12]" Out;
+    "instr_addr_o[13]" Out;
+    "instr_addr_o[14]" Out;
+    "instr_addr_o[15]" Out;
+    "instr_addr_o[16]" Out;
+    "instr_addr_o[17]" Out;
+    "instr_addr_o[18]" Out;
+    "instr_addr_o[19]" Out;
+    "instr_addr_o[1]" Out;
+    "instr_addr_o[20]" Out;
+    "instr_addr_o[21]" Out;
+    "instr_addr_o[22]" Out;
+    "instr_addr_o[23]" Out;
+    "instr_addr_o[24]" Out;
+    "instr_addr_o[25]" Out;
+    "instr_addr_o[26]" Out;
+    "instr_addr_o[27]" Out;
+    "instr_addr_o[28]" Out;
+    "instr_addr_o[29]" Out;
+    "instr_addr_o[2]" Out;
+    "instr_addr_o[30]" Out;
+    "instr_addr_o[31]" Out;
+    "instr_addr_o[3]" Out;
+    "instr_addr_o[4]" Out;
+    "instr_addr_o[5]" Out;
+    "instr_addr_o[6]" Out;
+    "instr_addr_o[7]" Out;
+    "instr_addr_o[8]" Out;
+    "instr_addr_o[9]" Out;
+    "instr_req_o" Out;
+    "irq_ack_o" Out;
+    "irq_id_o[0]" Out;
+    "irq_id_o[1]" Out;
+    "irq_id_o[2]" Out;
+    "irq_id_o[3]" Out;
+    "irq_id_o[4]" Out;
+    "sec_lvl_o" Out;
+    "test_si1" In;
+    "test_so1" Out;
+    "test_si2" In;
+    "test_so2" Out;
+    "test_si3" In;
+    "test_so3" Out;
+    "test_si4" In;
+    "test_so4" Out;
+    "test_si5" In;
+    "test_so5" Out;
+    "test_si6" In;
+    "test_so6" Out;
+    "test_si7" In;
+    "test_so7" Out;
+    "test_si8" In;
+    "test_so8" Out;
+    "test_si9" In;
+    "test_so9" Out;
+    "test_si10" In;
+    "test_so10" Out;
+    "test_si11" In;
+    "test_so11" Out;
+    "test_si12" In;
+    "test_so12" Out;
+    "test_si13" In;
+    "test_so13" Out;
+    "test_si14" In;
+    "test_so14" Out;
+    "test_si15" In;
+    "test_so15" Out;
+    "test_si16" In;
+    "test_so16" Out;
+    "test_si17" In;
+    "test_so17" Out;
+    "test_si18" In;
+    "test_so18" Out;
+    "test_si19" In;
+    "test_so19" Out;
+    "test_si20" In;
+    "test_so20" Out;
+    "test_si21" In;
+    "test_so21" Out;
+    "test_si22" In;
+    "test_so22" Out;
+    "test_si23" In;
+    "test_so23" Out;
+    "test_si24" In;
+    "test_so24" Out;
+    "test_si25" In;
+    "test_so25" Out;
+    "test_si26" In;
+    "test_so26" Out;
+    "test_si27" In;
+    "test_so27" Out;
+    "test_si28" In;
+    "test_so28" Out;
+    "test_si29" In;
+    "test_so29" Out;
+    "test_si30" In;
+    "test_so30" Out;
+    "test_si31" In;
+    "test_so31" Out;
+    "test_si32" In;
+    "test_so32" Out;
+    "test_si33" In;
+    "test_so33" Out;
+    "test_si34" In;
+    "test_so34" Out;
+    "test_si35" In;
+    "test_so35" Out;
+    "test_si36" In;
+    "test_so36" Out;
+    "test_si37" In;
+    "test_so37" Out;
+    "test_si38" In;
+    "test_so38" Out;
+    "test_si39" In;
+    "test_so39" Out;
+    "test_si40" In;
+    "test_so40" Out;
+    "test_si41" In;
+    "test_so41" Out;
+    "test_si42" In;
+    "test_so42" Out;
+    "test_si43" In;
+    "test_so43" Out;
+    "test_si44" In;
+    "test_so44" Out;
+    "test_si45" In;
+    "test_so45" Out;
+    "test_si46" In;
+    "test_so46" Out;
+    "test_si47" In;
+    "test_so47" Out;
+    "test_si48" In;
+    "test_so48" Out;
+    "test_si49" In;
+    "test_so49" Out;
+    "test_si50" In;
+    "test_so50" Out;
+    "test_si51" In;
+    "test_so51" Out;
+    "test_si52" In;
+    "test_so52" Out;
+    "test_si53" In;
+    "test_so53" Out;
+    "test_si54" In;
+    "test_so54" Out;
+    "test_si55" In;
+    "test_so55" Out;
+    "test_si56" In;
+    "test_so56" Out;
+    "test_si57" In;
+    "test_so57" Out;
+    "test_si58" In;
+    "test_so58" Out;
+    "test_si59" In;
+    "test_so59" Out;
+    "test_si60" In;
+    "test_so60" Out;
+    "test_si61" In;
+    "test_so61" Out;
+    "test_si62" In;
+    "test_so62" Out;
+    "test_si63" In;
+    "test_so63" Out;
+    "test_si64" In;
+    "test_so64" Out;
+    "test_mode" In;
+}
+SignalGroups {
+    "_si" = '"test_si1" + "test_si2" + "test_si3" + "test_si4" + "test_si5" + 
+    "test_si6" + "test_si7" + "test_si8" + "test_si9" + "test_si10" + 
+    "test_si11" + "test_si12" + "test_si13" + "test_si14" + "test_si15" + 
+    "test_si16" + "test_si17" + "test_si18" + "test_si19" + "test_si20" + 
+    "test_si21" + "test_si22" + "test_si23" + "test_si24" + "test_si25" + 
+    "test_si26" + "test_si27" + "test_si28" + "test_si29" + "test_si30" + 
+    "test_si31" + "test_si32" + "test_si33" + "test_si34" + "test_si35" + 
+    "test_si36" + "test_si37" + "test_si38" + "test_si39" + "test_si40" + 
+    "test_si41" + "test_si42" + "test_si43" + "test_si44" + "test_si45" + 
+    "test_si46" + "test_si47" + "test_si48" + "test_si49" + "test_si50" + 
+    "test_si51" + "test_si52" + "test_si53" + "test_si54" + "test_si55" + 
+    "test_si56" + "test_si57" + "test_si58" + "test_si59" + "test_si60" + 
+    "test_si61" + "test_si62" + "test_si63" + "test_si64"' {
+        ScanIn;
+    }
+    "_so" = '"test_so1" + "test_so2" + "test_so3" + "test_so4" + "test_so5" + 
+    "test_so6" + "test_so7" + "test_so8" + "test_so9" + "test_so10" + 
+    "test_so11" + "test_so12" + "test_so13" + "test_so14" + "test_so15" + 
+    "test_so16" + "test_so17" + "test_so18" + "test_so19" + "test_so20" + 
+    "test_so21" + "test_so22" + "test_so23" + "test_so24" + "test_so25" + 
+    "test_so26" + "test_so27" + "test_so28" + "test_so29" + "test_so30" + 
+    "test_so31" + "test_so32" + "test_so33" + "test_so34" + "test_so35" + 
+    "test_so36" + "test_so37" + "test_so38" + "test_so39" + "test_so40" + 
+    "test_so41" + "test_so42" + "test_so43" + "test_so44" + "test_so45" + 
+    "test_so46" + "test_so47" + "test_so48" + "test_so49" + "test_so50" + 
+    "test_so51" + "test_so52" + "test_so53" + "test_so54" + "test_so55" + 
+    "test_so56" + "test_so57" + "test_so58" + "test_so59" + "test_so60" + 
+    "test_so61" + "test_so62" + "test_so63" + "test_so64"' {
+        ScanOut;
+    }
+    "_clk" = '"clk_i" + "rst_ni"';
+    "all_inputs" = '"apu_master_flags_i[0]" + "apu_master_flags_i[1]" + 
+    "apu_master_flags_i[2]" + "apu_master_flags_i[3]" + "apu_master_flags_i[4]" 
+    + "apu_master_gnt_i" + "apu_master_result_i[0]" + "apu_master_result_i[10]" 
+    + "apu_master_result_i[11]" + "apu_master_result_i[12]" + 
+    "apu_master_result_i[13]" + "apu_master_result_i[14]" + 
+    "apu_master_result_i[15]" + "apu_master_result_i[16]" + 
+    "apu_master_result_i[17]" + "apu_master_result_i[18]" + 
+    "apu_master_result_i[19]" + "apu_master_result_i[1]" + 
+    "apu_master_result_i[20]" + "apu_master_result_i[21]" + 
+    "apu_master_result_i[22]" + "apu_master_result_i[23]" + 
+    "apu_master_result_i[24]" + "apu_master_result_i[25]" + 
+    "apu_master_result_i[26]" + "apu_master_result_i[27]" + 
+    "apu_master_result_i[28]" + "apu_master_result_i[29]" + 
+    "apu_master_result_i[2]" + "apu_master_result_i[30]" + 
+    "apu_master_result_i[31]" + "apu_master_result_i[3]" + 
+    "apu_master_result_i[4]" + "apu_master_result_i[5]" + 
+    "apu_master_result_i[6]" + "apu_master_result_i[7]" + 
+    "apu_master_result_i[8]" + "apu_master_result_i[9]" + "apu_master_valid_i" + 
+    "boot_addr_i[0]" + "boot_addr_i[10]" + "boot_addr_i[11]" + "boot_addr_i[12]" 
+    + "boot_addr_i[13]" + "boot_addr_i[14]" + "boot_addr_i[15]" + 
+    "boot_addr_i[16]" + "boot_addr_i[17]" + "boot_addr_i[18]" + 
+    "boot_addr_i[19]" + "boot_addr_i[1]" + "boot_addr_i[20]" + "boot_addr_i[21]" 
+    + "boot_addr_i[22]" + "boot_addr_i[23]" + "boot_addr_i[24]" + 
+    "boot_addr_i[25]" + "boot_addr_i[26]" + "boot_addr_i[27]" + 
+    "boot_addr_i[28]" + "boot_addr_i[29]" + "boot_addr_i[2]" + "boot_addr_i[30]" 
+    + "boot_addr_i[31]" + "boot_addr_i[3]" + "boot_addr_i[4]" + "boot_addr_i[5]" 
+    + "boot_addr_i[6]" + "boot_addr_i[7]" + "boot_addr_i[8]" + "boot_addr_i[9]" 
+    + "clk_i" + "clock_en_i" + "cluster_id_i[0]" + "cluster_id_i[1]" + 
+    "cluster_id_i[2]" + "cluster_id_i[3]" + "cluster_id_i[4]" + 
+    "cluster_id_i[5]" + "core_id_i[0]" + "core_id_i[1]" + "core_id_i[2]" + 
+    "core_id_i[3]" + "data_gnt_i" + "data_rdata_i[0]" + "data_rdata_i[10]" + 
+    "data_rdata_i[11]" + "data_rdata_i[12]" + "data_rdata_i[13]" + 
+    "data_rdata_i[14]" + "data_rdata_i[15]" + "data_rdata_i[16]" + 
+    "data_rdata_i[17]" + "data_rdata_i[18]" + "data_rdata_i[19]" + 
+    "data_rdata_i[1]" + "data_rdata_i[20]" + "data_rdata_i[21]" + 
+    "data_rdata_i[22]" + "data_rdata_i[23]" + "data_rdata_i[24]" + 
+    "data_rdata_i[25]" + "data_rdata_i[26]" + "data_rdata_i[27]" + 
+    "data_rdata_i[28]" + "data_rdata_i[29]" + "data_rdata_i[2]" + 
+    "data_rdata_i[30]" + "data_rdata_i[31]" + "data_rdata_i[3]" + 
+    "data_rdata_i[4]" + "data_rdata_i[5]" + "data_rdata_i[6]" + 
+    "data_rdata_i[7]" + "data_rdata_i[8]" + "data_rdata_i[9]" + "data_rvalid_i" 
+    + "debug_req_i" + "ext_perf_counters_i[1]" + "ext_perf_counters_i[2]" + 
+    "fetch_enable_i" + "fregfile_disable_i" + "instr_gnt_i" + "instr_rdata_i[0]" 
+    + "instr_rdata_i[100]" + "instr_rdata_i[101]" + "instr_rdata_i[102]" + 
+    "instr_rdata_i[103]" + "instr_rdata_i[104]" + "instr_rdata_i[105]" + 
+    "instr_rdata_i[106]" + "instr_rdata_i[107]" + "instr_rdata_i[108]" + 
+    "instr_rdata_i[109]" + "instr_rdata_i[10]" + "instr_rdata_i[110]" + 
+    "instr_rdata_i[111]" + "instr_rdata_i[112]" + "instr_rdata_i[113]" + 
+    "instr_rdata_i[114]" + "instr_rdata_i[115]" + "instr_rdata_i[116]" + 
+    "instr_rdata_i[117]" + "instr_rdata_i[118]" + "instr_rdata_i[119]" + 
+    "instr_rdata_i[11]" + "instr_rdata_i[120]" + "instr_rdata_i[121]" + 
+    "instr_rdata_i[122]" + "instr_rdata_i[123]" + "instr_rdata_i[124]" + 
+    "instr_rdata_i[125]" + "instr_rdata_i[126]" + "instr_rdata_i[127]" + 
+    "instr_rdata_i[12]" + "instr_rdata_i[13]" + "instr_rdata_i[14]" + 
+    "instr_rdata_i[15]" + "instr_rdata_i[16]" + "instr_rdata_i[17]" + 
+    "instr_rdata_i[18]" + "instr_rdata_i[19]" + "instr_rdata_i[1]" + 
+    "instr_rdata_i[20]" + "instr_rdata_i[21]" + "instr_rdata_i[22]" + 
+    "instr_rdata_i[23]" + "instr_rdata_i[24]" + "instr_rdata_i[25]" + 
+    "instr_rdata_i[26]" + "instr_rdata_i[27]" + "instr_rdata_i[28]" + 
+    "instr_rdata_i[29]" + "instr_rdata_i[2]" + "instr_rdata_i[30]" + 
+    "instr_rdata_i[31]" + "instr_rdata_i[32]" + "instr_rdata_i[33]" + 
+    "instr_rdata_i[34]" + "instr_rdata_i[35]" + "instr_rdata_i[36]" + 
+    "instr_rdata_i[37]" + "instr_rdata_i[38]" + "instr_rdata_i[39]" + 
+    "instr_rdata_i[3]" + "instr_rdata_i[40]" + "instr_rdata_i[41]" + 
+    "instr_rdata_i[42]" + "instr_rdata_i[43]" + "instr_rdata_i[44]" + 
+    "instr_rdata_i[45]" + "instr_rdata_i[46]" + "instr_rdata_i[47]" + 
+    "instr_rdata_i[48]" + "instr_rdata_i[49]" + "instr_rdata_i[4]" + 
+    "instr_rdata_i[50]" + "instr_rdata_i[51]" + "instr_rdata_i[52]" + 
+    "instr_rdata_i[53]" + "instr_rdata_i[54]" + "instr_rdata_i[55]" + 
+    "instr_rdata_i[56]" + "instr_rdata_i[57]" + "instr_rdata_i[58]" + 
+    "instr_rdata_i[59]" + "instr_rdata_i[5]" + "instr_rdata_i[60]" + 
+    "instr_rdata_i[61]" + "instr_rdata_i[62]" + "instr_rdata_i[63]" + 
+    "instr_rdata_i[64]" + "instr_rdata_i[65]" + "instr_rdata_i[66]" + 
+    "instr_rdata_i[67]" + "instr_rdata_i[68]" + "instr_rdata_i[69]" + 
+    "instr_rdata_i[6]" + "instr_rdata_i[70]" + "instr_rdata_i[71]" + 
+    "instr_rdata_i[72]" + "instr_rdata_i[73]" + "instr_rdata_i[74]" + 
+    "instr_rdata_i[75]" + "instr_rdata_i[76]" + "instr_rdata_i[77]" + 
+    "instr_rdata_i[78]" + "instr_rdata_i[79]" + "instr_rdata_i[7]" + 
+    "instr_rdata_i[80]" + "instr_rdata_i[81]" + "instr_rdata_i[82]" + 
+    "instr_rdata_i[83]" + "instr_rdata_i[84]" + "instr_rdata_i[85]" + 
+    "instr_rdata_i[86]" + "instr_rdata_i[87]" + "instr_rdata_i[88]" + 
+    "instr_rdata_i[89]" + "instr_rdata_i[8]" + "instr_rdata_i[90]" + 
+    "instr_rdata_i[91]" + "instr_rdata_i[92]" + "instr_rdata_i[93]" + 
+    "instr_rdata_i[94]" + "instr_rdata_i[95]" + "instr_rdata_i[96]" + 
+    "instr_rdata_i[97]" + "instr_rdata_i[98]" + "instr_rdata_i[99]" + 
+    "instr_rdata_i[9]" + "instr_rvalid_i" + "irq_i" + "irq_id_i[0]" + 
+    "irq_id_i[1]" + "irq_id_i[2]" + "irq_id_i[3]" + "irq_id_i[4]" + "irq_sec_i" 
+    + "rst_ni" + "test_en_i" + "test_si1" + "test_si2" + "test_si3" + "test_si4" 
+    + "test_si5" + "test_si6" + "test_si7" + "test_si8" + "test_si9" + 
+    "test_si10" + "test_si11" + "test_si12" + "test_si13" + "test_si14" + 
+    "test_si15" + "test_si16" + "test_si17" + "test_si18" + "test_si19" + 
+    "test_si20" + "test_si21" + "test_si22" + "test_si23" + "test_si24" + 
+    "test_si25" + "test_si26" + "test_si27" + "test_si28" + "test_si29" + 
+    "test_si30" + "test_si31" + "test_si32" + "test_si33" + "test_si34" + 
+    "test_si35" + "test_si36" + "test_si37" + "test_si38" + "test_si39" + 
+    "test_si40" + "test_si41" + "test_si42" + "test_si43" + "test_si44" + 
+    "test_si45" + "test_si46" + "test_si47" + "test_si48" + "test_si49" + 
+    "test_si50" + "test_si51" + "test_si52" + "test_si53" + "test_si54" + 
+    "test_si55" + "test_si56" + "test_si57" + "test_si58" + "test_si59" + 
+    "test_si60" + "test_si61" + "test_si62" + "test_si63" + "test_si64" + 
+    "test_mode"';
+    "all_outputs" = '"apu_master_flags_o[0]" + "apu_master_flags_o[10]" + 
+    "apu_master_flags_o[11]" + "apu_master_flags_o[12]" + 
+    "apu_master_flags_o[13]" + "apu_master_flags_o[14]" + 
+    "apu_master_flags_o[1]" + "apu_master_flags_o[2]" + "apu_master_flags_o[3]" 
+    + "apu_master_flags_o[4]" + "apu_master_flags_o[5]" + 
+    "apu_master_flags_o[6]" + "apu_master_flags_o[7]" + "apu_master_flags_o[8]" 
+    + "apu_master_flags_o[9]" + "apu_master_op_o[0]" + "apu_master_op_o[1]" + 
+    "apu_master_op_o[2]" + "apu_master_op_o[3]" + "apu_master_op_o[4]" + 
+    "apu_master_op_o[5]" + "apu_master_operands_o[0]" + 
+    "apu_master_operands_o[10]" + "apu_master_operands_o[11]" + 
+    "apu_master_operands_o[12]" + "apu_master_operands_o[13]" + 
+    "apu_master_operands_o[14]" + "apu_master_operands_o[15]" + 
+    "apu_master_operands_o[16]" + "apu_master_operands_o[17]" + 
+    "apu_master_operands_o[18]" + "apu_master_operands_o[19]" + 
+    "apu_master_operands_o[1]" + "apu_master_operands_o[20]" + 
+    "apu_master_operands_o[21]" + "apu_master_operands_o[22]" + 
+    "apu_master_operands_o[23]" + "apu_master_operands_o[24]" + 
+    "apu_master_operands_o[25]" + "apu_master_operands_o[26]" + 
+    "apu_master_operands_o[27]" + "apu_master_operands_o[28]" + 
+    "apu_master_operands_o[29]" + "apu_master_operands_o[2]" + 
+    "apu_master_operands_o[30]" + "apu_master_operands_o[31]" + 
+    "apu_master_operands_o[32]" + "apu_master_operands_o[33]" + 
+    "apu_master_operands_o[34]" + "apu_master_operands_o[35]" + 
+    "apu_master_operands_o[36]" + "apu_master_operands_o[37]" + 
+    "apu_master_operands_o[38]" + "apu_master_operands_o[39]" + 
+    "apu_master_operands_o[3]" + "apu_master_operands_o[40]" + 
+    "apu_master_operands_o[41]" + "apu_master_operands_o[42]" + 
+    "apu_master_operands_o[43]" + "apu_master_operands_o[44]" + 
+    "apu_master_operands_o[45]" + "apu_master_operands_o[46]" + 
+    "apu_master_operands_o[47]" + "apu_master_operands_o[48]" + 
+    "apu_master_operands_o[49]" + "apu_master_operands_o[4]" + 
+    "apu_master_operands_o[50]" + "apu_master_operands_o[51]" + 
+    "apu_master_operands_o[52]" + "apu_master_operands_o[53]" + 
+    "apu_master_operands_o[54]" + "apu_master_operands_o[55]" + 
+    "apu_master_operands_o[56]" + "apu_master_operands_o[57]" + 
+    "apu_master_operands_o[58]" + "apu_master_operands_o[59]" + 
+    "apu_master_operands_o[5]" + "apu_master_operands_o[60]" + 
+    "apu_master_operands_o[61]" + "apu_master_operands_o[62]" + 
+    "apu_master_operands_o[63]" + "apu_master_operands_o[64]" + 
+    "apu_master_operands_o[65]" + "apu_master_operands_o[66]" + 
+    "apu_master_operands_o[67]" + "apu_master_operands_o[68]" + 
+    "apu_master_operands_o[69]" + "apu_master_operands_o[6]" + 
+    "apu_master_operands_o[70]" + "apu_master_operands_o[71]" + 
+    "apu_master_operands_o[72]" + "apu_master_operands_o[73]" + 
+    "apu_master_operands_o[74]" + "apu_master_operands_o[75]" + 
+    "apu_master_operands_o[76]" + "apu_master_operands_o[77]" + 
+    "apu_master_operands_o[78]" + "apu_master_operands_o[79]" + 
+    "apu_master_operands_o[7]" + "apu_master_operands_o[80]" + 
+    "apu_master_operands_o[81]" + "apu_master_operands_o[82]" + 
+    "apu_master_operands_o[83]" + "apu_master_operands_o[84]" + 
+    "apu_master_operands_o[85]" + "apu_master_operands_o[86]" + 
+    "apu_master_operands_o[87]" + "apu_master_operands_o[88]" + 
+    "apu_master_operands_o[89]" + "apu_master_operands_o[8]" + 
+    "apu_master_operands_o[90]" + "apu_master_operands_o[91]" + 
+    "apu_master_operands_o[92]" + "apu_master_operands_o[93]" + 
+    "apu_master_operands_o[94]" + "apu_master_operands_o[95]" + 
+    "apu_master_operands_o[9]" + "apu_master_ready_o" + "apu_master_req_o" + 
+    "apu_master_type_o[1]" + "apu_master_type_o[2]" + "core_busy_o" + 
+    "data_addr_o[0]" + "data_addr_o[10]" + "data_addr_o[11]" + "data_addr_o[12]" 
+    + "data_addr_o[13]" + "data_addr_o[14]" + "data_addr_o[15]" + 
+    "data_addr_o[16]" + "data_addr_o[17]" + "data_addr_o[18]" + 
+    "data_addr_o[19]" + "data_addr_o[1]" + "data_addr_o[20]" + "data_addr_o[21]" 
+    + "data_addr_o[22]" + "data_addr_o[23]" + "data_addr_o[24]" + 
+    "data_addr_o[25]" + "data_addr_o[26]" + "data_addr_o[27]" + 
+    "data_addr_o[28]" + "data_addr_o[29]" + "data_addr_o[2]" + "data_addr_o[30]" 
+    + "data_addr_o[31]" + "data_addr_o[3]" + "data_addr_o[4]" + "data_addr_o[5]" 
+    + "data_addr_o[6]" + "data_addr_o[7]" + "data_addr_o[8]" + "data_addr_o[9]" 
+    + "data_be_o[0]" + "data_be_o[1]" + "data_be_o[2]" + "data_be_o[3]" + 
+    "data_req_o" + "data_wdata_o[0]" + "data_wdata_o[10]" + "data_wdata_o[11]" + 
+    "data_wdata_o[12]" + "data_wdata_o[13]" + "data_wdata_o[14]" + 
+    "data_wdata_o[15]" + "data_wdata_o[16]" + "data_wdata_o[17]" + 
+    "data_wdata_o[18]" + "data_wdata_o[19]" + "data_wdata_o[1]" + 
+    "data_wdata_o[20]" + "data_wdata_o[21]" + "data_wdata_o[22]" + 
+    "data_wdata_o[23]" + "data_wdata_o[24]" + "data_wdata_o[25]" + 
+    "data_wdata_o[26]" + "data_wdata_o[27]" + "data_wdata_o[28]" + 
+    "data_wdata_o[29]" + "data_wdata_o[2]" + "data_wdata_o[30]" + 
+    "data_wdata_o[31]" + "data_wdata_o[3]" + "data_wdata_o[4]" + 
+    "data_wdata_o[5]" + "data_wdata_o[6]" + "data_wdata_o[7]" + 
+    "data_wdata_o[8]" + "data_wdata_o[9]" + "data_we_o" + "instr_addr_o[0]" + 
+    "instr_addr_o[10]" + "instr_addr_o[11]" + "instr_addr_o[12]" + 
+    "instr_addr_o[13]" + "instr_addr_o[14]" + "instr_addr_o[15]" + 
+    "instr_addr_o[16]" + "instr_addr_o[17]" + "instr_addr_o[18]" + 
+    "instr_addr_o[19]" + "instr_addr_o[1]" + "instr_addr_o[20]" + 
+    "instr_addr_o[21]" + "instr_addr_o[22]" + "instr_addr_o[23]" + 
+    "instr_addr_o[24]" + "instr_addr_o[25]" + "instr_addr_o[26]" + 
+    "instr_addr_o[27]" + "instr_addr_o[28]" + "instr_addr_o[29]" + 
+    "instr_addr_o[2]" + "instr_addr_o[30]" + "instr_addr_o[31]" + 
+    "instr_addr_o[3]" + "instr_addr_o[4]" + "instr_addr_o[5]" + 
+    "instr_addr_o[6]" + "instr_addr_o[7]" + "instr_addr_o[8]" + 
+    "instr_addr_o[9]" + "instr_req_o" + "irq_ack_o" + "irq_id_o[0]" + 
+    "irq_id_o[1]" + "irq_id_o[2]" + "irq_id_o[3]" + "irq_id_o[4]" + "sec_lvl_o" 
+    + "test_so1" + "test_so2" + "test_so3" + "test_so4" + "test_so5" + 
+    "test_so6" + "test_so7" + "test_so8" + "test_so9" + "test_so10" + 
+    "test_so11" + "test_so12" + "test_so13" + "test_so14" + "test_so15" + 
+    "test_so16" + "test_so17" + "test_so18" + "test_so19" + "test_so20" + 
+    "test_so21" + "test_so22" + "test_so23" + "test_so24" + "test_so25" + 
+    "test_so26" + "test_so27" + "test_so28" + "test_so29" + "test_so30" + 
+    "test_so31" + "test_so32" + "test_so33" + "test_so34" + "test_so35" + 
+    "test_so36" + "test_so37" + "test_so38" + "test_so39" + "test_so40" + 
+    "test_so41" + "test_so42" + "test_so43" + "test_so44" + "test_so45" + 
+    "test_so46" + "test_so47" + "test_so48" + "test_so49" + "test_so50" + 
+    "test_so51" + "test_so52" + "test_so53" + "test_so54" + "test_so55" + 
+    "test_so56" + "test_so57" + "test_so58" + "test_so59" + "test_so60" + 
+    "test_so61" + "test_so62" + "test_so63" + "test_so64"';
+    "all_ports" = '"all_inputs" + "all_outputs"';
+    "_pi" = '"apu_master_flags_i[0]" + "apu_master_flags_i[1]" + 
+    "apu_master_flags_i[2]" + "apu_master_flags_i[3]" + "apu_master_flags_i[4]" 
+    + "apu_master_gnt_i" + "apu_master_result_i[0]" + "apu_master_result_i[10]" 
+    + "apu_master_result_i[11]" + "apu_master_result_i[12]" + 
+    "apu_master_result_i[13]" + "apu_master_result_i[14]" + 
+    "apu_master_result_i[15]" + "apu_master_result_i[16]" + 
+    "apu_master_result_i[17]" + "apu_master_result_i[18]" + 
+    "apu_master_result_i[19]" + "apu_master_result_i[1]" + 
+    "apu_master_result_i[20]" + "apu_master_result_i[21]" + 
+    "apu_master_result_i[22]" + "apu_master_result_i[23]" + 
+    "apu_master_result_i[24]" + "apu_master_result_i[25]" + 
+    "apu_master_result_i[26]" + "apu_master_result_i[27]" + 
+    "apu_master_result_i[28]" + "apu_master_result_i[29]" + 
+    "apu_master_result_i[2]" + "apu_master_result_i[30]" + 
+    "apu_master_result_i[31]" + "apu_master_result_i[3]" + 
+    "apu_master_result_i[4]" + "apu_master_result_i[5]" + 
+    "apu_master_result_i[6]" + "apu_master_result_i[7]" + 
+    "apu_master_result_i[8]" + "apu_master_result_i[9]" + "apu_master_valid_i" + 
+    "boot_addr_i[0]" + "boot_addr_i[10]" + "boot_addr_i[11]" + "boot_addr_i[12]" 
+    + "boot_addr_i[13]" + "boot_addr_i[14]" + "boot_addr_i[15]" + 
+    "boot_addr_i[16]" + "boot_addr_i[17]" + "boot_addr_i[18]" + 
+    "boot_addr_i[19]" + "boot_addr_i[1]" + "boot_addr_i[20]" + "boot_addr_i[21]" 
+    + "boot_addr_i[22]" + "boot_addr_i[23]" + "boot_addr_i[24]" + 
+    "boot_addr_i[25]" + "boot_addr_i[26]" + "boot_addr_i[27]" + 
+    "boot_addr_i[28]" + "boot_addr_i[29]" + "boot_addr_i[2]" + "boot_addr_i[30]" 
+    + "boot_addr_i[31]" + "boot_addr_i[3]" + "boot_addr_i[4]" + "boot_addr_i[5]" 
+    + "boot_addr_i[6]" + "boot_addr_i[7]" + "boot_addr_i[8]" + "boot_addr_i[9]" 
+    + "clk_i" + "clock_en_i" + "cluster_id_i[0]" + "cluster_id_i[1]" + 
+    "cluster_id_i[2]" + "cluster_id_i[3]" + "cluster_id_i[4]" + 
+    "cluster_id_i[5]" + "core_id_i[0]" + "core_id_i[1]" + "core_id_i[2]" + 
+    "core_id_i[3]" + "data_gnt_i" + "data_rdata_i[0]" + "data_rdata_i[10]" + 
+    "data_rdata_i[11]" + "data_rdata_i[12]" + "data_rdata_i[13]" + 
+    "data_rdata_i[14]" + "data_rdata_i[15]" + "data_rdata_i[16]" + 
+    "data_rdata_i[17]" + "data_rdata_i[18]" + "data_rdata_i[19]" + 
+    "data_rdata_i[1]" + "data_rdata_i[20]" + "data_rdata_i[21]" + 
+    "data_rdata_i[22]" + "data_rdata_i[23]" + "data_rdata_i[24]" + 
+    "data_rdata_i[25]" + "data_rdata_i[26]" + "data_rdata_i[27]" + 
+    "data_rdata_i[28]" + "data_rdata_i[29]" + "data_rdata_i[2]" + 
+    "data_rdata_i[30]" + "data_rdata_i[31]" + "data_rdata_i[3]" + 
+    "data_rdata_i[4]" + "data_rdata_i[5]" + "data_rdata_i[6]" + 
+    "data_rdata_i[7]" + "data_rdata_i[8]" + "data_rdata_i[9]" + "data_rvalid_i" 
+    + "debug_req_i" + "ext_perf_counters_i[1]" + "ext_perf_counters_i[2]" + 
+    "fetch_enable_i" + "fregfile_disable_i" + "instr_gnt_i" + "instr_rdata_i[0]" 
+    + "instr_rdata_i[100]" + "instr_rdata_i[101]" + "instr_rdata_i[102]" + 
+    "instr_rdata_i[103]" + "instr_rdata_i[104]" + "instr_rdata_i[105]" + 
+    "instr_rdata_i[106]" + "instr_rdata_i[107]" + "instr_rdata_i[108]" + 
+    "instr_rdata_i[109]" + "instr_rdata_i[10]" + "instr_rdata_i[110]" + 
+    "instr_rdata_i[111]" + "instr_rdata_i[112]" + "instr_rdata_i[113]" + 
+    "instr_rdata_i[114]" + "instr_rdata_i[115]" + "instr_rdata_i[116]" + 
+    "instr_rdata_i[117]" + "instr_rdata_i[118]" + "instr_rdata_i[119]" + 
+    "instr_rdata_i[11]" + "instr_rdata_i[120]" + "instr_rdata_i[121]" + 
+    "instr_rdata_i[122]" + "instr_rdata_i[123]" + "instr_rdata_i[124]" + 
+    "instr_rdata_i[125]" + "instr_rdata_i[126]" + "instr_rdata_i[127]" + 
+    "instr_rdata_i[12]" + "instr_rdata_i[13]" + "instr_rdata_i[14]" + 
+    "instr_rdata_i[15]" + "instr_rdata_i[16]" + "instr_rdata_i[17]" + 
+    "instr_rdata_i[18]" + "instr_rdata_i[19]" + "instr_rdata_i[1]" + 
+    "instr_rdata_i[20]" + "instr_rdata_i[21]" + "instr_rdata_i[22]" + 
+    "instr_rdata_i[23]" + "instr_rdata_i[24]" + "instr_rdata_i[25]" + 
+    "instr_rdata_i[26]" + "instr_rdata_i[27]" + "instr_rdata_i[28]" + 
+    "instr_rdata_i[29]" + "instr_rdata_i[2]" + "instr_rdata_i[30]" + 
+    "instr_rdata_i[31]" + "instr_rdata_i[32]" + "instr_rdata_i[33]" + 
+    "instr_rdata_i[34]" + "instr_rdata_i[35]" + "instr_rdata_i[36]" + 
+    "instr_rdata_i[37]" + "instr_rdata_i[38]" + "instr_rdata_i[39]" + 
+    "instr_rdata_i[3]" + "instr_rdata_i[40]" + "instr_rdata_i[41]" + 
+    "instr_rdata_i[42]" + "instr_rdata_i[43]" + "instr_rdata_i[44]" + 
+    "instr_rdata_i[45]" + "instr_rdata_i[46]" + "instr_rdata_i[47]" + 
+    "instr_rdata_i[48]" + "instr_rdata_i[49]" + "instr_rdata_i[4]" + 
+    "instr_rdata_i[50]" + "instr_rdata_i[51]" + "instr_rdata_i[52]" + 
+    "instr_rdata_i[53]" + "instr_rdata_i[54]" + "instr_rdata_i[55]" + 
+    "instr_rdata_i[56]" + "instr_rdata_i[57]" + "instr_rdata_i[58]" + 
+    "instr_rdata_i[59]" + "instr_rdata_i[5]" + "instr_rdata_i[60]" + 
+    "instr_rdata_i[61]" + "instr_rdata_i[62]" + "instr_rdata_i[63]" + 
+    "instr_rdata_i[64]" + "instr_rdata_i[65]" + "instr_rdata_i[66]" + 
+    "instr_rdata_i[67]" + "instr_rdata_i[68]" + "instr_rdata_i[69]" + 
+    "instr_rdata_i[6]" + "instr_rdata_i[70]" + "instr_rdata_i[71]" + 
+    "instr_rdata_i[72]" + "instr_rdata_i[73]" + "instr_rdata_i[74]" + 
+    "instr_rdata_i[75]" + "instr_rdata_i[76]" + "instr_rdata_i[77]" + 
+    "instr_rdata_i[78]" + "instr_rdata_i[79]" + "instr_rdata_i[7]" + 
+    "instr_rdata_i[80]" + "instr_rdata_i[81]" + "instr_rdata_i[82]" + 
+    "instr_rdata_i[83]" + "instr_rdata_i[84]" + "instr_rdata_i[85]" + 
+    "instr_rdata_i[86]" + "instr_rdata_i[87]" + "instr_rdata_i[88]" + 
+    "instr_rdata_i[89]" + "instr_rdata_i[8]" + "instr_rdata_i[90]" + 
+    "instr_rdata_i[91]" + "instr_rdata_i[92]" + "instr_rdata_i[93]" + 
+    "instr_rdata_i[94]" + "instr_rdata_i[95]" + "instr_rdata_i[96]" + 
+    "instr_rdata_i[97]" + "instr_rdata_i[98]" + "instr_rdata_i[99]" + 
+    "instr_rdata_i[9]" + "instr_rvalid_i" + "irq_i" + "irq_id_i[0]" + 
+    "irq_id_i[1]" + "irq_id_i[2]" + "irq_id_i[3]" + "irq_id_i[4]" + "irq_sec_i" 
+    + "rst_ni" + "test_en_i" + "test_si1" + "test_si2" + "test_si3" + "test_si4" 
+    + "test_si5" + "test_si6" + "test_si7" + "test_si8" + "test_si9" + 
+    "test_si10" + "test_si11" + "test_si12" + "test_si13" + "test_si14" + 
+    "test_si15" + "test_si16" + "test_si17" + "test_si18" + "test_si19" + 
+    "test_si20" + "test_si21" + "test_si22" + "test_si23" + "test_si24" + 
+    "test_si25" + "test_si26" + "test_si27" + "test_si28" + "test_si29" + 
+    "test_si30" + "test_si31" + "test_si32" + "test_si33" + "test_si34" + 
+    "test_si35" + "test_si36" + "test_si37" + "test_si38" + "test_si39" + 
+    "test_si40" + "test_si41" + "test_si42" + "test_si43" + "test_si44" + 
+    "test_si45" + "test_si46" + "test_si47" + "test_si48" + "test_si49" + 
+    "test_si50" + "test_si51" + "test_si52" + "test_si53" + "test_si54" + 
+    "test_si55" + "test_si56" + "test_si57" + "test_si58" + "test_si59" + 
+    "test_si60" + "test_si61" + "test_si62" + "test_si63" + "test_si64" + 
+    "test_mode"';
+    "_po" = '"apu_master_flags_o[0]" + "apu_master_flags_o[10]" + 
+    "apu_master_flags_o[11]" + "apu_master_flags_o[12]" + 
+    "apu_master_flags_o[13]" + "apu_master_flags_o[14]" + 
+    "apu_master_flags_o[1]" + "apu_master_flags_o[2]" + "apu_master_flags_o[3]" 
+    + "apu_master_flags_o[4]" + "apu_master_flags_o[5]" + 
+    "apu_master_flags_o[6]" + "apu_master_flags_o[7]" + "apu_master_flags_o[8]" 
+    + "apu_master_flags_o[9]" + "apu_master_op_o[0]" + "apu_master_op_o[1]" + 
+    "apu_master_op_o[2]" + "apu_master_op_o[3]" + "apu_master_op_o[4]" + 
+    "apu_master_op_o[5]" + "apu_master_operands_o[0]" + 
+    "apu_master_operands_o[10]" + "apu_master_operands_o[11]" + 
+    "apu_master_operands_o[12]" + "apu_master_operands_o[13]" + 
+    "apu_master_operands_o[14]" + "apu_master_operands_o[15]" + 
+    "apu_master_operands_o[16]" + "apu_master_operands_o[17]" + 
+    "apu_master_operands_o[18]" + "apu_master_operands_o[19]" + 
+    "apu_master_operands_o[1]" + "apu_master_operands_o[20]" + 
+    "apu_master_operands_o[21]" + "apu_master_operands_o[22]" + 
+    "apu_master_operands_o[23]" + "apu_master_operands_o[24]" + 
+    "apu_master_operands_o[25]" + "apu_master_operands_o[26]" + 
+    "apu_master_operands_o[27]" + "apu_master_operands_o[28]" + 
+    "apu_master_operands_o[29]" + "apu_master_operands_o[2]" + 
+    "apu_master_operands_o[30]" + "apu_master_operands_o[31]" + 
+    "apu_master_operands_o[32]" + "apu_master_operands_o[33]" + 
+    "apu_master_operands_o[34]" + "apu_master_operands_o[35]" + 
+    "apu_master_operands_o[36]" + "apu_master_operands_o[37]" + 
+    "apu_master_operands_o[38]" + "apu_master_operands_o[39]" + 
+    "apu_master_operands_o[3]" + "apu_master_operands_o[40]" + 
+    "apu_master_operands_o[41]" + "apu_master_operands_o[42]" + 
+    "apu_master_operands_o[43]" + "apu_master_operands_o[44]" + 
+    "apu_master_operands_o[45]" + "apu_master_operands_o[46]" + 
+    "apu_master_operands_o[47]" + "apu_master_operands_o[48]" + 
+    "apu_master_operands_o[49]" + "apu_master_operands_o[4]" + 
+    "apu_master_operands_o[50]" + "apu_master_operands_o[51]" + 
+    "apu_master_operands_o[52]" + "apu_master_operands_o[53]" + 
+    "apu_master_operands_o[54]" + "apu_master_operands_o[55]" + 
+    "apu_master_operands_o[56]" + "apu_master_operands_o[57]" + 
+    "apu_master_operands_o[58]" + "apu_master_operands_o[59]" + 
+    "apu_master_operands_o[5]" + "apu_master_operands_o[60]" + 
+    "apu_master_operands_o[61]" + "apu_master_operands_o[62]" + 
+    "apu_master_operands_o[63]" + "apu_master_operands_o[64]" + 
+    "apu_master_operands_o[65]" + "apu_master_operands_o[66]" + 
+    "apu_master_operands_o[67]" + "apu_master_operands_o[68]" + 
+    "apu_master_operands_o[69]" + "apu_master_operands_o[6]" + 
+    "apu_master_operands_o[70]" + "apu_master_operands_o[71]" + 
+    "apu_master_operands_o[72]" + "apu_master_operands_o[73]" + 
+    "apu_master_operands_o[74]" + "apu_master_operands_o[75]" + 
+    "apu_master_operands_o[76]" + "apu_master_operands_o[77]" + 
+    "apu_master_operands_o[78]" + "apu_master_operands_o[79]" + 
+    "apu_master_operands_o[7]" + "apu_master_operands_o[80]" + 
+    "apu_master_operands_o[81]" + "apu_master_operands_o[82]" + 
+    "apu_master_operands_o[83]" + "apu_master_operands_o[84]" + 
+    "apu_master_operands_o[85]" + "apu_master_operands_o[86]" + 
+    "apu_master_operands_o[87]" + "apu_master_operands_o[88]" + 
+    "apu_master_operands_o[89]" + "apu_master_operands_o[8]" + 
+    "apu_master_operands_o[90]" + "apu_master_operands_o[91]" + 
+    "apu_master_operands_o[92]" + "apu_master_operands_o[93]" + 
+    "apu_master_operands_o[94]" + "apu_master_operands_o[95]" + 
+    "apu_master_operands_o[9]" + "apu_master_ready_o" + "apu_master_req_o" + 
+    "apu_master_type_o[1]" + "apu_master_type_o[2]" + "core_busy_o" + 
+    "data_addr_o[0]" + "data_addr_o[10]" + "data_addr_o[11]" + "data_addr_o[12]" 
+    + "data_addr_o[13]" + "data_addr_o[14]" + "data_addr_o[15]" + 
+    "data_addr_o[16]" + "data_addr_o[17]" + "data_addr_o[18]" + 
+    "data_addr_o[19]" + "data_addr_o[1]" + "data_addr_o[20]" + "data_addr_o[21]" 
+    + "data_addr_o[22]" + "data_addr_o[23]" + "data_addr_o[24]" + 
+    "data_addr_o[25]" + "data_addr_o[26]" + "data_addr_o[27]" + 
+    "data_addr_o[28]" + "data_addr_o[29]" + "data_addr_o[2]" + "data_addr_o[30]" 
+    + "data_addr_o[31]" + "data_addr_o[3]" + "data_addr_o[4]" + "data_addr_o[5]" 
+    + "data_addr_o[6]" + "data_addr_o[7]" + "data_addr_o[8]" + "data_addr_o[9]" 
+    + "data_be_o[0]" + "data_be_o[1]" + "data_be_o[2]" + "data_be_o[3]" + 
+    "data_req_o" + "data_wdata_o[0]" + "data_wdata_o[10]" + "data_wdata_o[11]" + 
+    "data_wdata_o[12]" + "data_wdata_o[13]" + "data_wdata_o[14]" + 
+    "data_wdata_o[15]" + "data_wdata_o[16]" + "data_wdata_o[17]" + 
+    "data_wdata_o[18]" + "data_wdata_o[19]" + "data_wdata_o[1]" + 
+    "data_wdata_o[20]" + "data_wdata_o[21]" + "data_wdata_o[22]" + 
+    "data_wdata_o[23]" + "data_wdata_o[24]" + "data_wdata_o[25]" + 
+    "data_wdata_o[26]" + "data_wdata_o[27]" + "data_wdata_o[28]" + 
+    "data_wdata_o[29]" + "data_wdata_o[2]" + "data_wdata_o[30]" + 
+    "data_wdata_o[31]" + "data_wdata_o[3]" + "data_wdata_o[4]" + 
+    "data_wdata_o[5]" + "data_wdata_o[6]" + "data_wdata_o[7]" + 
+    "data_wdata_o[8]" + "data_wdata_o[9]" + "data_we_o" + "instr_addr_o[0]" + 
+    "instr_addr_o[10]" + "instr_addr_o[11]" + "instr_addr_o[12]" + 
+    "instr_addr_o[13]" + "instr_addr_o[14]" + "instr_addr_o[15]" + 
+    "instr_addr_o[16]" + "instr_addr_o[17]" + "instr_addr_o[18]" + 
+    "instr_addr_o[19]" + "instr_addr_o[1]" + "instr_addr_o[20]" + 
+    "instr_addr_o[21]" + "instr_addr_o[22]" + "instr_addr_o[23]" + 
+    "instr_addr_o[24]" + "instr_addr_o[25]" + "instr_addr_o[26]" + 
+    "instr_addr_o[27]" + "instr_addr_o[28]" + "instr_addr_o[29]" + 
+    "instr_addr_o[2]" + "instr_addr_o[30]" + "instr_addr_o[31]" + 
+    "instr_addr_o[3]" + "instr_addr_o[4]" + "instr_addr_o[5]" + 
+    "instr_addr_o[6]" + "instr_addr_o[7]" + "instr_addr_o[8]" + 
+    "instr_addr_o[9]" + "instr_req_o" + "irq_ack_o" + "irq_id_o[0]" + 
+    "irq_id_o[1]" + "irq_id_o[2]" + "irq_id_o[3]" + "irq_id_o[4]" + "sec_lvl_o" 
+    + "test_so1" + "test_so2" + "test_so3" + "test_so4" + "test_so5" + 
+    "test_so6" + "test_so7" + "test_so8" + "test_so9" + "test_so10" + 
+    "test_so11" + "test_so12" + "test_so13" + "test_so14" + "test_so15" + 
+    "test_so16" + "test_so17" + "test_so18" + "test_so19" + "test_so20" + 
+    "test_so21" + "test_so22" + "test_so23" + "test_so24" + "test_so25" + 
+    "test_so26" + "test_so27" + "test_so28" + "test_so29" + "test_so30" + 
+    "test_so31" + "test_so32" + "test_so33" + "test_so34" + "test_so35" + 
+    "test_so36" + "test_so37" + "test_so38" + "test_so39" + "test_so40" + 
+    "test_so41" + "test_so42" + "test_so43" + "test_so44" + "test_so45" + 
+    "test_so46" + "test_so47" + "test_so48" + "test_so49" + "test_so50" + 
+    "test_so51" + "test_so52" + "test_so53" + "test_so54" + "test_so55" + 
+    "test_so56" + "test_so57" + "test_so58" + "test_so59" + "test_so60" + 
+    "test_so61" + "test_so62" + "test_so63" + "test_so64"';
+}
+ScanStructures {
+    ScanChain "1" {
+        ScanLength 48;
+        ScanIn "test_si1";
+        ScanOut "test_so1";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "2" {
+        ScanLength 48;
+        ScanIn "test_si2";
+        ScanOut "test_so2";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "3" {
+        ScanLength 48;
+        ScanIn "test_si3";
+        ScanOut "test_so3";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "4" {
+        ScanLength 48;
+        ScanIn "test_si4";
+        ScanOut "test_so4";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "5" {
+        ScanLength 48;
+        ScanIn "test_si5";
+        ScanOut "test_so5";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "6" {
+        ScanLength 48;
+        ScanIn "test_si6";
+        ScanOut "test_so6";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "7" {
+        ScanLength 48;
+        ScanIn "test_si7";
+        ScanOut "test_so7";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "8" {
+        ScanLength 48;
+        ScanIn "test_si8";
+        ScanOut "test_so8";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "9" {
+        ScanLength 48;
+        ScanIn "test_si9";
+        ScanOut "test_so9";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "10" {
+        ScanLength 48;
+        ScanIn "test_si10";
+        ScanOut "test_so10";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "11" {
+        ScanLength 48;
+        ScanIn "test_si11";
+        ScanOut "test_so11";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "12" {
+        ScanLength 48;
+        ScanIn "test_si12";
+        ScanOut "test_so12";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "13" {
+        ScanLength 48;
+        ScanIn "test_si13";
+        ScanOut "test_so13";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "14" {
+        ScanLength 48;
+        ScanIn "test_si14";
+        ScanOut "test_so14";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "15" {
+        ScanLength 48;
+        ScanIn "test_si15";
+        ScanOut "test_so15";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "16" {
+        ScanLength 48;
+        ScanIn "test_si16";
+        ScanOut "test_so16";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "17" {
+        ScanLength 48;
+        ScanIn "test_si17";
+        ScanOut "test_so17";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "18" {
+        ScanLength 48;
+        ScanIn "test_si18";
+        ScanOut "test_so18";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "19" {
+        ScanLength 48;
+        ScanIn "test_si19";
+        ScanOut "test_so19";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "20" {
+        ScanLength 47;
+        ScanIn "test_si20";
+        ScanOut "test_so20";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "21" {
+        ScanLength 47;
+        ScanIn "test_si21";
+        ScanOut "test_so21";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "22" {
+        ScanLength 47;
+        ScanIn "test_si22";
+        ScanOut "test_so22";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "23" {
+        ScanLength 47;
+        ScanIn "test_si23";
+        ScanOut "test_so23";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "24" {
+        ScanLength 47;
+        ScanIn "test_si24";
+        ScanOut "test_so24";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "25" {
+        ScanLength 47;
+        ScanIn "test_si25";
+        ScanOut "test_so25";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "26" {
+        ScanLength 47;
+        ScanIn "test_si26";
+        ScanOut "test_so26";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "27" {
+        ScanLength 47;
+        ScanIn "test_si27";
+        ScanOut "test_so27";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "28" {
+        ScanLength 47;
+        ScanIn "test_si28";
+        ScanOut "test_so28";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "29" {
+        ScanLength 47;
+        ScanIn "test_si29";
+        ScanOut "test_so29";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "30" {
+        ScanLength 47;
+        ScanIn "test_si30";
+        ScanOut "test_so30";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "31" {
+        ScanLength 47;
+        ScanIn "test_si31";
+        ScanOut "test_so31";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "32" {
+        ScanLength 47;
+        ScanIn "test_si32";
+        ScanOut "test_so32";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "33" {
+        ScanLength 47;
+        ScanIn "test_si33";
+        ScanOut "test_so33";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "34" {
+        ScanLength 47;
+        ScanIn "test_si34";
+        ScanOut "test_so34";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "35" {
+        ScanLength 47;
+        ScanIn "test_si35";
+        ScanOut "test_so35";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "36" {
+        ScanLength 47;
+        ScanIn "test_si36";
+        ScanOut "test_so36";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "37" {
+        ScanLength 47;
+        ScanIn "test_si37";
+        ScanOut "test_so37";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "38" {
+        ScanLength 47;
+        ScanIn "test_si38";
+        ScanOut "test_so38";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "39" {
+        ScanLength 47;
+        ScanIn "test_si39";
+        ScanOut "test_so39";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "40" {
+        ScanLength 47;
+        ScanIn "test_si40";
+        ScanOut "test_so40";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "41" {
+        ScanLength 47;
+        ScanIn "test_si41";
+        ScanOut "test_so41";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "42" {
+        ScanLength 47;
+        ScanIn "test_si42";
+        ScanOut "test_so42";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "43" {
+        ScanLength 47;
+        ScanIn "test_si43";
+        ScanOut "test_so43";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "44" {
+        ScanLength 47;
+        ScanIn "test_si44";
+        ScanOut "test_so44";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "45" {
+        ScanLength 47;
+        ScanIn "test_si45";
+        ScanOut "test_so45";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "46" {
+        ScanLength 47;
+        ScanIn "test_si46";
+        ScanOut "test_so46";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "47" {
+        ScanLength 47;
+        ScanIn "test_si47";
+        ScanOut "test_so47";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "48" {
+        ScanLength 47;
+        ScanIn "test_si48";
+        ScanOut "test_so48";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "49" {
+        ScanLength 47;
+        ScanIn "test_si49";
+        ScanOut "test_so49";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "50" {
+        ScanLength 47;
+        ScanIn "test_si50";
+        ScanOut "test_so50";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "51" {
+        ScanLength 47;
+        ScanIn "test_si51";
+        ScanOut "test_so51";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "52" {
+        ScanLength 47;
+        ScanIn "test_si52";
+        ScanOut "test_so52";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "53" {
+        ScanLength 47;
+        ScanIn "test_si53";
+        ScanOut "test_so53";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "54" {
+        ScanLength 47;
+        ScanIn "test_si54";
+        ScanOut "test_so54";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "55" {
+        ScanLength 47;
+        ScanIn "test_si55";
+        ScanOut "test_so55";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "56" {
+        ScanLength 47;
+        ScanIn "test_si56";
+        ScanOut "test_so56";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "57" {
+        ScanLength 47;
+        ScanIn "test_si57";
+        ScanOut "test_so57";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "58" {
+        ScanLength 47;
+        ScanIn "test_si58";
+        ScanOut "test_so58";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "59" {
+        ScanLength 47;
+        ScanIn "test_si59";
+        ScanOut "test_so59";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "60" {
+        ScanLength 47;
+        ScanIn "test_si60";
+        ScanOut "test_so60";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "61" {
+        ScanLength 47;
+        ScanIn "test_si61";
+        ScanOut "test_so61";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "62" {
+        ScanLength 47;
+        ScanIn "test_si62";
+        ScanOut "test_so62";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "63" {
+        ScanLength 47;
+        ScanIn "test_si63";
+        ScanOut "test_so63";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+    ScanChain "64" {
+        ScanLength 47;
+        ScanIn "test_si64";
+        ScanOut "test_so64";
+        ScanEnable "test_en_i";
+        ScanMasterClock "clk_i";
+    }
+}
+Timing {
+    WaveformTable "_default_WFT_" {
+        Period '100ns';
+        Waveforms {
+            "all_inputs" {
+                0 {
+                    '0ns' D;
+                }
+            }
+            "all_inputs" {
+                1 {
+                    '0ns' U;
+                }
+            }
+            "all_inputs" {
+                Z {
+                    '0ns' Z;
+                }
+            }
+            "all_inputs" {
+                N {
+                    '0ns' N;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '40ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '40ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '40ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '40ns' L;
+                }
+            }
+            "clk_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "rst_ni" {
+                P {
+                    '0ns' U;
+                    '45ns' D;
+                    '55ns' U;
+                }
+            }
+        }
+    }
+    WaveformTable "_multiclock_capture_WFT_" {
+        Period '100ns';
+        Waveforms {
+            "all_inputs" {
+                0 {
+                    '0ns' D;
+                }
+            }
+            "all_inputs" {
+                1 {
+                    '0ns' U;
+                }
+            }
+            "all_inputs" {
+                Z {
+                    '0ns' Z;
+                }
+            }
+            "all_inputs" {
+                N {
+                    '0ns' N;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '40ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '40ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '40ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '40ns' L;
+                }
+            }
+            "clk_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "rst_ni" {
+                P {
+                    '0ns' U;
+                    '45ns' D;
+                    '55ns' U;
+                }
+            }
+        }
+    }
+    WaveformTable "_allclock_capture_WFT_" {
+        Period '100ns';
+        Waveforms {
+            "all_inputs" {
+                0 {
+                    '0ns' D;
+                }
+            }
+            "all_inputs" {
+                1 {
+                    '0ns' U;
+                }
+            }
+            "all_inputs" {
+                Z {
+                    '0ns' Z;
+                }
+            }
+            "all_inputs" {
+                N {
+                    '0ns' N;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '40ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '40ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '40ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '40ns' L;
+                }
+            }
+            "clk_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "rst_ni" {
+                P {
+                    '0ns' U;
+                    '45ns' D;
+                    '55ns' U;
+                }
+            }
+        }
+    }
+    WaveformTable "_allclock_launch_WFT_" {
+        Period '100ns';
+        Waveforms {
+            "all_inputs" {
+                0 {
+                    '0ns' D;
+                }
+            }
+            "all_inputs" {
+                1 {
+                    '0ns' U;
+                }
+            }
+            "all_inputs" {
+                Z {
+                    '0ns' Z;
+                }
+            }
+            "all_inputs" {
+                N {
+                    '0ns' N;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '40ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '40ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '40ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '40ns' L;
+                }
+            }
+            "clk_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "rst_ni" {
+                P {
+                    '0ns' U;
+                    '45ns' D;
+                    '55ns' U;
+                }
+            }
+        }
+    }
+    WaveformTable "_allclock_launch_capture_WFT_" {
+        Period '100ns';
+        Waveforms {
+            "all_inputs" {
+                0 {
+                    '0ns' D;
+                }
+            }
+            "all_inputs" {
+                1 {
+                    '0ns' U;
+                }
+            }
+            "all_inputs" {
+                Z {
+                    '0ns' Z;
+                }
+            }
+            "all_inputs" {
+                N {
+                    '0ns' N;
+                }
+            }
+            "all_outputs" {
+                X {
+                    '0ns' X;
+                    '40ns' X;
+                }
+            }
+            "all_outputs" {
+                H {
+                    '0ns' X;
+                    '40ns' H;
+                }
+            }
+            "all_outputs" {
+                T {
+                    '0ns' X;
+                    '40ns' T;
+                }
+            }
+            "all_outputs" {
+                L {
+                    '0ns' X;
+                    '40ns' L;
+                }
+            }
+            "clk_i" {
+                P {
+                    '0ns' D;
+                    '45ns' U;
+                    '55ns' D;
+                }
+            }
+            "rst_ni" {
+                P {
+                    '0ns' U;
+                    '45ns' D;
+                    '55ns' U;
+                }
+            }
+        }
+    }
+}
+Procedures {
+    "multiclock_capture" {
+        W "_multiclock_capture_WFT_";
+        C {
+            "all_inputs" = \r71 N 0 \r187 N 1 \r65 N 0;
+            "all_outputs" = \r296 X;
+        }
+        F {
+            "test_mode" = 0;
+        }
+        V {
+            "_pi" = \r326 #;
+            "_po" = \r296 #;
+        }
+    }
+    "allclock_capture" {
+        W "_allclock_capture_WFT_";
+        C {
+            "all_inputs" = \r71 N 0 \r187 N 1 \r65 N 0;
+            "all_outputs" = \r296 X;
+        }
+        F {
+            "test_mode" = 0;
+        }
+        V {
+            "_pi" = \r326 #;
+            "_po" = \r296 #;
+        }
+    }
+    "allclock_launch" {
+        W "_allclock_launch_WFT_";
+        C {
+            "all_inputs" = \r71 N 0 \r187 N 1 \r65 N 0;
+            "all_outputs" = \r296 X;
+        }
+        F {
+            "test_mode" = 0;
+        }
+        V {
+            "_pi" = \r326 #;
+            "_po" = \r296 #;
+        }
+    }
+    "allclock_launch_capture" {
+        W "_allclock_launch_capture_WFT_";
+        C {
+            "all_inputs" = \r71 N 0 \r187 N 1 \r65 N 0;
+            "all_outputs" = \r296 X;
+        }
+        F {
+            "test_mode" = 0;
+        }
+        V {
+            "_pi" = \r326 #;
+            "_po" = \r296 #;
+        }
+    }
+    "load_unload" {
+        W "_default_WFT_";
+        C {
+            "all_inputs" = \r71 N 0 \r187 N 1 \r65 N 0;
+            "all_outputs" = \r296 X;
+        }
+        "Internal_scan_pre_shift" : V {
+            "test_en_i" = 1;
+        }
+        Shift {
+            V {
+                "_clk" = P1;
+                "_si" = \r64 #;
+                "_so" = \r64 #;
+            }
+        }
+    }
+}
+MacroDefs {
+    "test_setup" {
+        W "_default_WFT_";
+        C {
+            "all_inputs" = \r326 N;
+            "all_outputs" = \r296 X;
+        }
+        V {
+            "clk_i" = 0;
+            "rst_ni" = 1;
+            "test_mode" = 0;
+        }
+        V {
+        }
+    }
+}
+

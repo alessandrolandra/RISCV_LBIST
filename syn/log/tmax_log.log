@@ -1,0 +1,246 @@
+
+                                  TetraMAX(R) 
+
+
+                 Version M-2016.12 for linux64 - Nov 21, 2016  
+
+                    Copyright (c) 1996 - 2016 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+
+
+ Tcl mode is on by default. Use -notcl to run in native mode.
+ Executing startup file "/eda/synopsys/2016-17/RHELx86/TMAX_2016.12/admin/setup/tmaxtcl.rc".
+# @Brief tmax script for atpg testing
+# @Note this is a tmax script, netlist and stil files are in the ./output directory
+# @Warning change the coreNet, according to the nerlist name that y want to analyze
+# @Warning, this script is run in the ./run directory, paths are relative to the ./run directory!, do not change them
+set library  "../techlib/NangateOpenCellLibrary.v"
+../techlib/NangateOpenCellLibrary.v
+# netlist
+set coreNet  "../output/riscv_core_scan64.v"
+../output/riscv_core_scan64.v
+set entity   "riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800"
+riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800
+# stil file
+set coreStil "../output/riscv_core_scan64.spf"
+../output/riscv_core_scan64.spf
+read_netlist  $library -library -insensitive
+ Begin reading netlist ( ../techlib/NangateOpenCellLibrary.v )...
+ End parsing Verilog file ../techlib/NangateOpenCellLibrary.v with 0 errors.
+ End reading netlist: #modules=163, top=XOR2_X2, #lines=6552, CPU_time=0.01 sec, Memory=0MB
+read_netlist  $coreNet -master -insensitive
+ Begin reading netlist ( ../output/riscv_core_scan64.v )...
+ End parsing Verilog file ../output/riscv_core_scan64.v with 0 errors.
+ End reading netlist: #modules=123, top=riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800, #lines=64222, CPU_time=0.24 sec, Memory=21MB
+run_build_model $entity
+ ------------------------------------------------------------------------------
+ Begin build model for topcut = riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800 ...
+ ------------------------------------------------------------------------------
+ There were 91319 primitives and 2722 faultable pins removed during model optimizations
+ Warning: Rule B7 (undriven module output pin) was violated 466 times.
+ Warning: Rule B8 (unconnected module input pin) was violated 432 times.
+ Warning: Rule B9 (undriven module internal net) was violated 73 times.
+ Warning: Rule B10 (unconnected module internal net) was violated 532 times.
+ Warning: Rule N20 (underspecified UDP) was violated 1 times.
+ Warning: Rule N21 (unsupported UDP entry) was violated 3 times.
+ End build model: #primitives=74153, CPU_time=0.80 sec, Memory=34MB
+ ------------------------------------------------------------------------------
+ Begin learning analyses...
+ End learning analyses, total learning CPU time=0.58 sec.
+ ------------------------------------------------------------------------------
+### DRC
+;# before running DRC:
+;# constrain PI (if needed)
+;# mask PO (if needed)
+run_drc $coreStil
+ ------------------------------------------------------------------------------
+ Begin scan design rules checking...
+ ------------------------------------------------------------------------------
+ Begin reading test protocol file ../output/riscv_core_scan64.spf...
+ End parsing STIL file ../output/riscv_core_scan64.spf with 0 errors.
+ Test protocol file reading completed, CPU time=0.03 sec.
+ ------------------------------------------------------------------------------
+ Begin simulating test protocol procedures...
+ Test protocol simulation completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin scan chain operation checking...
+ Chain 1 successfully traced with 48 scan_cells.
+ Chain 2 successfully traced with 48 scan_cells.
+ Chain 3 successfully traced with 48 scan_cells.
+ Chain 4 successfully traced with 48 scan_cells.
+ Chain 5 successfully traced with 48 scan_cells.
+ Chain 6 successfully traced with 48 scan_cells.
+ Chain 7 successfully traced with 48 scan_cells.
+ Chain 8 successfully traced with 48 scan_cells.
+ Chain 9 successfully traced with 48 scan_cells.
+ Chain 10 successfully traced with 48 scan_cells.
+ Chain 11 successfully traced with 48 scan_cells.
+ Chain 12 successfully traced with 48 scan_cells.
+ Chain 13 successfully traced with 48 scan_cells.
+ Chain 14 successfully traced with 48 scan_cells.
+ Chain 15 successfully traced with 48 scan_cells.
+ Chain 16 successfully traced with 48 scan_cells.
+ Chain 17 successfully traced with 48 scan_cells.
+ Chain 18 successfully traced with 48 scan_cells.
+ Chain 19 successfully traced with 48 scan_cells.
+ Chain 20 successfully traced with 47 scan_cells.
+ Chain 21 successfully traced with 47 scan_cells.
+ Chain 22 successfully traced with 47 scan_cells.
+ Chain 23 successfully traced with 47 scan_cells.
+ Chain 24 successfully traced with 47 scan_cells.
+ Chain 25 successfully traced with 47 scan_cells.
+ Chain 26 successfully traced with 47 scan_cells.
+ Chain 27 successfully traced with 47 scan_cells.
+ Chain 28 successfully traced with 47 scan_cells.
+ Chain 29 successfully traced with 47 scan_cells.
+ Chain 30 successfully traced with 47 scan_cells.
+ Chain 31 successfully traced with 47 scan_cells.
+ Chain 32 successfully traced with 47 scan_cells.
+ Chain 33 successfully traced with 47 scan_cells.
+ Chain 34 successfully traced with 47 scan_cells.
+ Chain 35 successfully traced with 47 scan_cells.
+ Chain 36 successfully traced with 47 scan_cells.
+ Chain 37 successfully traced with 47 scan_cells.
+ Chain 38 successfully traced with 47 scan_cells.
+ Chain 39 successfully traced with 47 scan_cells.
+ Chain 40 successfully traced with 47 scan_cells.
+ Chain 41 successfully traced with 47 scan_cells.
+ Chain 42 successfully traced with 47 scan_cells.
+ Chain 43 successfully traced with 47 scan_cells.
+ Chain 44 successfully traced with 47 scan_cells.
+ Chain 45 successfully traced with 47 scan_cells.
+ Chain 46 successfully traced with 47 scan_cells.
+ Chain 47 successfully traced with 47 scan_cells.
+ Chain 48 successfully traced with 47 scan_cells.
+ Chain 49 successfully traced with 47 scan_cells.
+ Chain 50 successfully traced with 47 scan_cells.
+ Chain 51 successfully traced with 47 scan_cells.
+ Chain 52 successfully traced with 47 scan_cells.
+ Chain 53 successfully traced with 47 scan_cells.
+ Chain 54 successfully traced with 47 scan_cells.
+ Chain 55 successfully traced with 47 scan_cells.
+ Chain 56 successfully traced with 47 scan_cells.
+ Chain 57 successfully traced with 47 scan_cells.
+ Chain 58 successfully traced with 47 scan_cells.
+ Chain 59 successfully traced with 47 scan_cells.
+ Chain 60 successfully traced with 47 scan_cells.
+ Chain 61 successfully traced with 47 scan_cells.
+ Chain 62 successfully traced with 47 scan_cells.
+ Chain 63 successfully traced with 47 scan_cells.
+ Chain 64 successfully traced with 47 scan_cells.
+ Scan chain operation checking completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin clock-gating analysis...
+ 98 ATPG controllable clock-gating cells were found
+ Clock-gating analysis completed, CPU time=0.01 sec.
+ ------------------------------------------------------------------------------
+ Begin clock rules checking...
+ Clock rules checking completed, CPU time=0.03 sec.
+ Clock grouping results: #pairs=0, #groups=0, #serial_pairs=0, #disturbed_pairs=0, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin nonscan rules checking...
+ Nonscan cell summary: #DFF=0  #DLAT=98  #RAM_outs=0  tla_usage_type=hot_clock_tla
+ Nonscan behavior:  #TLA=98
+ Nonscan rules checking completed, CPU time=0.00 sec.
+ ------------------------------------------------------------------------------
+ Begin DRC dependent learning...
+ Fast-sequential depth results: control=0(0), observe=0(0), detect=0(0), CPU time=0.01 sec
+ DRC dependent learning completed, CPU time=0.24 sec.
+ ------------------------------------------------------------------------------
+ DRC Summary Report
+ ------------------------------------------------------------------------------
+ No violations occurred during DRC process.
+ Design rules checking was successful, total CPU time=0.33 sec.
+ ------------------------------------------------------------------------------
+report_scan_chains
+ chain             group  length  input_pin           output_pin
+ ----------------  -----  ------  ------------------  ------------------
+ 1                 sg0        48  test_si1            test_so1          
+ 2                 sg0        48  test_si2            test_so2          
+ 3                 sg0        48  test_si3            test_so3          
+ 4                 sg0        48  test_si4            test_so4          
+ 5                 sg0        48  test_si5            test_so5          
+ 6                 sg0        48  test_si6            test_so6          
+ 7                 sg0        48  test_si7            test_so7          
+ 8                 sg0        48  test_si8            test_so8          
+ 9                 sg0        48  test_si9            test_so9          
+ 10                sg0        48  test_si10           test_so10         
+ 11                sg0        48  test_si11           test_so11         
+ 12                sg0        48  test_si12           test_so12         
+ 13                sg0        48  test_si13           test_so13         
+ 14                sg0        48  test_si14           test_so14         
+ 15                sg0        48  test_si15           test_so15         
+ 16                sg0        48  test_si16           test_so16         
+ 17                sg0        48  test_si17           test_so17         
+ 18                sg0        48  test_si18           test_so18         
+ 19                sg0        48  test_si19           test_so19         
+ 20                sg0        47  test_si20           test_so20         
+ 21                sg0        47  test_si21           test_so21         
+ 22                sg0        47  test_si22           test_so22         
+ 23                sg0        47  test_si23           test_so23         
+ 24                sg0        47  test_si24           test_so24         
+ 25                sg0        47  test_si25           test_so25         
+ 26                sg0        47  test_si26           test_so26         
+ 27                sg0        47  test_si27           test_so27         
+ 28                sg0        47  test_si28           test_so28         
+ 29                sg0        47  test_si29           test_so29         
+ 30                sg0        47  test_si30           test_so30         
+ 31                sg0        47  test_si31           test_so31         
+ 32                sg0        47  test_si32           test_so32         
+ 33                sg0        47  test_si33           test_so33         
+ 34                sg0        47  test_si34           test_so34         
+ 35                sg0        47  test_si35           test_so35         
+ 36                sg0        47  test_si36           test_so36         
+ 37                sg0        47  test_si37           test_so37         
+ 38                sg0        47  test_si38           test_so38         
+ 39                sg0        47  test_si39           test_so39         
+ 40                sg0        47  test_si40           test_so40         
+ 41                sg0        47  test_si41           test_so41         
+ 42                sg0        47  test_si42           test_so42         
+ 43                sg0        47  test_si43           test_so43         
+ 44                sg0        47  test_si44           test_so44         
+ 45                sg0        47  test_si45           test_so45         
+ 46                sg0        47  test_si46           test_so46         
+ 47                sg0        47  test_si47           test_so47         
+ 48                sg0        47  test_si48           test_so48         
+ 49                sg0        47  test_si49           test_so49         
+ 50                sg0        47  test_si50           test_so50         
+ 51                sg0        47  test_si51           test_so51         
+ 52                sg0        47  test_si52           test_so52         
+ 53                sg0        47  test_si53           test_so53         
+ 54                sg0        47  test_si54           test_so54         
+ 55                sg0        47  test_si55           test_so55         
+ 56                sg0        47  test_si56           test_so56         
+ 57                sg0        47  test_si57           test_so57         
+ 58                sg0        47  test_si58           test_so58         
+ 59                sg0        47  test_si59           test_so59         
+ 60                sg0        47  test_si60           test_so60         
+ 61                sg0        47  test_si61           test_so61         
+ 62                sg0        47  test_si62           test_so62         
+ 63                sg0        47  test_si63           test_so63         
+ 64                sg0        47  test_si64           test_so64         
+#report_scan_cells 1
+#report_primitives -summary	;# reports the list of elements present in the circuit
+#drc -force ;# brings back from TEST to DRC
+### TEST
+#set_faults -model transition
+#add_faults -all
+#remove_faults -all
+;# external -> simulation 
+;# internal -> ATPG
+;# add -sequential option if the circuit is sequential
+#set_patterns -internal
+#set_patterns -delete
+#report_patterns -internal -all
+### ATPG
+#set_atpg -full_seq_atpg
+#run_atpg -auto_compression
+#set_faults -summary verbose -fault_coverage
+#report_summaries
+#report_patterns -all
+#write_patterns my_b12_scan.spf-internal -format stil
+#quit
+TEST-T> quit
