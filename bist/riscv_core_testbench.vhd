@@ -15,7 +15,7 @@ end riscv_testbench;
 architecture tb of riscv_testbench is
     
 	component riscv_core_bist
-		generic (SEED = 1)
+		generic (SEED: std_logic_vector(64 downto 0) := 1)
 		port (
 			clk						: in std_logic;
 			rst						: in std_logic;

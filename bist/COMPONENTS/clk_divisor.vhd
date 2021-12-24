@@ -8,12 +8,13 @@ entity clk_divisor is
 	);
 	port (
 		clk : in std_logic;
+		rst : in std_logic;
 		q : out std_logic
 	);
 end clk_divisor;
 
 architecture beh of clk_divisor is
-	signal cnt: unsigned(N-1 downto 0) := 0;
+	signal cnt: unsigned(N-1 downto 0);
 	signal q_s: std_logic:= '0';
 begin
 
@@ -21,7 +22,7 @@ begin
 	begin
 		if rising_edge(clk) then
 			if (rst = '1') then
-				cnt <= 0;
+				cnt <= (OTHERS => '0');
 				q_s <= '0';
 			else
 				cnt <= cnt+1;
@@ -31,8 +32,8 @@ begin
 	
 	toggler: process(cnt)
 	begin
-		-- if (std_logic_vector(cnt) = (OTHERS => '1')) then
-		if (cnt = (2^N)-1) then
+		--if (std_logic_vector(cnt) = (OTHERS => '1')) then
+		if (cnt = (2**N)-1) then
 			q_s <= NOT q_s;
 		end if;
 	end process;
