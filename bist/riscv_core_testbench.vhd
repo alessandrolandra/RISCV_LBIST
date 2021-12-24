@@ -1,8 +1,6 @@
 
 library std;
-use std.env.all;
 use std.textio.all;
-
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -15,12 +13,11 @@ end riscv_testbench;
 architecture tb of riscv_testbench is
     
 	component riscv_core_bist
-		generic (SEED: std_logic_vector(64 downto 0) := 1)
+		generic (SEED: std_logic_vector(64 downto 0) := "10101010101010101010101010101010101010101010101010101010101010101");
 		port (
 			clk						: in std_logic;
 			rst						: in std_logic;
 			test_mode				: in std_logic;
-			
 			boot_addr_i 			: in std_logic_vector (31 downto 0);
 			core_id_i				: in std_logic_vector (3 downto 0);
 			cluster_id_i			: in std_logic_vector (5 downto 0);
@@ -30,6 +27,7 @@ architecture tb of riscv_testbench is
 			apu_master_flags_i		: in std_logic_vector (4 downto 0);
 			irq_id_i				: in std_logic_vector (4 downto 0);
 			ext_perf_counters_i		: in std_logic_vector (1 to 2);
+
 			clock_en_i				: in std_logic;
 			test_en_i				: in std_logic;
 			fregfile_disable_i		: in std_logic;
@@ -177,7 +175,7 @@ begin
 
 -- ***** MONITOR **********
 
-    monitor : process(cc_mux, uscite, enable_count, ackout)
+    monitor : process(instr_addr_o, data_req_o)
 		function vec2str( input : std_logic_vector ) return string is
 			variable rline : line;
 		begin
@@ -185,7 +183,7 @@ begin
 			return rline.all;
 		end vec2str;
     begin
-        std.textio.write(std.textio.output, "cc_mux:" & vec2str(cc_mux) & " uscite:" & vec2str(uscite) & " enable_count:" & std_logic'image(enable_count) & " ackout:" & std_logic'image(ackout) & LF);
+        std.textio.write(std.textio.output, "instr_addr_o:" & vec2str(instr_addr_o) & " data_req_o:" & std_logic'image(data_req_o) & LF);
     end process;
 
 end tb;
