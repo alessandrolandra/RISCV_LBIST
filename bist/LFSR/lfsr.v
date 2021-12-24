@@ -21,7 +21,7 @@ always @(posedge clk, posedge reset)
 begin 
     if (reset)
         r_reg <= SEED;  // use this or uncomment below two line
-    else if (clk == 1'b1 and en == 1'b1)
+    else if (clk == 1'b1 && en == 1'b1)
         r_reg <= r_next;
 end
 
