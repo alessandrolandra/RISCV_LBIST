@@ -257,7 +257,7 @@ architecture rtl of riscv_core_bist is
 		A		: in std_logic_vector (N-1 downto 0);
 		B		: in std_logic_vector (N-1 downto 0);
 		S		: in std_logic;
-		Y		: out std_logic_vector (N-1 downto 0);
+		Y		: out std_logic_vector (N-1 downto 0)
 	);
 
 	-- misr 
@@ -270,7 +270,7 @@ architecture rtl of riscv_core_bist is
 		clk			: in std_logic;
 		rst			: in std_logic;
 		DATA_IN		: in std_logic_vector (N-1 downto 0);
-		SIGNATURE	: out std_logic_vector (N-1 downto 0);
+		SIGNATURE	: out std_logic_vector (N-1 downto 0)
 	);
 	end component;
 
