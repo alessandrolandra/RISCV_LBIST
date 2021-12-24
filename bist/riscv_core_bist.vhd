@@ -242,8 +242,9 @@ architecture rtl of riscv_core_bist is
 		SEED 	: integer
 	);
 	port (
-		clk		: in std_logic_vector;
-		reset	: in std_logic_vector;
+		clk		: in std_logic;
+		reset	: in std_logic;
+		en	: in std_logic;
 		q		: out std_logic_vector (64 downto 0)
 	);
 	end component;
@@ -269,6 +270,7 @@ architecture rtl of riscv_core_bist is
 	port (
 		clk			: in std_logic;
 		rst			: in std_logic;
+		en			: in std_logic;
 		DATA_IN		: in std_logic_vector (N-1 downto 0);
 		SIGNATURE	: out std_logic_vector (N-1 downto 0)
 	);
