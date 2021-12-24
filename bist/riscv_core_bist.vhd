@@ -58,7 +58,6 @@ end riscv_core_bist;
 architecture rtl of riscv_core_bist is
 
 	-- add components
-	-- controller, clock_divisor
 
 	-- riscv_core
 	component riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800 
@@ -242,9 +241,25 @@ architecture rtl of riscv_core_bist is
 		SEED 	: integer
 	);
 	port (
-		clk		: in std_logic_vector;
-		reset	: in std_logic_vector;
+		clk		: in std_logic;
+		reset	: in std_logic;
+		en		: in std_logic;
 		q		: out std_logic_vector (64 downto 0)
+	);
+	end component;
+	
+	-- controller
+	component controller
+	generic (
+		GOLDEN_SIGNATURE : std_logic_vector(N_MISR-1 downto 0)
+	);
+	port (
+		clk				: in std_logic;
+ 		rst				: in std_logic;
+ 		TEST 			: in std_logic;
+        MISR_OUT		: in std_logic_vector(N_MISR-1 downto 0);
+        GO				: out std_logic;
+		TPG_ODE_MUX_en	: out std_logic
 	);
 	end component;
 	
@@ -257,8 +272,9 @@ architecture rtl of riscv_core_bist is
 		A		: in std_logic_vector (N-1 downto 0);
 		B		: in std_logic_vector (N-1 downto 0);
 		S		: in std_logic;
-		Y		: out std_logic_vector (N-1 downto 0);
+		Y		: out std_logic_vector (N-1 downto 0)
 	);
+	end component;
 
 	-- misr 
 	component misr
@@ -269,8 +285,9 @@ architecture rtl of riscv_core_bist is
 	port (
 		clk			: in std_logic;
 		rst			: in std_logic;
+		en			: in std_logic;
 		DATA_IN		: in std_logic_vector (N-1 downto 0);
-		SIGNATURE	: out std_logic_vector (N-1 downto 0);
+		SIGNATURE	: out std_logic_vector (N-1 downto 0)
 	);
 	end component;
 

@@ -9,7 +9,7 @@ entity misr is
         SEED : std_logic_vector(N_MISR downto 0)
     );
     port (
-        clk,rst : in std_logic;
+        clk, rst, EN_i : in std_logic;
         DATA_IN: in std_logic_vector(N-1 downto 0);
         SIGNATURE: out std_logic_vector(N-1 downto 0)
     );
@@ -25,7 +25,7 @@ begin
         if rising_edge(clk) then
             if rst='1' then
                 reg_outs<=SEED;
-            else
+            elsif(EN_i = '1') then
                 reg_outs(N downto 1)<=xnors(N-1 downto 0);
             end if;
         end if;

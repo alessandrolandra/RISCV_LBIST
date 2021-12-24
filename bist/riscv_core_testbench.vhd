@@ -15,7 +15,7 @@ end riscv_testbench;
 architecture tb of riscv_testbench is
     
 	component riscv_core_bist
-		generic (SEED = 1)
+		generic (SEED: std_logic_vector(64 downto 0) := 1)
 		port (
 			clk						: in std_logic;
 			rst						: in std_logic;
@@ -52,14 +52,14 @@ architecture tb of riscv_testbench is
 			apu_master_type_o		: out std_logic_vector (1 to 2);
 			apu_master_flags_o		: out std_logic_vector (14 downto 0);
 			irq_id_o				: out std_logic_vector (4 downto 0);
-			instr_req_o				: out std_logic_vector;
-			data_req_o				: out std_logic_vector;
-			data_we_o				: out std_logic_vector;
-			apu_master_req_o		: out std_logic_vector;
-			apu_master_ready_o		: out std_logic_vector;
-			irq_ack_o				: out std_logic_vector;
-			sec_lvl_o				: out std_logic_vector;
-			core_busy_o				: out std_logic_vector;
+			instr_req_o				: out std_logic;
+			data_req_o				: out std_logic;
+			data_we_o				: out std_logic;
+			apu_master_req_o		: out std_logic;
+			apu_master_ready_o		: out std_logic;
+			irq_ack_o				: out std_logic;
+			sec_lvl_o				: out std_logic;
+			core_busy_o				: out std_logic;
 
 			go_nogo					: out std_logic
 		);
