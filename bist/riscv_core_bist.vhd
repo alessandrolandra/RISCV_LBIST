@@ -58,7 +58,7 @@ end riscv_core_bist;
 architecture rtl of riscv_core_bist is
 
 	-- add components
-	-- controller, clock_divisor
+	-- controller
 
 	-- riscv_core
 	component riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800 
