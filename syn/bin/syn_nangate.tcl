@@ -127,3 +127,4 @@ write -hierarchy -format ddc -output "${GATE_PATH}/${TOPLEVEL}.ddc"
 write_sdc "${GATE_PATH}/${TOPLEVEL}.sdc"
 #write_test_protocol -output "${GATE_PATH}/${TOPLEVEL}.spf"
 write_tmax_library -path "${GATE_PATH}"
+quit

@@ -1,0 +1,368 @@
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+                Version O-2018.06-SP4 for linux64 - Nov 27, 2018
+
+                    Copyright (c) 1988 - 2018 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+            or distribution of this software is strictly prohibited.
+Initializing...
+Initializing gui preferences from file  /home/s281316/.synopsys_dv_prefs.tcl
+set GATE_PATH			../standalone
+../standalone
+set LOG_PATH			../log
+../log
+set TECH 			NangateOpenCell
+NangateOpenCell
+set TOPLEVEL			riscv_core
+riscv_core
+set search_path [ join "../techlib/ $search_path" ]
+../techlib/ . /eda/synopsys/2018-19/RHELx86/SYN_2018.06-SP4/libraries/syn /eda/synopsys/2018-19/RHELx86/SYN_2018.06-SP4/minpower/syn /eda/synopsys/2018-19/RHELx86/SYN_2018.06-SP4/dw/syn_ver /eda/synopsys/2018-19/RHELx86/SYN_2018.06-SP4/dw/sim_ver
+set search_path [ join "$GATE_PATH $search_path" ]
+../standalone ../techlib/ . /eda/synopsys/2018-19/RHELx86/SYN_2018.06-SP4/libraries/syn /eda/synopsys/2018-19/RHELx86/SYN_2018.06-SP4/minpower/syn /eda/synopsys/2018-19/RHELx86/SYN_2018.06-SP4/dw/syn_ver /eda/synopsys/2018-19/RHELx86/SYN_2018.06-SP4/dw/sim_ver
+source ../bin/$TECH.dc_setup_scan.tcl
+Loading db file '/home/s281316/testing_fault_tolerance/RISCV_LBIST/syn/techlib/NangateOpenCellLibrary_typical_ccs_scan.db'
+Information: Using CCS timing libraries. (TIM-024)
+Loading db file '/eda/synopsys/2018-19/RHELx86/SYN_2018.06-SP4/libraries/syn/gtech.db'
+Loading db file '/eda/synopsys/2018-19/RHELx86/SYN_2018.06-SP4/libraries/syn/standard.sldb'
+  Loading link library 'gtech'
+Loading db file '/home/s281316/testing_fault_tolerance/RISCV_LBIST/syn/techlib/NangateOpenCellLibrary_typical_ccs_scan.db'
+Warning: Overwriting design file '/home/s281316/testing_fault_tolerance/RISCV_LBIST/syn/techlib/NangateOpenCellLibrary_typical_ccs_scan.db'. (DDB-24)
+Loaded 0 designs.
+read_ddc ../standalone/$TOPLEVEL.ddc
+Reading ddc file '/home/s281316/testing_fault_tolerance/RISCV_LBIST/syn/standalone/riscv_core.ddc'.
+Information: Checking out the license 'DesignWare'. (SEC-104)
+Loaded 23 designs.
+Current design is 'riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800'.
+riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800 cluster_clock_gating riscv_if_stage_2_128_0_1a110800 riscv_id_stage_N_HWLP2_PULP_SECURE1_APU0_FPU0_Zfinx0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_MULT0_SHARED_INT_DIV0_SHARED_FP_DIVSQRT0_WAPUTYPE0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5 riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5 riscv_load_store_unit riscv_cs_registers_N_EXT_CNT0_APU0_FPU0_PULP_SECURE1_USE_PMP1_N_PMP_ENTRIES16 riscv_pmp_N_PMP_ENTRIES16 riscv_prefetch_L0_buffer riscv_hwloop_controller_N_REGS2 riscv_compressed_decoder_FPU0 register_file_test_wrap_ADDR_WIDTH6_FPU0_Zfinx0 riscv_decoder_FPU0_FP_DIVSQRT0_PULP_SECURE1_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_MULT0_SHARED_INT_DIV0_SHARED_FP_DIVSQRT0_WAPUTYPE0_APU_WOP_CPU6 riscv_controller_FPU0 riscv_int_controller_PULP_SECURE1 riscv_hwloop_regs_N_REGS2 riscv_alu_SHARED_INT_DIV0_FPU0 riscv_mult_SHARED_DSP_MULT0 riscv_L0_buffer_RDATA_IN_WIDTH128 riscv_register_file_ADDR_WIDTH6_DATA_WIDTH32_FPU0_Zfinx0 alu_popcnt alu_ff riscv_alu_div
+#link
+#check_design
+compile_ultra -incremental -gate_clock -scan -no_autoungroup
+Loading db file '/eda/synopsys/2018-19/RHELx86/SYN_2018.06-SP4/libraries/syn/dw_foundation.sldb'
+Warning: DesignWare synthetic library dw_foundation.sldb is added to the synthetic_library in the current command. (UISN-40)
+Information: Performing power optimization. (PWR-850)
+Analyzing: "/home/s281316/testing_fault_tolerance/RISCV_LBIST/syn/techlib/NangateOpenCellLibrary_typical_ccs_scan.db"
+Library analysis succeeded.
+Information: Choosing a test methodology will restrict the optimization of sequential cells. (UIO-12)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | O-2018.06-DWBB_201806.4 |     *     |
+| Licensed DW Building Blocks        | O-2018.06-DWBB_201806.4 |     *     |
+============================================================================
+
+
+Information: There are 2097 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+Loaded alib file './alib-52/NangateOpenCellLibrary_typical_ccs_scan.db.alib'
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping  (Incremental)
+  ------------------------
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: Skipping clock gating on design cluster_clock_gating, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design riscv_hwloop_controller_N_REGS2, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design riscv_compressed_decoder_FPU0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design register_file_test_wrap_ADDR_WIDTH6_FPU0_Zfinx0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design riscv_decoder_FPU0_FP_DIVSQRT0_PULP_SECURE1_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_MULT0_SHARED_INT_DIV0_SHARED_FP_DIVSQRT0_WAPUTYPE0_APU_WOP_CPU6, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design riscv_alu_SHARED_INT_DIV0_FPU0, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design alu_popcnt, since there are no registers. (PWR-806)
+Information: Skipping clock gating on design alu_ff, since there are no registers. (PWR-806)
+Information: Performing clock-gating on design riscv_register_file_ADDR_WIDTH6_DATA_WIDTH32_FPU0_Zfinx0. (PWR-730)
+Information: Performing clock-gating on design riscv_cs_registers_N_EXT_CNT0_APU0_FPU0_PULP_SECURE1_USE_PMP1_N_PMP_ENTRIES16. (PWR-730)
+Information: Performing clock-gating on design riscv_id_stage_N_HWLP2_PULP_SECURE1_APU0_FPU0_Zfinx0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_MULT0_SHARED_INT_DIV0_SHARED_FP_DIVSQRT0_WAPUTYPE0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5. (PWR-730)
+Information: Performing clock-gating on design riscv_hwloop_regs_N_REGS2. (PWR-730)
+Information: Performing clock-gating on design riscv_L0_buffer_RDATA_IN_WIDTH128. (PWR-730)
+Information: Performing clock-gating on design riscv_prefetch_L0_buffer. (PWR-730)
+Information: Performing clock-gating on design riscv_load_store_unit. (PWR-730)
+Information: Performing clock-gating on design riscv_alu_div. (PWR-730)
+Information: Performing clock-gating on design riscv_if_stage_2_128_0_1a110800. (PWR-730)
+Information: Performing clock-gating on design riscv_controller_FPU0. (PWR-730)
+Information: Performing clock-gating on design riscv_int_controller_PULP_SECURE1. (PWR-730)
+Information: Performing clock-gating on design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5. (PWR-730)
+Information: Performing clock-gating on design riscv_mult_SHARED_DSP_MULT0. (PWR-730)
+Information: Performing clock-gating on design riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800. (PWR-730)
+Information: Performing clock-gating on design riscv_pmp_N_PMP_ENTRIES16. (PWR-730)
+Information: Automatic shift-register identification is enabled for scan. Not all registers will be scan-replaced. (OPT-467)
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:22   63914.5      2.57    1398.5   10514.6                           1350513.8750
+    0:00:24   63807.0      0.88    1297.2    9141.0                           1344467.0000
+    0:00:26   63596.6      0.85    1229.4    8993.2                           1338738.3750
+    0:00:29   63229.0      0.85    1196.0    8728.9                           1327000.0000
+Information: Complementing port 'instr_addr_o_18__BAR' in design 'riscv_pmp_N_PMP_ENTRIES16'.
+	 The new name of the port is 'instr_addr_o_18_'. (OPT-319)
+Information: Complementing port 'instr_addr_o_14__BAR' in design 'riscv_pmp_N_PMP_ENTRIES16'.
+	 The new name of the port is 'instr_addr_o_14_'. (OPT-319)
+Information: Complementing port 'instr_addr_o_4__BAR' in design 'riscv_pmp_N_PMP_ENTRIES16'.
+	 The new name of the port is 'instr_addr_o_4_'. (OPT-319)
+Information: Complementing port 'data_addr_o_31__BAR' in design 'riscv_pmp_N_PMP_ENTRIES16'.
+	 The new name of the port is 'data_addr_o_31_'. (OPT-319)
+Information: Complementing port 'is_decoding_i_BAR' in design 'riscv_cs_registers_N_EXT_CNT0_APU0_FPU0_PULP_SECURE1_USE_PMP1_N_PMP_ENTRIES16'.
+	 The new name of the port is 'is_decoding_i'. (OPT-319)
+Information: Complementing port 'is_decoding_o_BAR' in design 'riscv_id_stage_N_HWLP2_PULP_SECURE1_APU0_FPU0_Zfinx0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_MULT0_SHARED_INT_DIV0_SHARED_FP_DIVSQRT0_WAPUTYPE0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5'.
+	 The new name of the port is 'is_decoding_o'. (OPT-319)
+Information: Complementing port 'is_decoding_o_BAR' in design 'riscv_controller_FPU0'.
+	 The new name of the port is 'is_decoding_o'. (OPT-319)
+Information: Complementing port 'csr_access_i' in design 'riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5'.
+	 The new name of the port is 'csr_access_i_BAR'. (OPT-319)
+Information: Complementing port 'csr_access_i' in design 'riscv_cs_registers_N_EXT_CNT0_APU0_FPU0_PULP_SECURE1_USE_PMP1_N_PMP_ENTRIES16'.
+	 The new name of the port is 'csr_access_i_BAR'. (OPT-319)
+Information: Complementing port 'csr_access_ex_o' in design 'riscv_id_stage_N_HWLP2_PULP_SECURE1_APU0_FPU0_Zfinx0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_MULT0_SHARED_INT_DIV0_SHARED_FP_DIVSQRT0_WAPUTYPE0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5'.
+	 The new name of the port is 'csr_access_ex_o_BAR'. (OPT-319)
+Information: Complementing port 'data_misaligned_ex_i' in design 'riscv_load_store_unit'.
+	 The new name of the port is 'data_misaligned_ex_i_BAR'. (OPT-319)
+Information: Complementing port 'data_misaligned_ex_o' in design 'riscv_id_stage_N_HWLP2_PULP_SECURE1_APU0_FPU0_Zfinx0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_MULT0_SHARED_INT_DIV0_SHARED_FP_DIVSQRT0_WAPUTYPE0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5'.
+	 The new name of the port is 'data_misaligned_ex_o_BAR'. (OPT-319)
+Information: Complementing port 'addr_useincr_ex_i' in design 'riscv_load_store_unit'.
+	 The new name of the port is 'addr_useincr_ex_i_BAR'. (OPT-319)
+Information: Complementing port 'prepost_useincr_ex_o' in design 'riscv_id_stage_N_HWLP2_PULP_SECURE1_APU0_FPU0_Zfinx0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_MULT0_SHARED_INT_DIV0_SHARED_FP_DIVSQRT0_WAPUTYPE0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5'.
+	 The new name of the port is 'prepost_useincr_ex_o_BAR'. (OPT-319)
+    0:00:34   61545.2      0.84    1216.8    6959.9                           1285902.2500
+Information: Complementing port 'mult_imm_mux_o[0]' in design 'riscv_decoder_FPU0_FP_DIVSQRT0_PULP_SECURE1_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_MULT0_SHARED_INT_DIV0_SHARED_FP_DIVSQRT0_WAPUTYPE0_APU_WOP_CPU6'.
+	 The new name of the port is 'mult_imm_mux_o[0]_BAR'. (OPT-319)
+Information: Complementing port 'addr_useincr_ex_i_BAR' in design 'riscv_load_store_unit'.
+	 The new name of the port is 'addr_useincr_ex_i'. (OPT-319)
+Information: Complementing port 'prepost_useincr_ex_o_BAR' in design 'riscv_id_stage_N_HWLP2_PULP_SECURE1_APU0_FPU0_Zfinx0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_MULT0_SHARED_INT_DIV0_SHARED_FP_DIVSQRT0_WAPUTYPE0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5'.
+	 The new name of the port is 'prepost_useincr_ex_o'. (OPT-319)
+
+  Beginning Mapping Optimizations  (Ultra High effort)  (Incremental)
+  -------------------------------
+
+  Beginning Incremental Implementation Selection
+  ----------------------------------------------
+    0:00:38   61544.2      0.84    1217.8    6959.9                           1285852.1250
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:38   61544.2      0.84    1217.8    6959.9                           1285852.1250
+    0:00:42   61297.0      0.84    1217.0    6186.6                           1279294.6250
+    0:00:46   60845.4      0.84    1145.4    5114.9                           1255050.3750
+    0:00:46   60845.4      0.84    1145.4    5114.9                           1255050.3750
+    0:00:46   60852.6      0.82    1129.2    5114.9                           1255309.0000
+    0:00:46   60852.6      0.82    1129.2    5114.9                           1255309.0000
+    0:01:04   61040.4      0.72    1041.4    2758.2                           1257919.3750
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:01:04   61040.4      0.72    1041.4    2758.2                           1257919.3750
+    0:01:06   61041.4      0.72    1041.4    2758.2                           1257970.2500
+    0:01:07   61041.4      0.72    1041.4    2758.2                           1257970.2500
+    0:01:09   61051.0      0.72    1038.8    2746.2                           1258340.7500
+    0:01:10   61051.0      0.72    1038.8    2746.2                           1258340.7500
+    0:01:12   61060.0      0.72    1041.9    2746.1                           1260308.6250
+
+
+  Beginning Design Rule Fixing  (max_transition)  (max_capacitance)
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:01:12   61060.0      0.72    1041.9    2746.1                           1260308.6250
+    0:01:15   60723.5      0.72     980.6      10.9 instr_req_o               1241213.8750
+    0:01:17   60728.6      0.71     979.8       0.0                           1241255.0000
+    0:01:20   60687.9      0.71     980.9       0.0                           1239152.1250
+    0:01:20   60687.9      0.71     980.9       0.0                           1239152.1250
+    0:01:20   60687.6      0.71     980.9       0.0                           1239164.6250
+    0:01:20   60687.6      0.71     980.9       0.0                           1239164.6250
+    0:01:25   60821.2      0.70     962.5       1.1                           1243241.5000
+    0:01:25   60821.2      0.70     962.5       1.1                           1243241.5000
+    0:01:26   60824.4      0.70     962.5       1.1                           1243428.5000
+    0:01:26   60824.4      0.70     962.5       1.1                           1243428.5000
+    0:01:26   60824.4      0.70     962.5       1.1                           1243428.5000
+    0:01:28   60860.0      0.70     961.6       1.1                           1244193.1250
+    0:01:31   60907.6      0.70     902.9       1.1                           1245438.2500
+    0:01:35   60960.3      0.70     887.4       1.1                           1246966.5000
+    0:01:36   60999.7      0.70     875.0       1.1                           1248226.8750
+    0:01:38   61026.5      0.70     865.2       1.1                           1249095.6250
+    0:01:40   61049.4      0.70     858.5       1.1                           1249909.3750
+    0:01:41   61055.2      0.70     854.3       1.1                           1250011.6250
+    0:01:44   61063.8      0.70     850.5       1.1                           1250658.6250
+    0:01:47   61014.5      0.70     868.8       0.0                           1248167.8750
+    0:01:47   61014.5      0.70     868.8       0.0                           1248167.8750
+    0:01:47   61015.6      0.70     868.8       0.0                           1248210.2500
+    0:01:47   61015.6      0.70     868.8       0.0                           1248210.2500
+    0:01:50   61034.0      0.69     868.7       0.0                           1248901.8750
+    0:01:50   61034.0      0.69     868.7       0.0                           1248901.8750
+    0:01:50   61034.0      0.69     868.7       0.0                           1248901.8750
+    0:01:50   61034.0      0.69     868.7       0.0                           1248901.8750
+    0:01:50   61034.0      0.69     868.7       0.0                           1248901.8750
+    0:01:51   61034.0      0.69     868.7       0.0                           1248901.8750
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:01:51   61034.0      0.69     868.7       0.0                           1248901.8750
+    0:01:54   61032.6      0.69     868.7       0.0                           1248900.2500
+    0:01:58   60766.9      0.69     905.1       0.0                           1241509.0000
+    0:02:01   60614.8      0.69     901.5       0.0                           1235348.1250
+    0:02:02   60593.7      0.69     901.9       0.0                           1234103.3750
+    0:02:07   60330.7      0.72    1003.4       0.0                           1224098.0000
+    0:02:09   60337.0      0.70     981.4       0.0                           1224300.3750
+    0:02:09   60334.9      0.70     981.4       0.0                           1224258.6250
+    0:02:09   60334.9      0.70     981.4       0.0                           1224258.6250
+    0:02:17   60399.6      0.69     966.0      39.1                           1227399.7500
+    0:02:17   60399.6      0.69     966.0      39.1                           1227399.7500
+    0:02:17   60399.6      0.69     966.0      39.1                           1227399.7500
+    0:02:17   60399.6      0.69     966.0      39.1                           1227399.7500
+    0:02:17   60399.6      0.69     966.0      39.1                           1227399.7500
+    0:02:22   60396.9      0.69     963.1      39.1                           1227338.0000
+    0:02:24   60395.0      0.69     963.1      39.1                           1227177.0000
+    0:02:24   60395.0      0.69     963.1      39.1                           1227177.0000
+    0:02:28   60359.7      0.69     962.6       4.9                           1225079.0000
+Loading db file '/home/s281316/testing_fault_tolerance/RISCV_LBIST/syn/techlib/NangateOpenCellLibrary_typical_ccs_scan.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: Design 'riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'ex_stage_i/alu_i/int_div_div_i/Rst_RBI': 3031 load(s), 1 driver(s)
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+1
+insert_dft
+Warning: Design 'riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+
+Information: Starting test design rule checking. (TEST-222)
+Error: Invalid test protocol. Create a test protocol again. (TEST-1310)
+Error: Could not run pre-dft design rule checking. (TEST-1313)
+Information: Scan routing is not complete. Signals 'serial or scan_enables' need to be routed. (TEST-899)
+Information: DFT insertion was not successful. There were unrecoverable processing errors. (TEST-211)
+0
+change_names -rules verilog -hierarchy
+Warning: In the design riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800, net 'instr_addr_o[3]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_id_stage_N_HWLP2_PULP_SECURE1_APU0_FPU0_Zfinx0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_MULT0_SHARED_INT_DIV0_SHARED_FP_DIVSQRT0_WAPUTYPE0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'exc_pc_mux_o[2]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[31]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[30]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[29]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[28]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[27]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[26]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[25]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[24]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[23]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[22]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[21]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[20]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[19]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[18]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[17]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[16]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[15]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[14]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[13]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[12]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[11]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[10]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[9]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[8]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[7]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[6]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[5]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[4]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[3]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[2]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'alu_operand_c_i[1]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[31]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[30]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[29]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[28]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[27]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[26]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[25]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[24]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[23]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[22]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[21]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[20]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[19]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[18]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[17]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[16]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[15]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[14]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[13]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[12]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[11]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[10]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[9]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[8]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[7]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[6]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[5]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[4]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[3]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[2]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[1]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'lsu_rdata_i[0]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'regfile_alu_waddr_i[4]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'regfile_alu_waddr_i[3]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'regfile_alu_waddr_i[2]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'regfile_alu_waddr_i[1]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'regfile_alu_waddr_i[0]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5, net 'regfile_alu_we_i' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_load_store_unit, net 'data_we_ex_i' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_cs_registers_N_EXT_CNT0_APU0_FPU0_PULP_SECURE1_USE_PMP1_N_PMP_ENTRIES16, net 'priv_lvl_o[0]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_pmp_N_PMP_ENTRIES16, net 'data_addr_i[28]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_pmp_N_PMP_ENTRIES16, net 'data_addr_i[27]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_pmp_N_PMP_ENTRIES16, net 'data_addr_i[24]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_pmp_N_PMP_ENTRIES16, net 'data_addr_i[22]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_pmp_N_PMP_ENTRIES16, net 'data_addr_i[21]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_pmp_N_PMP_ENTRIES16, net 'data_addr_i[19]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_pmp_N_PMP_ENTRIES16, net 'data_addr_i[8]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_pmp_N_PMP_ENTRIES16, net 'data_addr_i[1]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_pmp_N_PMP_ENTRIES16, net 'data_addr_i[0]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_controller_FPU0, net 'irq_id_ctrl_i[4]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_controller_FPU0, net 'irq_id_ctrl_i[3]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_controller_FPU0, net 'irq_id_ctrl_i[2]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_controller_FPU0, net 'irq_id_ctrl_i[1]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_controller_FPU0, net 'irq_id_ctrl_i[0]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_controller_FPU0, net 'exc_cause_o[4]' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_controller_FPU0, net 'data_misaligned_i' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_controller_FPU0, net 'jr_stall_o' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_controller_FPU0, net 'load_stall_o' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_controller_FPU0, net 'csr_cause_o_5__BAR' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_controller_FPU0, net 'csr_save_ex_o_BAR' is connecting multiple ports. (UCN-1)
+Warning: In the design riscv_L0_buffer_RDATA_IN_WIDTH128, net 'instr_gnt_i' is connecting multiple ports. (UCN-1)
+1
+write -hierarchy -format verilog -output "${GATE_PATH}/${TOPLEVEL}_gating.v"
+Writing verilog file '/home/s281316/testing_fault_tolerance/RISCV_LBIST/syn/standalone/riscv_core_gating.v'.
+Warning: Verilog 'assign' or 'tran' statements are written out. (VO-4)
+1
+#write_sdf -version 3.0 "${GATE_PATH}/${TOPLEVEL}_gating.sdf"
+write_sdc "${GATE_PATH}/${TOPLEVEL}_gating.sdc"
+1
+quit
+
+Thank you...

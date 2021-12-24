@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version O-2018.06-SP4 for linux64 -- Nov 27, 2018
-#@ # Date:   Fri Dec 24 12:42:47 2021
+#@ # Date:   Fri Dec 24 12:05:21 2021
 #@ # Run by: s281316@po.polito.it
 #@ 
 
@@ -6628,84 +6628,162 @@ source /eda/synopsys/2018-19/RHELx86/SYN_2018.06-SP4/admin/setup/.synopsys_dc.se
 
 #@ # -- End source /eda/synopsys/2018-19/RHELx86/SYN_2018.06-SP4/admin/setup/.synopsys_dc.setup
 
-source -echo -verbose /home/s281316/testing_fault_tolerance/RISCV_LBIST/syn/run/../bin/scan_insertion.tcl
-#@ # -- Starting source /home/s281316/testing_fault_tolerance/RISCV_LBIST/syn/run/../bin/scan_insertion.tcl
+source -echo -verbose /home/s281316/testing_fault_tolerance/RISCV_LBIST/syn/run/../bin/syn_nangate.tcl
+#@ # -- Starting source /home/s281316/testing_fault_tolerance/RISCV_LBIST/syn/run/../bin/syn_nangate.tcl
 
-#@ # @Brief scan insertion script
-#@ # @Note  original risc-v synthesized netlist is needed or the clock gated one
-#@ # @Note clock gating netlist is used
-#@ # @Warning this script is executed inside the ../run/ directory, do not change the relative paths!
+#@ set ROOT_PATH                    ../..
+#@ set RISCV_PATH              	$ROOT_PATH
+#@ set FPUNEW                      $ROOT_PATH/tb/core/fpnew
+#@ set GATE_PATH			../standalone
+#@ set LOG_PATH			../log
 #@ 
-#@ # setup script
-#@ set setupScript "../bin/NangateOpenCell.dc_setup_scan.tcl"
-#@ # original netlist wo scan chains
-#@ set riscvNetlist "../standalone/riscv_core_gating.v"
-#@ # original netlist's entity
-#@ set entity "riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800"
-#@ # scan chain count
-#@ set chains 64
-#@ # scan compressed chains count (cmp cannot be < $chains)
-#@ set cmp [expr $chains*3]
-#@ # output netlist name
-#@ set coreNetOut "riscv_core_scan$chains.v"
-#@ # output stil file name
-#@ set coreStilOut "riscv_core_scan$chains.spf"
-#@ # output compressor stil file name
-#@ set coreStilComOut "riscv_core_scan${chains}_cmp$cmp.spf"
-#@ # output directory
-#@ set outDir "../output/"
+#@ set TECH NangateOpenCell
 #@ 
-#@ source $setupScript
-#@ # -- Starting source ../bin/NangateOpenCell.dc_setup_scan.tcl
+#@ 
+#@ set search_path [ join "$RISCV_PATH/rtl/include $search_path" ]
+#@ set search_path [ join "/data/libraries/LIB065 $search_path" ]
+#@ set search_path [ join "/data/libraries/NangateOpenCellLibrary_PDKv1_3_v2010_12/fix_scan $search_path" ]
+#@ set search_path [ join "/data/libraries/pdt2002 $search_path" ]
+#@ set search_path [ join "../techlib/ $search_path" ]
+#@ #set search_path [ join "[getenv 'SYNOPSYS'] $search_path" ]
+#@ 
+#@ set synthetic_library dw_foundation.sldb
+#@ source ../bin/$TECH.dc_setup_synthesis.tcl
+#@ # -- Starting source ../bin/NangateOpenCell.dc_setup_synthesis.tcl
 
-#@ set target_library ../techlib/NangateOpenCellLibrary_typical_ccs_scan.db
-#@ set link_library ../techlib/NangateOpenCellLibrary_typical_ccs_scan.db
-#@ set_dont_use "NangateOpenCellLibrary/FA_X1"
-#@ set_dont_use "NangateOpenCellLibrary/HA_X1"
+#@ set target_library {NangateOpenCellLibrary_typical_ccs_scan.db}
+#@ set link_library [list $target_library $synthetic_library]
+#@ #set_dont_use "NangateOpenCellLibrary/SDFFRS_X1"
+#@ #set_dont_use "NangateOpenCellLibrary/SDFFRS_X2"
+#@ #set_dont_use "NangateOpenCellLibrary/SDFFR_X1"
+#@ #set_dont_use "NangateOpenCellLibrary/SDFFR_X2"
+#@ #set_dont_use "NangateOpenCellLibrary/SDFFS_X1"
+#@ #set_dont_use "NangateOpenCellLibrary/SDFFS_X2"
+#@ #set_dont_use "NangateOpenCellLibrary/SDFF_X1"
+#@ #set_dont_use "NangateOpenCellLibrary/SDFF_X2"
+#@ #set_dont_use "NangateOpenCellLibrary/DLH_X1"
+#@ #set_dont_use "NangateOpenCellLibrary/DLH_X2"
+#@ #set_dont_use "NangateOpenCellLibrary/DLL_X1"
+#@ #set_dont_use "NangateOpenCellLibrary/DLL_X2"
+#@ set DFF_CELL DFF_X2
+#@ set LIB_DFF_D NangateOpenCellLibrary/DFF_X2/D
 #@ set OPER_COND typical
-#@ read_db ../techlib/NangateOpenCellLibrary_typical_ccs_scan.db
-#@ # -- End source ../bin/NangateOpenCell.dc_setup_scan.tcl
+#@ 
+#@ 
+#@ 
+#@ # -- End source ../bin/NangateOpenCell.dc_setup_synthesis.tcl
 
 #@ 
-#@ if {![file exists $outDir]} {
-#@ 	file mkdir $outDir
-#@ }
+#@ ## if you want to use clock gating
+#@ #set_clock_gating_style -sequential_cell latch -positive_edge_logic {and} -negative_edge_logic {or} -control_point before -control_signal scan_enable
 #@ 
-#@ read_verilog $riscvNetlist
-#@ current_design $entity
-#@ check_design
-#@ report_area
+#@ analyze -format sverilog  -work work ${FPUNEW}/src/fpnew_pkg.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/include/apu_core_package.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/include/riscv_defines.sv
+#@ #analyze -format sverilog  -work work ${RISCV_PATH}/rtl/include/riscv_tracer_defines.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/include/apu_macros.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/include/riscv_config.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_alu.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_alu_basic.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_alu_div.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_apu_disp.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_compressed_decoder.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_controller.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_cs_registers.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_core.sv
+#@ #analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_debug_unit.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_decoder.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_int_controller.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_ex_stage.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_hwloop_controller.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_hwloop_regs.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_id_stage.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_if_stage.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_load_store_unit.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_mult.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_prefetch_buffer.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_prefetch_L0_buffer.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_fetch_fifo.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_L0_buffer.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_pmp.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_register_file.sv
+#@ #analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_register_file_latch.sv
+#@ analyze -format sverilog  -work work ${RISCV_PATH}/rtl/register_file_test_wrap.sv
+#@ #analyze -format sverilog  -work work ${RISCV_PATH}/rtl/riscv_tracer.sv
+#@ analyze -format sverilog  -work work cluster_clock_gating_nangate.sv
 #@ 
-#@ set_dft_clock_gating_pin [get_cells * -hierarchical -filter "@ref_name =~ SNPS_CLOCK_GATE*"] -pin_name TE
-#@ #set_dft_configuration -scan_compression enable
-#@ set test_default_scan_style multiplexed_flip_flop
+#@ #PARAMETERS
+#@ set  N_EXT_PERF_COUNTERS   0
+#@ set  INSTR_RDATA_WIDTH    128
+#@ set  PULP_SECURE           1
+#@ set  N_PMP_ENTRIES        16
+#@ set  USE_PMP               1
+#@ set  PULP_CLUSTER          1
+#@ set  FPU                   0
+#@ set  Zfinx                 0
+#@ set  FP_DIVSQRT            0
+#@ set  SHARED_FP             0
+#@ set  SHARED_DSP_MULT       0
+#@ set  SHARED_INT_MULT       0
+#@ set  SHARED_INT_DIV        0
+#@ set  SHARED_FP_DIVSQRT     0
+#@ set  WAPUTYPE              0
+#@ set  APU_NARGS_CPU         3
+#@ set  APU_WOP_CPU           6
+#@ set  APU_NDSFLAGS_CPU     15
+#@ set  APU_NUSFLAGS_CPU      5
+#@ set  DM_HaltAddress       32'h1A110800
+#@ #set  N_HWLP                 2
+#@ #set  N_HWLP_BITS            1
+#@ #set  APU                    0
 #@ 
-#@ ### Set pins functionality ###
-#@ set_dft_signal  -view existing_dft -type ScanEnable -port test_en_i
-#@ set_dft_signal  -view spec -type ScanEnable -port test_en_i 
-#@ set_scan_element false NangateOpenCellLibrary/DLH_X1
+#@ set TOPLEVEL		riscv_core
 #@ 
-#@ set_scan_configuration -chain_count $chains
-#@ #set_scan_compression_configuration -chain_count $cmp
+#@ set PARAMETERS "N_EXT_PERF_COUNTERS=${N_EXT_PERF_COUNTERS}, INSTR_RDATA_WIDTH=${INSTR_RDATA_WIDTH}, PULP_SECURE=${PULP_SECURE}, N_PMP_ENTRIES=${N_PMP_ENTRIES}, USE_PMP=${USE_PMP}, PULP_CLUSTER=${PULP_CLUSTER}, FPU=${FPU}, Zfinx=${Zfinx}, FP_DIVSQRT=${FP_DIVSQRT}, SHARED_FP=${SHARED_FP}, SHARED_DSP_MULT=${SHARED_DSP_MULT}, SHARED_INT_MULT=${SHARED_INT_MULT}, SHARED_INT_DIV=${SHARED_INT_DIV}, SHARED_FP_DIVSQRT=${SHARED_FP_DIVSQRT}, WAPUTYPE=${WAPUTYPE}, APU_NARGS_CPU=${APU_NARGS_CPU}, APU_WOP_CPU=${APU_WOP_CPU}, APU_NDSFLAGS_CPU=${APU_NDSFLAGS_CPU}, APU_NUSFLAGS_CPU=${APU_NUSFLAGS_CPU}, DM_HaltAddress=${DM_HaltAddress}"
 #@ 
+#@ elaborate $TOPLEVEL -work work -parameters $PARAMETERS
 #@ 
-#@ create_test_protocol -infer_asynch -infer_clock
-#@ dft_drc
-#@ #preview_dft
-#@ insert_dft
+#@ link
+#@ uniquify
+#@ check_design 
 #@ 
-#@ #streaming_dft_planner
+#@ set_multicycle_path 2 -setup -through [get_pins id_stage_i/registers_i/riscv_register_file_i/mem_reg*/Q]
+#@ set_multicycle_path 1 -hold  -through [get_pins id_stage_i/registers_i/riscv_register_file_i/mem_reg*/Q]
 #@ 
+#@ set CLOCK_SPEED 2
+#@ create_clock      [get_ports clk_i] -period $CLOCK_SPEED -name REF_CLK
+#@ set_ideal_network [get_ports clk_i]
 #@ 
+#@ set core_outputs [all_outputs]
+#@ set core_inputs  [remove_from_collection [all_inputs] [get_ports clk_i]]
+#@ set core_inputs  [remove_from_collection $core_inputs [get_ports rst_ni]]
 #@ 
-#@ report_scan_path -test_mode all
+#@ set INPUT_DELAY  [expr 0.4*$CLOCK_SPEED]
+#@ set OUTPUT_DELAY [expr 0.4*$CLOCK_SPEED]
 #@ 
-#@ report_area
-#@ write -hierarchy -format verilog -output $outDir$coreNetOut
-#@ write_test_protocol -output $outDir$coreStilOut -test_mode Internal_scan
-#@ #write_test_protocol -output $outDir$coreStilComOut -test_mode ScanCompression_mode
+#@ set_input_delay  $INPUT_DELAY  $core_inputs  -clock [get_clock]
+#@ set_output_delay $OUTPUT_DELAY [all_outputs] -clock [get_clock]
 #@ 
-#@ #quit
-#@ # -- End source /home/s281316/testing_fault_tolerance/RISCV_LBIST/syn/run/../bin/scan_insertion.tcl
+#@ set_ideal_network       -no_propagate    [all_connected  [get_ports rst_ni]]
+#@ set_ideal_network       -no_propagate    [get_nets rst_ni]
+#@ set_dont_touch_network  -no_propagate    [get_ports rst_ni]
+#@ set_multicycle_path 2   -from            [get_ports   rst_ni]
+#@ 
+#@ # If you want to set some pins to a fixed value
+#@ #set_case_analysis   0                    [get_ports test_en_i]
+#@ #set_case_analysis   1                    [get_ports clock_en_i]
+#@ 
+#@ set_operating_conditions $OPER_COND
+#@ 
+#@ #compile_ultra -gate_clock -no_autoungroup
+#@ compile_ultra -no_autoungroup
+#@ change_names -hierarchy -rules verilog
+#@ write -hierarchy -format verilog -output "${GATE_PATH}/${TOPLEVEL}.v"
+#@ write -hierarchy -format ddc -output "${GATE_PATH}/${TOPLEVEL}.ddc"
+#@ #write_sdf -version 3.0 "${GATE_PATH}/${TOPLEVEL}.sdf"
+#@ write_sdc "${GATE_PATH}/${TOPLEVEL}.sdc"
+#@ #write_test_protocol -output "${GATE_PATH}/${TOPLEVEL}.spf"
+#@ write_tmax_library -path "${GATE_PATH}"
+#@ # -- End source /home/s281316/testing_fault_tolerance/RISCV_LBIST/syn/run/../bin/syn_nangate.tcl
 
 quit

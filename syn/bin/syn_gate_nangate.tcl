@@ -14,6 +14,7 @@ read_ddc ../standalone/$TOPLEVEL.ddc
 #link
 #check_design
 compile_ultra -incremental -gate_clock -scan -no_autoungroup
+insert_dft
 
 change_names -rules verilog -hierarchy
 

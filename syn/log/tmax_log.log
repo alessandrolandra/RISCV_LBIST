@@ -24,32 +24,36 @@ set coreNet  "../output/riscv_core_scan64.v"
 ../output/riscv_core_scan64.v
 set entity   "riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800"
 riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800
-# stil file
+# stil file (compressor: riscv_core_scanXX_cmpYY.spf) (normal: riscv_core_scanXX
+#set coreStil "../output/riscv_core_scan20_cmp60.spf"
 set coreStil "../output/riscv_core_scan64.spf"
 ../output/riscv_core_scan64.spf
+#output atgp patterns
+set outPatterns "../output/atpg_gen_patt.spf"
+../output/atpg_gen_patt.spf
 read_netlist  $library -library -insensitive
  Begin reading netlist ( ../techlib/NangateOpenCellLibrary.v )...
  End parsing Verilog file ../techlib/NangateOpenCellLibrary.v with 0 errors.
- End reading netlist: #modules=163, top=XOR2_X2, #lines=6552, CPU_time=0.01 sec, Memory=0MB
+ End reading netlist: #modules=163, top=XOR2_X2, #lines=6552, CPU_time=0.02 sec, Memory=0MB
 read_netlist  $coreNet -master -insensitive
  Begin reading netlist ( ../output/riscv_core_scan64.v )...
  End parsing Verilog file ../output/riscv_core_scan64.v with 0 errors.
- End reading netlist: #modules=123, top=riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800, #lines=64222, CPU_time=0.24 sec, Memory=21MB
+ End reading netlist: #modules=120, top=riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800, #lines=56086, CPU_time=0.23 sec, Memory=19MB
 run_build_model $entity
  ------------------------------------------------------------------------------
  Begin build model for topcut = riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800 ...
  ------------------------------------------------------------------------------
- There were 91319 primitives and 2722 faultable pins removed during model optimizations
+ There were 88134 primitives and 2722 faultable pins removed during model optimizations
  Warning: Rule B7 (undriven module output pin) was violated 466 times.
  Warning: Rule B8 (unconnected module input pin) was violated 432 times.
  Warning: Rule B9 (undriven module internal net) was violated 73 times.
  Warning: Rule B10 (unconnected module internal net) was violated 532 times.
  Warning: Rule N20 (underspecified UDP) was violated 1 times.
  Warning: Rule N21 (unsupported UDP entry) was violated 3 times.
- End build model: #primitives=74153, CPU_time=0.80 sec, Memory=34MB
+ End build model: #primitives=67876, CPU_time=0.67 sec, Memory=31MB
  ------------------------------------------------------------------------------
  Begin learning analyses...
- End learning analyses, total learning CPU time=0.58 sec.
+ End learning analyses, total learning CPU time=0.57 sec.
  ------------------------------------------------------------------------------
 ### DRC
 ;# before running DRC:
@@ -61,10 +65,10 @@ run_drc $coreStil
  ------------------------------------------------------------------------------
  Begin reading test protocol file ../output/riscv_core_scan64.spf...
  End parsing STIL file ../output/riscv_core_scan64.spf with 0 errors.
- Test protocol file reading completed, CPU time=0.03 sec.
+ Test protocol file reading completed, CPU time=0.02 sec.
  ------------------------------------------------------------------------------
  Begin simulating test protocol procedures...
- Test protocol simulation completed, CPU time=0.00 sec.
+ Test protocol simulation completed, CPU time=0.01 sec.
  ------------------------------------------------------------------------------
  Begin scan chain operation checking...
  Chain 1 successfully traced with 48 scan_cells.
@@ -138,7 +142,7 @@ run_drc $coreStil
  Clock-gating analysis completed, CPU time=0.01 sec.
  ------------------------------------------------------------------------------
  Begin clock rules checking...
- Clock rules checking completed, CPU time=0.03 sec.
+ Clock rules checking completed, CPU time=0.02 sec.
  Clock grouping results: #pairs=0, #groups=0, #serial_pairs=0, #disturbed_pairs=0, CPU time=0.00 sec.
  ------------------------------------------------------------------------------
  Begin nonscan rules checking...
@@ -147,13 +151,13 @@ run_drc $coreStil
  Nonscan rules checking completed, CPU time=0.00 sec.
  ------------------------------------------------------------------------------
  Begin DRC dependent learning...
- Fast-sequential depth results: control=0(0), observe=0(0), detect=0(0), CPU time=0.01 sec
- DRC dependent learning completed, CPU time=0.24 sec.
+ Fast-sequential depth results: control=0(0), observe=0(0), detect=0(0), CPU time=0.02 sec
+ DRC dependent learning completed, CPU time=0.22 sec.
  ------------------------------------------------------------------------------
  DRC Summary Report
  ------------------------------------------------------------------------------
  No violations occurred during DRC process.
- Design rules checking was successful, total CPU time=0.33 sec.
+ Design rules checking was successful, total CPU time=0.32 sec.
  ------------------------------------------------------------------------------
 report_scan_chains
  chain             group  length  input_pin           output_pin
@@ -183,12 +187,12 @@ report_scan_chains
  23                sg0        47  test_si23           test_so23         
  24                sg0        47  test_si24           test_so24         
  25                sg0        47  test_si25           test_so25         
- 26                sg0        47  test_si26           test_so26         
+ 26                sg0        47  test_si26           data_we_o         
  27                sg0        47  test_si27           test_so27         
  28                sg0        47  test_si28           test_so28         
  29                sg0        47  test_si29           test_so29         
  30                sg0        47  test_si30           test_so30         
- 31                sg0        47  test_si31           test_so31         
+ 31                sg0        47  test_si31           irq_id_o[4]       
  32                sg0        47  test_si32           test_so32         
  33                sg0        47  test_si33           test_so33         
  34                sg0        47  test_si34           test_so34         
@@ -222,25 +226,222 @@ report_scan_chains
  62                sg0        47  test_si62           test_so62         
  63                sg0        47  test_si63           test_so63         
  64                sg0        47  test_si64           test_so64         
-#report_scan_cells 1
-#report_primitives -summary	;# reports the list of elements present in the circuit
+report_scan_cells 1
+ chain              cell  type     inv   gate#  instance_name (type)
+ -----------------  ----  -------  ---  ------  ------------------------------------
+ 1                     0  MASTER    NN   67556  cs_registers_i/PCMR_q_reg_0_ (SDFFS_X1)
+ 1                     1  MASTER    NN   66608  cs_registers_i/PCER_q_reg_11_ (SDFFR_X1)
+ 1                     2  MASTER    NN   66609  cs_registers_i/PCER_q_reg_10_ (SDFFR_X1)
+ 1                     3  MASTER    NN   66610  cs_registers_i/PCER_q_reg_9_ (SDFFR_X1)
+ 1                     4  MASTER    NN   66611  cs_registers_i/PCER_q_reg_8_ (SDFFR_X1)
+ 1                     5  MASTER    NN   66612  cs_registers_i/PCER_q_reg_7_ (SDFFR_X1)
+ 1                     6  MASTER    NN   66613  cs_registers_i/PCER_q_reg_6_ (SDFFR_X1)
+ 1                     7  MASTER    NN   66614  cs_registers_i/PCER_q_reg_5_ (SDFFR_X1)
+ 1                     8  MASTER    NN   66615  cs_registers_i/PCER_q_reg_4_ (SDFFR_X1)
+ 1                     9  MASTER    NN   66616  cs_registers_i/PCER_q_reg_3_ (SDFFR_X1)
+ 1                    10  MASTER    NN   66617  cs_registers_i/PCER_q_reg_2_ (SDFFR_X1)
+ 1                    11  MASTER    NN   66618  cs_registers_i/PCER_q_reg_1_ (SDFFR_X1)
+ 1                    12  MASTER    NN   66619  cs_registers_i/PCER_q_reg_0_ (SDFFR_X1)
+ 1                    13  MASTER    NN   67525  cs_registers_i/PCCR_q_reg_0__31_ (SDFFR_X1)
+ 1                    14  MASTER    NN   67497  cs_registers_i/PCCR_q_reg_0__30_ (SDFFR_X1)
+ 1                    15  MASTER    NN   67468  cs_registers_i/PCCR_q_reg_0__29_ (SDFFR_X1)
+ 1                    16  MASTER    NN   67440  cs_registers_i/PCCR_q_reg_0__28_ (SDFFR_X1)
+ 1                    17  MASTER    NN   67410  cs_registers_i/PCCR_q_reg_0__27_ (SDFFR_X1)
+ 1                    18  MASTER    NN   67380  cs_registers_i/PCCR_q_reg_0__26_ (SDFFR_X1)
+ 1                    19  MASTER    NN   67350  cs_registers_i/PCCR_q_reg_0__25_ (SDFFR_X1)
+ 1                    20  MASTER    NN   67320  cs_registers_i/PCCR_q_reg_0__24_ (SDFFR_X1)
+ 1                    21  MASTER    NN   67290  cs_registers_i/PCCR_q_reg_0__23_ (SDFFR_X1)
+ 1                    22  MASTER    NN   67260  cs_registers_i/PCCR_q_reg_0__22_ (SDFFR_X1)
+ 1                    23  MASTER    NN   67230  cs_registers_i/PCCR_q_reg_0__21_ (SDFFR_X1)
+ 1                    24  MASTER    NN   67201  cs_registers_i/PCCR_q_reg_0__20_ (SDFFR_X1)
+ 1                    25  MASTER    NN   67171  cs_registers_i/PCCR_q_reg_0__19_ (SDFFR_X1)
+ 1                    26  MASTER    NN   67141  cs_registers_i/PCCR_q_reg_0__18_ (SDFFR_X1)
+ 1                    27  MASTER    NN   67111  cs_registers_i/PCCR_q_reg_0__17_ (SDFFR_X1)
+ 1                    28  MASTER    NN   67081  cs_registers_i/PCCR_q_reg_0__16_ (SDFFR_X1)
+ 1                    29  MASTER    NN   67052  cs_registers_i/PCCR_q_reg_0__15_ (SDFFR_X1)
+ 1                    30  MASTER    NN   67022  cs_registers_i/PCCR_q_reg_0__14_ (SDFFR_X1)
+ 1                    31  MASTER    NN   66992  cs_registers_i/PCCR_q_reg_0__13_ (SDFFR_X1)
+ 1                    32  MASTER    NN   66632  cs_registers_i/PCCR_q_reg_0__12_ (SDFFR_X1)
+ 1                    33  MASTER    NN   66631  cs_registers_i/PCCR_q_reg_0__11_ (SDFFR_X1)
+ 1                    34  MASTER    NN   66630  cs_registers_i/PCCR_q_reg_0__10_ (SDFFR_X1)
+ 1                    35  MASTER    NN   66629  cs_registers_i/PCCR_q_reg_0__9_ (SDFFR_X1)
+ 1                    36  MASTER    NN   66628  cs_registers_i/PCCR_q_reg_0__8_ (SDFFR_X1)
+ 1                    37  MASTER    NN   66627  cs_registers_i/PCCR_q_reg_0__7_ (SDFFR_X1)
+ 1                    38  MASTER    NN   66626  cs_registers_i/PCCR_q_reg_0__6_ (SDFFR_X1)
+ 1                    39  MASTER    NN   66625  cs_registers_i/PCCR_q_reg_0__5_ (SDFFR_X1)
+ 1                    40  MASTER    NN   66624  cs_registers_i/PCCR_q_reg_0__4_ (SDFFR_X1)
+ 1                    41  MASTER    NN   66623  cs_registers_i/PCCR_q_reg_0__3_ (SDFFR_X1)
+ 1                    42  MASTER    NN   66622  cs_registers_i/PCCR_q_reg_0__2_ (SDFFR_X1)
+ 1                    43  MASTER    NN   66621  cs_registers_i/PCCR_q_reg_0__1_ (SDFFR_X1)
+ 1                    44  MASTER    NN   67569  cs_registers_i/PCCR_q_reg_0__0_ (SDFFS_X1)
+ 1                    45  MASTER    NN   66620  cs_registers_i/PCCR_inc_q_reg_0_ (SDFFR_X1)
+ 1                    46  MASTER    NN   64555  core_busy_q_reg (SDFFR_X1)
+ 1                    47  MASTER    NN   67581  RISCY_PMP_pmp_unit_i/data_err_state_q_reg (SDFFR_X1)
+report_nonscan_cells -summary
+ Nonscan cell summary: #DFF=0  #DLAT=98  #RAM_outs=0  tla_usage_type=hot_clock_tla
+ Nonscan behavior:  #TLA=98
+ Load disturbs   :  #TLA=98
+ TLA behavior: #no_clock=0, #hot_clock=98, #X_clock=0
+report_primitives -summary	;# reports the list of elements present in the circuit
+             Gate Summary Report
+ -----------------------------------------------
+ #primitives                              67876
+ #primary_inputs                            325
+ #primary_outputs                           294
+ #DLATs                                      98
+    #TLAs                                    98
+ #DFFs                                     3027
+    #scan                                  3027
+ #BUFs                                     6141
+ #INVs                                     5799
+ #ANDs                                    11965
+ #NANDs                                   13447
+ #ORs                                      9673
+ #NORs                                     9877
+ #XORs                                     1339
+ #XNORs                                    1773
+ #MUXs                                     4118
+ -----------------------------------------------
 #drc -force ;# brings back from TEST to DRC
 ### TEST
-#set_faults -model transition
-#add_faults -all
+set_faults -model stuck
+add_faults -all
+ 288986 faults were added to fault list.
+#write_faults "../output/fault_list_uncollapsed.txt" -all -replace -uncollapsed
 #remove_faults -all
 ;# external -> simulation 
 ;# internal -> ATPG
 ;# add -sequential option if the circuit is sequential
-#set_patterns -internal
+set_patterns -internal
 #set_patterns -delete
 #report_patterns -internal -all
 ### ATPG
 #set_atpg -full_seq_atpg
-#run_atpg -auto_compression
+#fast sequential limit (higher = more effort)
+set_atpg -abort_limit 200
+#full sequential limit (higher = more effort)
+set_atpg -full_seq_abort_limit 50
+run_atpg -auto_compression
+ 
+ ***********************************************************
+ *  NOTICE:  The following DRC violations were previously  *
+ *  encountered. The presence of these violations is an    *
+ *  indicator that it is possible that the ATPG patterns   *
+ *  created during this process may fail in simulation.    *
+ *                                                         *
+ *  Rules:  N20                                            *
+ ***********************************************************
+ ATPG performed for stuck fault model using internal pattern source.
+ ----------------------------------------------------------
+ #patterns     #faults     #ATPG faults  test      process
+ stored     detect/active  red/au/abort  coverage  CPU time
+ ---------  -------------  ------------  --------  --------
+ Begin deterministic ATPG: #uncollapsed_faults=263816, abort_limit=200...
+ 32         119604 144212         0/0/3    50.06%      7.54
+ 64          33380 110830         1/1/4    61.62%     11.58
+ 96          18938  91892         1/1/5    68.18%     15.35
+ 128         12801  79085         3/2/5    72.61%     18.75
+ 160         10400  68685         3/2/6    76.21%     21.68
+ 192          8355  60324         5/2/6    79.11%     24.02
+ 224          6673  53649         7/2/6    81.42%     26.82
+ 256          5568  48077         9/4/6    83.35%     29.47
+ 288          4990  43082        12/5/6    85.08%     31.72
+ 320          3141  39936        15/7/6    86.17%     33.96
+ Local redundancy analysis results: #redundant_faults=257, CPU_time=0.16 sec
+ 352          3102  36463        17/8/6    87.35%     36.02
+ 384          2685  33775        19/9/7    88.28%     37.59
+ 416          2162  31605       20/11/8    89.04%     39.25
+ 448          1833  29769       22/12/8    89.67%     40.66
+ 480          1707  28057       25/14/8    90.26%     41.93
+ 512          1523  26530       26/17/8    90.79%     43.18
+ 544          1338  25185       30/18/9    91.26%     44.30
+ 576          1140  24039      33/20/10    91.66%     45.36
+ 608          1149  22883      35/21/10    92.06%     46.34
+ 640           869  22007      38/23/12    92.36%     47.34
+ 672           813  21188      42/24/12    92.64%     48.24
+ 704           831  20346      47/26/13    92.93%     49.06
+ 736           836  19504      50/28/14    93.22%     49.91
+ 768           725  18772      56/29/14    93.48%     50.78
+ 800           813  17949      61/30/14    93.76%     51.63
+ 832           722  17218      64/33/14    94.02%     52.51
+ 864           657  16548      67/35/14    94.25%     53.34
+ 896           597  15944      71/37/15    94.45%     54.11
+ 928           556  15380      74/39/16    94.65%     54.95
+ 960           614  14756      77/41/16    94.86%     55.70
+ 992           555  14193      83/42/16    95.06%     56.34
+ 1024          537  13641      87/46/16    95.25%     56.88
+ 1056          420  13194     106/49/17    95.40%     57.43
+ 1088          485  12701     109/53/19    95.57%     57.93
+ 1120          397  12293     113/56/19    95.71%     58.44
+ 1152          379  11905     117/60/19    95.84%     58.85
+ 1184          507  11386     121/64/19    96.02%     59.26
+ 1216          395  10982     127/66/19    96.16%     59.62
+ 1248          427  10544     131/69/20    96.31%     60.04
+ 1280          358  10173     137/72/20    96.44%     60.50
+ 1312          351   9810     144/76/20    96.56%     60.82
+ 1344          334   9460     151/80/20    96.68%     61.14
+ 1376          344   8775    323/104/24    96.90%     61.83
+ 1408          311   8454    329/106/24    97.01%     62.14
+ 1440          317   8129    334/109/24    97.12%     62.44
+ 1472          308   7808    339/112/25    97.23%     62.74
+ 1504          263   7470    373/116/28    97.35%     63.21
+ 1536          265   6870    440/370/29    97.46%     63.81
+ 1568          267   6594    444/372/29    97.56%     64.06
+ 1600          296   6285    447/375/29    97.66%     64.36
+ 1632          240   6035    451/377/30    97.75%     64.64
+ 1664          301   5727    455/378/30    97.86%     64.88
+ 1696          247   5469    461/379/30    97.95%     65.12
+ 1728          267   5196    466/380/30    98.04%     65.35
+ 1760          252   4935    472/382/31    98.13%     65.65
+ 1792          232   4689    482/384/33    98.22%     66.10
+ 1824          264   4410    492/386/36    98.31%     66.41
+ 1856          254   4144    498/388/36    98.40%     66.66
+ 1888          206   3930    503/390/36    98.48%     66.89
+ 1920          222   3693    509/393/36    98.56%     67.11
+ 1952          250   3420    518/402/36    98.65%     67.36
+ 1984          219   3190    524/404/36    98.73%     67.58
+ 2016          205   2954    547/404/37    98.81%     67.88
+ 2048          276   2666    556/406/38    98.91%     68.17
+ 2080          221   2434    563/408/38    98.99%     68.37
+ 2112          244   2172    572/411/38    99.08%     68.62
+ 2144          252   1908    579/414/38    99.17%     68.84
+ 2176          233   1660    586/418/38    99.25%     69.05
+ 2208          193   1450    594/422/38    99.32%     69.26
+ 2240          198   1232    603/424/38    99.40%     69.46
+ 2272          177    846    729/468/39    99.52%     69.68
+ 2304          151    695    729/468/39    99.57%     69.85
+ 2336          120    575    729/468/40    99.61%     70.00
+ 2368          114    461    729/468/40    99.65%     70.12
+ Pattern merging terminated due to failure to achieve minimum merges per pass (10).
+ 2400          111    350    729/468/40    99.69%     70.22
+ 2432          105    245    729/468/40    99.73%     70.33
+ 2452           72    173    729/468/40    99.75%     70.38
+ 
+     Uncollapsed Stuck Fault Summary Report
+ -----------------------------------------------
+ fault class                     code   #faults
+ ------------------------------  ----  ---------
+ Detected                         DT     286604
+ Possibly detected                PT          0
+ Undetectable                     UD       1664
+ ATPG untestable                  AU        545
+ Not detected                     ND        173
+ -----------------------------------------------
+ total faults                            288986
+ test coverage                            99.75%
+ -----------------------------------------------
+            Pattern Summary Report
+ -----------------------------------------------
+ #internal patterns                        2452
+     #basic_scan patterns                  2452
+ -----------------------------------------------
+            CPU Usage Summary Report
+ -----------------------------------------------
+ Total CPU time                           70.45
+ -----------------------------------------------
 #set_faults -summary verbose -fault_coverage
 #report_summaries
 #report_patterns -all
-#write_patterns my_b12_scan.spf-internal -format stil
+#write_patterns $outPatterns -format stil
 #quit
 TEST-T> quit
