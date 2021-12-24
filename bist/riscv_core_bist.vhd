@@ -243,7 +243,7 @@ architecture rtl of riscv_core_bist is
 	port (
 		clk		: in std_logic;
 		reset	: in std_logic;
-		en	: in std_logic;
+		en		: in std_logic;
 		q		: out std_logic_vector (64 downto 0)
 	);
 	end component;
@@ -254,9 +254,12 @@ architecture rtl of riscv_core_bist is
 		GOLDEN_SIGNATURE : std_logic_vector(N_MISR-1 downto 0)
 	);
 	port (
-		clk, rst, TEST : in std_logic;
-        	MISR_OUT: in std_logic_vector(N_MISR-1 downto 0);
-        	GO, TPG_ODE_MUX_en: out std_logic
+		clk				: in std_logic;
+ 		rst				: in std_logic;
+ 		TEST 			: in std_logic;
+        MISR_OUT		: in std_logic_vector(N_MISR-1 downto 0);
+        GO				: out std_logic;
+		TPG_ODE_MUX_en	: out std_logic
 	);
 	end component;
 	
@@ -271,6 +274,7 @@ architecture rtl of riscv_core_bist is
 		S		: in std_logic;
 		Y		: out std_logic_vector (N-1 downto 0)
 	);
+	end component;
 
 	-- misr 
 	component misr
