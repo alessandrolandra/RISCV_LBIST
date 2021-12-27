@@ -10,3 +10,5 @@ vlog ./LFSR/lfsr.v
 vcom ./MISR/misr.vhd
 vlog ./../syn/output/riscv_core_scan64.v
 vcom ./riscv_core_bist.vhd
+vcom ./riscv_core_testbench.vhd
+

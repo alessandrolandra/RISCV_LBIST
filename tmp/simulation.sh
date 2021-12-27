@@ -20,7 +20,7 @@ vcom -2008 -suppress 1141 ../bist/riscv_core_bist.vhd
 vcom -2008 -suppress 1141 ../bist/riscv_core_testbench.vhd
 
 # Invoke QuestaSim shell and run the TCL script
-vsim -c -novopt work.riscv_core_testbench -do ../tmp/simulation_script.tcl -wlf riscv_core_sim.wlf
+vsim -t 1ns -c -novopt work.riscv_testbench -do ../tmp/simulation_script.tcl -wlf riscv_core_sim.wlf
 cd ..
 
 while getopts "mt" opt; do
@@ -35,7 +35,7 @@ while getopts "mt" opt; do
         ;;
       t)        
 		#export SIM_TIME=$OPTARG
-		export SIM_TIME=$4
+		#export SIM_TIME=$4
         ;;
       \?)
         ;;
@@ -43,4 +43,4 @@ while getopts "mt" opt; do
 done
   
 #export SIM_TIME=1000000
-tmax ../../tmp/$p -shell
+tmax tmp/$p -shell
