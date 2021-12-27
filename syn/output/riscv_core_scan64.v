@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////
 // Created by: Synopsys Design Compiler(R)
 // Version   : O-2018.06-SP4
-// Date      : Fri Dec 24 12:43:10 2021
+// Date      : Mon Dec 27 16:47:17 2021
 /////////////////////////////////////////////////////////////
 
 
@@ -36137,8 +36137,7 @@ module riscv_L0_buffer_RDATA_IN_WIDTH128_test_1 ( clk, rst_n, prefetch_i,
         prefetch_addr_i, branch_i, branch_addr_i, hwlp_i, hwlp_addr_i, 
         fetch_gnt_o, fetch_valid_o, valid_o, rdata_o, addr_o, instr_req_o, 
         instr_addr_o, instr_gnt_i, instr_rvalid_i, instr_rdata_i, busy_o, 
-        test_si4, test_si3, test_si2, test_si1, test_so4, test_so3, test_so2, 
-        test_so1, test_se );
+        test_si1, test_so4, test_so3, test_so2, test_so1, test_se );
   input [31:0] prefetch_addr_i;
   input [31:0] branch_addr_i;
   input [31:0] hwlp_addr_i;
@@ -36147,7 +36146,7 @@ module riscv_L0_buffer_RDATA_IN_WIDTH128_test_1 ( clk, rst_n, prefetch_i,
   output [31:0] instr_addr_o;
   input [127:0] instr_rdata_i;
   input clk, rst_n, prefetch_i, branch_i, hwlp_i, instr_gnt_i, instr_rvalid_i,
-         test_si4, test_si3, test_si2, test_si1, test_se;
+         test_si1, test_se;
   output fetch_gnt_o, fetch_valid_o, valid_o, instr_req_o, busy_o, test_so4,
          test_so3, test_so2, test_so1;
   wire   instr_gnt_i, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14,
@@ -36792,8 +36791,9 @@ module riscv_L0_buffer_RDATA_IN_WIDTH128_test_1 ( clk, rst_n, prefetch_i,
         .SE(test_se), .CK(n729), .RN(rst_n), .Q(L0_buffer[110]) );
   SDFFR_X1 L0_buffer_reg_3__28_ ( .D(instr_rdata_i[124]), .SI(L0_buffer[108]), 
         .SE(test_se), .CK(n729), .RN(rst_n), .Q(L0_buffer[109]) );
-  SDFFR_X1 L0_buffer_reg_3__27_ ( .D(instr_rdata_i[123]), .SI(test_si4), .SE(
-        test_se), .CK(n729), .RN(rst_n), .Q(L0_buffer[108]) );
+  SDFFR_X1 L0_buffer_reg_3__27_ ( .D(instr_rdata_i[123]), .SI(
+        instr_rdata_i[66]), .SE(test_se), .CK(n729), .RN(rst_n), .Q(
+        L0_buffer[108]) );
   SDFFR_X1 L0_buffer_reg_3__26_ ( .D(instr_rdata_i[122]), .SI(L0_buffer[106]), 
         .SE(test_se), .CK(n729), .RN(rst_n), .Q(L0_buffer[107]) );
   SDFFR_X1 L0_buffer_reg_3__25_ ( .D(instr_rdata_i[121]), .SI(L0_buffer[105]), 
@@ -36884,8 +36884,7 @@ module riscv_L0_buffer_RDATA_IN_WIDTH128_test_1 ( clk, rst_n, prefetch_i,
         .SE(test_se), .CK(n729), .RN(rst_n), .Q(L0_buffer[69]) );
   SDFFR_X1 L0_buffer_reg_2__13_ ( .D(instr_rdata_i[77]), .SI(L0_buffer[67]), 
         .SE(test_se), .CK(n729), .RN(rst_n), .Q(L0_buffer[68]) );
-  SDFFR_X1 L0_buffer_reg_2__12_ ( .D(instr_rdata_i[76]), .SI(test_si3), .SE(
-        test_se), .CK(n729), .RN(rst_n), .Q(L0_buffer[67]) );
+  SDFFR_X1 L0_buffer_reg_2__12_ ( .D(instr_rdata_i[76]), .SI(instr_rdata_i[67]), .SE(test_se), .CK(n729), .RN(rst_n), .Q(L0_buffer[67]) );
   SDFFR_X1 L0_buffer_reg_2__11_ ( .D(instr_rdata_i[75]), .SI(L0_buffer[65]), 
         .SE(test_se), .CK(n729), .RN(rst_n), .Q(L0_buffer[66]) );
   SDFFR_X1 L0_buffer_reg_2__10_ ( .D(instr_rdata_i[74]), .SI(L0_buffer[64]), 
@@ -36977,8 +36976,7 @@ module riscv_L0_buffer_RDATA_IN_WIDTH128_test_1 ( clk, rst_n, prefetch_i,
         .SE(test_se), .CK(n729), .RN(rst_n), .Q(L0_buffer[27]) );
   SDFFR_X1 L0_buffer_reg_0__30_ ( .D(instr_rdata_i[30]), .SI(L0_buffer[25]), 
         .SE(test_se), .CK(n729), .RN(rst_n), .Q(L0_buffer[26]) );
-  SDFFR_X1 L0_buffer_reg_0__29_ ( .D(instr_rdata_i[29]), .SI(test_si2), .SE(
-        test_se), .CK(n729), .RN(rst_n), .Q(L0_buffer[25]) );
+  SDFFR_X1 L0_buffer_reg_0__29_ ( .D(instr_rdata_i[29]), .SI(instr_rdata_i[68]), .SE(test_se), .CK(n729), .RN(rst_n), .Q(L0_buffer[25]) );
   SDFFR_X1 L0_buffer_reg_0__28_ ( .D(instr_rdata_i[28]), .SI(L0_buffer[23]), 
         .SE(test_se), .CK(n729), .RN(rst_n), .Q(L0_buffer[24]) );
   SDFFR_X1 L0_buffer_reg_0__27_ ( .D(instr_rdata_i[27]), .SI(L0_buffer[22]), 
@@ -37106,9 +37104,8 @@ endmodule
 module riscv_prefetch_L0_buffer_test_1 ( clk, rst_n, req_i, branch_i, addr_i, 
         hwloop_i, hwloop_target_i, ready_i, valid_o, rdata_o, addr_o, 
         is_hwlp_o, instr_req_o, instr_addr_o, instr_gnt_i, instr_rvalid_i, 
-        instr_rdata_i, busy_o, test_si6, test_si5, test_si4, test_si3, 
-        test_si2, test_si1, test_so5, test_so4, test_so3, test_so2, test_so1, 
-        test_se );
+        instr_rdata_i, busy_o, test_si1, test_so5, test_so4, test_so3, 
+        test_so2, test_so1, test_se );
   input [31:0] addr_i;
   input [31:0] hwloop_target_i;
   output [31:0] rdata_o;
@@ -37116,8 +37113,7 @@ module riscv_prefetch_L0_buffer_test_1 ( clk, rst_n, req_i, branch_i, addr_i,
   output [31:0] instr_addr_o;
   input [127:0] instr_rdata_i;
   input clk, rst_n, req_i, branch_i, hwloop_i, ready_i, instr_gnt_i,
-         instr_rvalid_i, test_si6, test_si5, test_si4, test_si3, test_si2,
-         test_si1, test_se;
+         instr_rvalid_i, test_si1, test_se;
   output valid_o, is_hwlp_o, instr_req_o, busy_o, test_so5, test_so4, test_so3,
          test_so2, test_so1;
   wire   n_0_net_, fetch_gnt, fetch_valid, is_hwlp_n, is_hwlp_q, n792, n809,
@@ -38207,8 +38203,8 @@ module riscv_prefetch_L0_buffer_test_1 ( clk, rst_n, req_i, branch_i, addr_i,
         n1201), .RN(rst_n), .Q(addr_o[9]), .QN(n844) );
   SDFFR_X1 addr_q_reg_10_ ( .D(addr_n[10]), .SI(addr_o[9]), .SE(test_se), .CK(
         n1201), .RN(rst_n), .Q(addr_o[10]), .QN(n831) );
-  SDFFR_X1 addr_q_reg_11_ ( .D(addr_n[11]), .SI(test_si5), .SE(test_se), .CK(
-        n1201), .RN(rst_n), .Q(addr_o[11]), .QN(n839) );
+  SDFFR_X1 addr_q_reg_11_ ( .D(addr_n[11]), .SI(instr_rdata_i[65]), .SE(
+        test_se), .CK(n1201), .RN(rst_n), .Q(addr_o[11]), .QN(n839) );
   SDFFR_X1 addr_q_reg_12_ ( .D(addr_n[12]), .SI(addr_o[11]), .SE(test_se), 
         .CK(n1201), .RN(rst_n), .Q(addr_o[12]), .QN(n834) );
   SDFFR_X1 addr_q_reg_13_ ( .D(addr_n[13]), .SI(addr_o[12]), .SE(test_se), 
@@ -38275,8 +38271,8 @@ module riscv_prefetch_L0_buffer_test_1 ( clk, rst_n, req_i, branch_i, addr_i,
         test_se), .CK(n1222), .RN(rst_n), .Q(rdata_last_q[24]) );
   SDFFR_X1 rdata_last_q_reg_8_ ( .D(n816), .SI(rdata_last_q[7]), .SE(test_se), 
         .CK(n1204), .RN(rst_n), .Q(rdata_last_q[8]) );
-  SDFFR_X1 rdata_last_q_reg_25_ ( .D(n1216), .SI(test_si6), .SE(test_se), .CK(
-        n1222), .RN(rst_n), .Q(rdata_last_q[25]) );
+  SDFFR_X1 rdata_last_q_reg_25_ ( .D(n1216), .SI(instr_rdata_i[64]), .SE(
+        test_se), .CK(n1222), .RN(rst_n), .Q(rdata_last_q[25]) );
   SDFFR_X1 rdata_last_q_reg_9_ ( .D(n815), .SI(rdata_last_q[8]), .SE(test_se), 
         .CK(n1204), .RN(rst_n), .Q(rdata_last_q[9]) );
   SDFFR_X1 rdata_last_q_reg_26_ ( .D(n1217), .SI(rdata_last_q[25]), .SE(
@@ -38339,8 +38335,7 @@ module riscv_prefetch_L0_buffer_test_1 ( clk, rst_n, req_i, branch_i, addr_i,
         SYNOPSYS_UNCONNECTED_30, SYNOPSYS_UNCONNECTED_31, 
         SYNOPSYS_UNCONNECTED_32, SYNOPSYS_UNCONNECTED_33}), .instr_gnt_i(
         instr_gnt_i), .instr_rvalid_i(instr_rvalid_i), .instr_rdata_i(
-        instr_rdata_i), .busy_o(busy_o), .test_si4(test_si4), .test_si3(
-        test_si3), .test_si2(test_si2), .test_si1(CS[3]), .test_so4(n2), 
+        instr_rdata_i), .busy_o(busy_o), .test_si1(CS[3]), .test_so4(n2), 
         .test_so3(test_so3), .test_so2(test_so2), .test_so1(test_so1), 
         .test_se(test_se) );
   SNPS_CLOCK_GATE_HIGH_riscv_prefetch_L0_buffer_0 clk_gate_rdata_last_q_reg_31_ ( 
@@ -38628,7 +38623,6 @@ module riscv_if_stage_2_128_0_1a110800_test_1 ( clk, rst_n, m_trap_base_addr_i,
         uepc_i, depc_i, pc_mux_i, exc_pc_mux_i, exc_vec_pc_mux_i, 
         jump_target_id_i, jump_target_ex_i, hwlp_start_i, hwlp_end_i, 
         hwlp_cnt_i, halt_if_i, if_busy_o, perf_imiss_o, id_ready_i_BAR, 
-        test_si8, test_si7, test_si6, test_si5, test_si4, test_si3, test_si2, 
         test_si1, test_so5, test_so4, test_so3, test_so2, test_so1, test_se );
   input [23:0] m_trap_base_addr_i;
   input [23:0] u_trap_base_addr_i;
@@ -38652,8 +38646,7 @@ module riscv_if_stage_2_128_0_1a110800_test_1 ( clk, rst_n, m_trap_base_addr_i,
   input [63:0] hwlp_cnt_i;
   input clk, rst_n, trap_addr_mux_i, req_i, instr_gnt_i, instr_rvalid_i,
          instr_err_pmp_i, clear_instr_valid_i, pc_set_i, halt_if_i,
-         id_ready_i_BAR, test_si8, test_si7, test_si6, test_si5, test_si4,
-         test_si3, test_si2, test_si1, test_se;
+         id_ready_i_BAR, test_si1, test_se;
   output instr_req_o, is_hwlp_id_o, instr_valid_id_o, is_compressed_id_o,
          illegal_c_insn_id_o, is_fetch_failed_o, if_busy_o, perf_imiss_o,
          test_so5, test_so4, test_so3, test_so2, test_so1;
@@ -39207,7 +39200,9 @@ module riscv_if_stage_2_128_0_1a110800_test_1 ( clk, rst_n, m_trap_base_addr_i,
   SDFFR_X1 instr_rdata_id_o_reg_9_ ( .D(instr_decompressed[9]), .SI(
         instr_rdata_id_o[8]), .SE(test_se), .CK(n777), .RN(rst_n), .Q(
         instr_rdata_id_o[9]) );
-  SDFFR_X1 instr_rdata_id_o_reg_10_ ( .D(instr_decompressed[10]), .SI(test_si2), .SE(test_se), .CK(n777), .RN(rst_n), .Q(instr_rdata_id_o[10]) );
+  SDFFR_X1 instr_rdata_id_o_reg_10_ ( .D(instr_decompressed[10]), .SI(
+        instr_rdata_i[70]), .SE(test_se), .CK(n777), .RN(rst_n), .Q(
+        instr_rdata_id_o[10]) );
   SDFFR_X1 instr_rdata_id_o_reg_11_ ( .D(instr_decompressed[11]), .SI(
         instr_rdata_id_o[10]), .SE(test_se), .CK(n777), .RN(rst_n), .Q(
         instr_rdata_id_o[11]) );
@@ -39255,8 +39250,8 @@ module riscv_if_stage_2_128_0_1a110800_test_1 ( clk, rst_n, m_trap_base_addr_i,
         .CK(n777), .RN(rst_n), .Q(pc_id_o[18]), .QN(n591) );
   SDFFR_X1 pc_id_o_reg_19_ ( .D(pc_if_o[19]), .SI(pc_id_o[18]), .SE(test_se), 
         .CK(n777), .RN(rst_n), .Q(pc_id_o[19]), .QN(n585) );
-  SDFFR_X1 pc_id_o_reg_21_ ( .D(pc_if_o[21]), .SI(test_si3), .SE(test_se), 
-        .CK(n777), .RN(rst_n), .Q(pc_id_o[21]), .QN(n584) );
+  SDFFR_X1 pc_id_o_reg_21_ ( .D(pc_if_o[21]), .SI(instr_rdata_i[69]), .SE(
+        test_se), .CK(n777), .RN(rst_n), .Q(pc_id_o[21]), .QN(n584) );
   SDFFR_X1 pc_id_o_reg_22_ ( .D(pc_if_o[22]), .SI(pc_id_o[21]), .SE(test_se), 
         .CK(n777), .RN(rst_n), .Q(pc_id_o[22]), .QN(n594) );
   SDFFR_X1 pc_id_o_reg_23_ ( .D(pc_if_o[23]), .SI(pc_id_o[22]), .SE(test_se), 
@@ -39356,11 +39351,9 @@ module riscv_if_stage_2_128_0_1a110800_test_1 ( clk, rst_n, m_trap_base_addr_i,
         instr_addr_o[31:4], SYNOPSYS_UNCONNECTED_1, SYNOPSYS_UNCONNECTED_2, 
         SYNOPSYS_UNCONNECTED_3, SYNOPSYS_UNCONNECTED_4}), .instr_gnt_i(
         instr_gnt_i), .instr_rvalid_i(instr_rvalid_i), .instr_rdata_i(
-        instr_rdata_i), .busy_o(if_busy_o), .test_si6(test_si8), .test_si5(
-        test_si7), .test_si4(test_si6), .test_si3(test_si5), .test_si2(
-        test_si4), .test_si1(pc_id_o[31]), .test_so5(test_so5), .test_so4(
-        test_so4), .test_so3(test_so3), .test_so2(test_so2), .test_so1(
-        test_so1), .test_se(test_se) );
+        instr_rdata_i), .busy_o(if_busy_o), .test_si1(pc_id_o[31]), .test_so5(
+        test_so5), .test_so4(test_so4), .test_so3(test_so3), .test_so2(
+        test_so2), .test_so1(test_so1), .test_se(test_se) );
   riscv_hwloop_controller_N_REGS2 hwloop_controller_i ( .current_pc_i(pc_if_o), 
         .hwlp_start_addr_i(hwlp_start_i), .hwlp_end_addr_i(hwlp_end_i), 
         .hwlp_counter_i(hwlp_cnt_i), .hwlp_dec_cnt_id_i({n_2_net__1_, 
@@ -55104,27 +55097,7 @@ module riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800 ( clk_i,
         apu_master_flags_o, apu_master_valid_i, apu_master_result_i, 
         apu_master_flags_i, irq_i, irq_id_i, irq_ack_o, irq_id_o, irq_sec_i, 
         sec_lvl_o, debug_req_i, fetch_enable_i, core_busy_o, 
-        ext_perf_counters_i, test_si1, test_so1, test_si2, test_so2, test_si3, 
-        test_so3, test_si4, test_so4, test_si5, test_so5, test_si6, test_so6, 
-        test_si7, test_so7, test_si8, test_so8, test_si9, test_so9, test_si10, 
-        test_so10, test_si11, test_so11, test_si12, test_so12, test_si13, 
-        test_so13, test_si14, test_so14, test_si15, test_so15, test_si16, 
-        test_so16, test_si17, test_so17, test_si18, test_so18, test_si19, 
-        test_so19, test_si20, test_so20, test_si21, test_so21, test_si22, 
-        test_so22, test_si23, test_so23, test_si24, test_so24, test_si25, 
-        test_so25, test_si26, test_si27, test_so27, test_si28, test_so28, 
-        test_si29, test_so29, test_si30, test_so30, test_si31, test_si32, 
-        test_so32, test_si33, test_so33, test_si34, test_so34, test_si35, 
-        test_so35, test_si36, test_so36, test_si37, test_so37, test_si38, 
-        test_so38, test_si39, test_so39, test_si40, test_so40, test_si41, 
-        test_so41, test_si42, test_so42, test_si43, test_so43, test_si44, 
-        test_so44, test_si45, test_so45, test_si46, test_so46, test_si47, 
-        test_so47, test_si48, test_so48, test_si49, test_so49, test_si50, 
-        test_so50, test_si51, test_so51, test_si52, test_so52, test_si53, 
-        test_so53, test_si54, test_so54, test_si55, test_so55, test_si56, 
-        test_so56, test_si57, test_so57, test_si58, test_so58, test_si59, 
-        test_so59, test_si60, test_so60, test_si61, test_so61, test_si62, 
-        test_so62, test_si63, test_so63, test_si64, test_so64 );
+        ext_perf_counters_i );
   input [31:0] boot_addr_i;
   input [3:0] core_id_i;
   input [5:0] cluster_id_i;
@@ -55145,30 +55118,9 @@ module riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800 ( clk_i,
   input [1:2] ext_perf_counters_i;
   input clk_i, rst_ni, clock_en_i, test_en_i, fregfile_disable_i, instr_gnt_i,
          instr_rvalid_i, data_gnt_i, data_rvalid_i, apu_master_gnt_i,
-         apu_master_valid_i, irq_i, irq_sec_i, debug_req_i, fetch_enable_i,
-         test_si1, test_si2, test_si3, test_si4, test_si5, test_si6, test_si7,
-         test_si8, test_si9, test_si10, test_si11, test_si12, test_si13,
-         test_si14, test_si15, test_si16, test_si17, test_si18, test_si19,
-         test_si20, test_si21, test_si22, test_si23, test_si24, test_si25,
-         test_si26, test_si27, test_si28, test_si29, test_si30, test_si31,
-         test_si32, test_si33, test_si34, test_si35, test_si36, test_si37,
-         test_si38, test_si39, test_si40, test_si41, test_si42, test_si43,
-         test_si44, test_si45, test_si46, test_si47, test_si48, test_si49,
-         test_si50, test_si51, test_si52, test_si53, test_si54, test_si55,
-         test_si56, test_si57, test_si58, test_si59, test_si60, test_si61,
-         test_si62, test_si63, test_si64;
+         apu_master_valid_i, irq_i, irq_sec_i, debug_req_i, fetch_enable_i;
   output instr_req_o, data_req_o, data_we_o, apu_master_req_o,
-         apu_master_ready_o, irq_ack_o, sec_lvl_o, core_busy_o, test_so1,
-         test_so2, test_so3, test_so4, test_so5, test_so6, test_so7, test_so8,
-         test_so9, test_so10, test_so11, test_so12, test_so13, test_so14,
-         test_so15, test_so16, test_so17, test_so18, test_so19, test_so20,
-         test_so21, test_so22, test_so23, test_so24, test_so25, test_so27,
-         test_so28, test_so29, test_so30, test_so32, test_so33, test_so34,
-         test_so35, test_so36, test_so37, test_so38, test_so39, test_so40,
-         test_so41, test_so42, test_so43, test_so44, test_so45, test_so46,
-         test_so47, test_so48, test_so49, test_so50, test_so51, test_so52,
-         test_so53, test_so54, test_so55, test_so56, test_so57, test_so58,
-         test_so59, test_so60, test_so61, test_so62, test_so63, test_so64;
+         apu_master_ready_o, irq_ack_o, sec_lvl_o, core_busy_o;
   wire   n332, core_ctrl_firstfetch, core_busy_q, data_load_event_ex, if_busy,
          core_busy_int, ctrl_busy, lsu_busy, clock_en, clk, trap_addr_mux,
          instr_req_int, instr_req_pmp, instr_gnt_pmp, is_hwlp_id,
@@ -55363,7 +55315,7 @@ module riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800 ( clk_i,
          SYNOPSYS_UNCONNECTED_338, SYNOPSYS_UNCONNECTED_339,
          SYNOPSYS_UNCONNECTED_340, SYNOPSYS_UNCONNECTED_341,
          SYNOPSYS_UNCONNECTED_342, SYNOPSYS_UNCONNECTED_343,
-         SYNOPSYS_UNCONNECTED_344, n2, n14, n71, n102;
+         SYNOPSYS_UNCONNECTED_344, n2, n7, n30, n39;
   wire   [23:0] mtvec;
   wire   [23:0] utvec;
   wire   [31:4] instr_addr_pmp;
@@ -55477,103 +55429,41 @@ module riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800 ( clk_i,
   assign apu_master_operands_o[29] = 1'b0;
   assign apu_master_operands_o[30] = 1'b0;
   assign apu_master_operands_o[31] = 1'b0;
-  assign apu_master_operands_o[32] = 1'b0;
-  assign apu_master_operands_o[33] = 1'b0;
-  assign apu_master_operands_o[34] = 1'b0;
-  assign apu_master_operands_o[35] = 1'b0;
-  assign apu_master_operands_o[36] = 1'b0;
-  assign apu_master_operands_o[37] = 1'b0;
-  assign apu_master_operands_o[38] = 1'b0;
-  assign apu_master_operands_o[39] = 1'b0;
-  assign apu_master_operands_o[40] = 1'b0;
-  assign apu_master_operands_o[41] = 1'b0;
-  assign apu_master_operands_o[42] = 1'b0;
-  assign apu_master_operands_o[43] = 1'b0;
-  assign apu_master_operands_o[44] = 1'b0;
-  assign apu_master_operands_o[45] = 1'b0;
-  assign apu_master_operands_o[46] = 1'b0;
-  assign apu_master_operands_o[47] = 1'b0;
-  assign apu_master_operands_o[48] = 1'b0;
-  assign apu_master_operands_o[49] = 1'b0;
-  assign apu_master_operands_o[50] = 1'b0;
-  assign apu_master_operands_o[51] = 1'b0;
-  assign apu_master_operands_o[52] = 1'b0;
-  assign apu_master_operands_o[53] = 1'b0;
-  assign apu_master_operands_o[54] = 1'b0;
-  assign apu_master_operands_o[55] = 1'b0;
-  assign apu_master_operands_o[56] = 1'b0;
-  assign apu_master_operands_o[57] = 1'b0;
-  assign apu_master_operands_o[58] = 1'b0;
-  assign apu_master_operands_o[59] = 1'b0;
-  assign apu_master_operands_o[60] = 1'b0;
-  assign apu_master_operands_o[61] = 1'b0;
-  assign apu_master_operands_o[62] = 1'b0;
-  assign apu_master_operands_o[63] = 1'b0;
-  assign apu_master_operands_o[64] = 1'b0;
-  assign apu_master_operands_o[65] = 1'b0;
-  assign apu_master_operands_o[66] = 1'b0;
-  assign apu_master_operands_o[67] = 1'b0;
-  assign apu_master_operands_o[68] = 1'b0;
-  assign apu_master_operands_o[69] = 1'b0;
-  assign apu_master_operands_o[70] = 1'b0;
-  assign apu_master_operands_o[71] = 1'b0;
-  assign apu_master_operands_o[72] = 1'b0;
-  assign apu_master_operands_o[73] = 1'b0;
-  assign apu_master_operands_o[74] = 1'b0;
-  assign apu_master_operands_o[75] = 1'b0;
-  assign apu_master_operands_o[76] = 1'b0;
-  assign apu_master_operands_o[77] = 1'b0;
-  assign apu_master_operands_o[78] = 1'b0;
-  assign apu_master_operands_o[79] = 1'b0;
-  assign apu_master_operands_o[80] = 1'b0;
-  assign apu_master_operands_o[81] = 1'b0;
-  assign apu_master_operands_o[82] = 1'b0;
-  assign apu_master_operands_o[83] = 1'b0;
-  assign apu_master_operands_o[84] = 1'b0;
-  assign apu_master_operands_o[85] = 1'b0;
-  assign apu_master_operands_o[86] = 1'b0;
-  assign apu_master_operands_o[87] = 1'b0;
-  assign apu_master_operands_o[88] = 1'b0;
-  assign apu_master_operands_o[89] = 1'b0;
-  assign apu_master_operands_o[90] = 1'b0;
-  assign apu_master_operands_o[91] = 1'b0;
-  assign apu_master_operands_o[92] = 1'b0;
-  assign apu_master_operands_o[93] = 1'b0;
-  assign apu_master_operands_o[94] = 1'b0;
-  assign apu_master_operands_o[95] = 1'b0;
   assign apu_master_req_o = 1'b0;
   assign instr_addr_o[0] = 1'b0;
   assign instr_addr_o[1] = 1'b0;
   assign instr_addr_o[2] = 1'b0;
   assign instr_addr_o[3] = 1'b0;
+  assign apu_master_operands_o[65] = irq_id_o[4];
   assign apu_master_ready_o = 1'b1;
-  assign test_so20 = utvec[6];
-  assign test_so57 = instr_rdata_id[9];
-  assign test_so62 = pc_if[10];
-  assign test_so58 = pc_id[20];
-  assign test_so4 = mepc[14];
-  assign test_so2 = depc[21];
-  assign test_so29 = hwlp_start[19];
-  assign test_so28 = hwlp_end[36];
-  assign test_so27 = hwlp_cnt[53];
-  assign test_so35 = pc_ex[17];
-  assign test_so23 = alu_operand_a_ex[1];
-  assign test_so24 = alu_operand_b_ex[16];
-  assign test_so25 = alu_operand_c_ex[31];
-  assign test_so33 = mult_operand_a_ex[25];
-  assign test_so34 = mult_operand_c_ex[8];
-  assign test_so32 = mult_dot_op_c_ex[19];
-  assign test_so16 = pmp_addr[495];
-  assign test_so15 = pmp_addr[447];
-  assign test_so14 = pmp_addr[399];
-  assign test_so13 = pmp_addr[351];
-  assign test_so12 = pmp_addr[303];
-  assign test_so11 = pmp_addr[255];
-  assign test_so10 = pmp_addr[207];
-  assign test_so9 = pmp_addr[159];
-  assign test_so8 = pmp_addr[111];
-  assign test_so7 = pmp_addr[63];
-  assign test_so6 = pmp_addr[15];
+  assign apu_master_operands_o[70] = data_we_ex;
+  assign apu_master_operands_o[76] = utvec[6];
+  assign apu_master_operands_o[39] = instr_rdata_id[9];
+  assign apu_master_operands_o[34] = pc_if[10];
+  assign apu_master_operands_o[38] = pc_id[20];
+  assign apu_master_operands_o[92] = mepc[14];
+  assign apu_master_operands_o[94] = depc[21];
+  assign apu_master_operands_o[67] = hwlp_start[19];
+  assign apu_master_operands_o[68] = hwlp_end[36];
+  assign apu_master_operands_o[69] = hwlp_cnt[53];
+  assign apu_master_operands_o[61] = pc_ex[17];
+  assign apu_master_operands_o[73] = alu_operand_a_ex[1];
+  assign apu_master_operands_o[72] = alu_operand_b_ex[16];
+  assign apu_master_operands_o[71] = alu_operand_c_ex[31];
+  assign apu_master_operands_o[63] = mult_operand_a_ex[25];
+  assign apu_master_operands_o[62] = mult_operand_c_ex[8];
+  assign apu_master_operands_o[64] = mult_dot_op_c_ex[19];
+  assign apu_master_operands_o[80] = pmp_addr[495];
+  assign apu_master_operands_o[81] = pmp_addr[447];
+  assign apu_master_operands_o[82] = pmp_addr[399];
+  assign apu_master_operands_o[83] = pmp_addr[351];
+  assign apu_master_operands_o[84] = pmp_addr[303];
+  assign apu_master_operands_o[85] = pmp_addr[255];
+  assign apu_master_operands_o[86] = pmp_addr[207];
+  assign apu_master_operands_o[87] = pmp_addr[159];
+  assign apu_master_operands_o[88] = pmp_addr[111];
+  assign apu_master_operands_o[89] = pmp_addr[63];
+  assign apu_master_operands_o[90] = pmp_addr[15];
 
   CLKBUF_X1 U27 ( .A(alu_operand_a_ex[16]), .Z(n313) );
   AND2_X1 U33 ( .A1(n362), .A2(alu_operand_b_ex[10]), .ZN(csr_addr[10]) );
@@ -55600,8 +55490,8 @@ module riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800 ( clk_i,
   INV_X1 U53 ( .A(data_we_o), .ZN(n311) );
   AND3_X1 U54 ( .A1(data_req_o), .A2(data_gnt_i), .A3(n311), .ZN(n_0_net_) );
   AND3_X1 U55 ( .A1(data_req_o), .A2(data_we_o), .A3(data_gnt_i), .ZN(n_1_net_) );
-  SDFFR_X1 core_busy_q_reg ( .D(core_busy_int), .SI(n102), .SE(test_en_i), 
-        .CK(clk_i), .RN(rst_ni), .Q(core_busy_q) );
+  SDFFR_X1 core_busy_q_reg ( .D(core_busy_int), .SI(n39), .SE(test_en_i), .CK(
+        clk_i), .RN(rst_ni), .Q(core_busy_q) );
   cluster_clock_gating core_clock_gate_i ( .clk_i(clk_i), .en_i(clock_en), 
         .test_en_i(test_en_i), .clk_o(clk) );
   riscv_if_stage_2_128_0_1a110800_test_1 if_stage_i ( .clk(clk), .rst_n(rst_ni), .m_trap_base_addr_i(mtvec), .u_trap_base_addr_i(utvec), .trap_addr_mux_i(
@@ -55622,12 +55512,10 @@ module riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800 ( clk_i,
         .jump_target_id_i({jump_target_id, 1'b0}), .jump_target_ex_i({
         jump_target_ex, 1'b0}), .hwlp_start_i(hwlp_start), .hwlp_end_i(
         hwlp_end), .hwlp_cnt_i(hwlp_cnt), .halt_if_i(halt_if), .if_busy_o(
-        if_busy), .perf_imiss_o(perf_imiss), .id_ready_i_BAR(n344), .test_si8(
-        test_si64), .test_si7(test_si63), .test_si6(test_si62), .test_si5(
-        test_si61), .test_si4(test_si60), .test_si3(test_si59), .test_si2(
-        test_si58), .test_si1(n14), .test_so5(n2), .test_so4(test_so63), 
-        .test_so3(test_so61), .test_so2(test_so60), .test_so1(test_so59), 
-        .test_se(test_en_i) );
+        if_busy), .perf_imiss_o(perf_imiss), .id_ready_i_BAR(n344), .test_si1(
+        n7), .test_so5(n2), .test_so4(apu_master_operands_o[33]), .test_so3(
+        apu_master_operands_o[35]), .test_so2(apu_master_operands_o[36]), 
+        .test_so1(apu_master_operands_o[37]), .test_se(test_en_i) );
   riscv_id_stage_N_HWLP2_PULP_SECURE1_APU0_FPU0_Zfinx0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_MULT0_SHARED_INT_DIV0_SHARED_FP_DIVSQRT0_WAPUTYPE0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5_test_1 id_stage_i ( 
         .clk(clk), .rst_n(rst_ni), .test_en_i(1'b0), .fregfile_disable_i(1'b0), 
         .fetch_enable_i(fetch_enable_i), .ctrl_busy_o(ctrl_busy), 
@@ -55788,26 +55676,39 @@ module riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800 ( clk_i,
         mult_sel_subword_ex), .csr_cause_o_1__BAR(csr_cause[1]), 
         .is_decoding_o(is_decoding), .csr_access_ex_o_BAR(csr_access_ex), 
         .data_misaligned_ex_o_BAR(data_misaligned_ex), .prepost_useincr_ex_o(
-        useincr_addr_ex), .test_si35(test_si57), .test_si34(test_si56), 
-        .test_si33(test_si55), .test_si32(test_si54), .test_si31(test_si53), 
-        .test_si30(test_si52), .test_si29(test_si51), .test_si28(test_si50), 
-        .test_si27(test_si49), .test_si26(test_si48), .test_si25(test_si47), 
-        .test_si24(test_si46), .test_si23(test_si45), .test_si22(test_si44), 
-        .test_si21(test_si43), .test_si20(test_si42), .test_si19(test_si41), 
-        .test_si18(test_si40), .test_si17(test_si39), .test_si16(test_si38), 
-        .test_si15(test_si37), .test_si14(test_si36), .test_si13(test_si35), 
-        .test_si12(test_si34), .test_si11(test_si33), .test_si10(test_si32), 
-        .test_si9(test_si31), .test_si8(test_si30), .test_si7(test_si29), 
-        .test_si6(test_si28), .test_si5(test_si27), .test_si4(test_si26), 
-        .test_si3(test_si25), .test_si2(test_si24), .test_si1(n71), 
-        .test_so23(n14), .test_so22(test_so56), .test_so21(test_so55), 
-        .test_so20(test_so54), .test_so19(test_so53), .test_so18(test_so52), 
-        .test_so17(test_so51), .test_so16(test_so50), .test_so15(test_so49), 
-        .test_so14(test_so48), .test_so13(test_so47), .test_so12(test_so46), 
-        .test_so11(test_so45), .test_so10(test_so44), .test_so9(test_so43), 
-        .test_so8(test_so42), .test_so7(test_so41), .test_so6(test_so40), 
-        .test_so5(test_so39), .test_so4(test_so38), .test_so3(test_so37), 
-        .test_so2(test_so36), .test_so1(test_so30), .test_se(test_en_i) );
+        useincr_addr_ex), .test_si35(instr_rdata_i[71]), .test_si34(
+        instr_rdata_i[72]), .test_si33(instr_rdata_i[73]), .test_si32(
+        instr_rdata_i[74]), .test_si31(instr_rdata_i[75]), .test_si30(
+        instr_rdata_i[76]), .test_si29(instr_rdata_i[77]), .test_si28(
+        instr_rdata_i[78]), .test_si27(instr_rdata_i[79]), .test_si26(
+        instr_rdata_i[80]), .test_si25(instr_rdata_i[81]), .test_si24(
+        instr_rdata_i[82]), .test_si23(instr_rdata_i[83]), .test_si22(
+        instr_rdata_i[84]), .test_si21(instr_rdata_i[85]), .test_si20(
+        instr_rdata_i[86]), .test_si19(instr_rdata_i[87]), .test_si18(
+        instr_rdata_i[88]), .test_si17(instr_rdata_i[89]), .test_si16(
+        instr_rdata_i[90]), .test_si15(instr_rdata_i[91]), .test_si14(
+        instr_rdata_i[92]), .test_si13(instr_rdata_i[93]), .test_si12(
+        instr_rdata_i[94]), .test_si11(instr_rdata_i[95]), .test_si10(
+        instr_rdata_i[96]), .test_si9(instr_rdata_i[97]), .test_si8(
+        instr_rdata_i[98]), .test_si7(instr_rdata_i[99]), .test_si6(
+        instr_rdata_i[100]), .test_si5(instr_rdata_i[101]), .test_si4(
+        instr_rdata_i[102]), .test_si3(instr_rdata_i[103]), .test_si2(
+        instr_rdata_i[104]), .test_si1(n30), .test_so23(n7), .test_so22(
+        apu_master_operands_o[40]), .test_so21(apu_master_operands_o[41]), 
+        .test_so20(apu_master_operands_o[42]), .test_so19(
+        apu_master_operands_o[43]), .test_so18(apu_master_operands_o[44]), 
+        .test_so17(apu_master_operands_o[45]), .test_so16(
+        apu_master_operands_o[46]), .test_so15(apu_master_operands_o[47]), 
+        .test_so14(apu_master_operands_o[48]), .test_so13(
+        apu_master_operands_o[49]), .test_so12(apu_master_operands_o[50]), 
+        .test_so11(apu_master_operands_o[51]), .test_so10(
+        apu_master_operands_o[52]), .test_so9(apu_master_operands_o[53]), 
+        .test_so8(apu_master_operands_o[54]), .test_so7(
+        apu_master_operands_o[55]), .test_so6(apu_master_operands_o[56]), 
+        .test_so5(apu_master_operands_o[57]), .test_so4(
+        apu_master_operands_o[58]), .test_so3(apu_master_operands_o[59]), 
+        .test_so2(apu_master_operands_o[60]), .test_so1(
+        apu_master_operands_o[66]), .test_se(test_en_i) );
   riscv_ex_stage_FPU0_FP_DIVSQRT0_SHARED_FP0_SHARED_DSP_MULT0_SHARED_INT_DIV0_APU_NARGS_CPU3_APU_WOP_CPU6_APU_NDSFLAGS_CPU15_APU_NUSFLAGS_CPU5_test_1 ex_stage_i ( 
         .clk(clk), .rst_n(rst_ni), .alu_operator_i(alu_operator_ex), 
         .alu_operand_a_i(alu_operand_a_ex), .alu_operand_b_i(alu_operand_b_ex), 
@@ -55916,9 +55817,10 @@ module riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800 ( clk_i,
         .ex_valid_o(ex_valid), .wb_ready_i(lsu_ready_wb), .lsu_err_i_BAR(
         data_err_pmp), .regfile_alu_we_i(regfile_alu_we_ex), .alu_en_i_BAR(
         alu_en_ex), .mult_sel_subword_i_BAR(mult_sel_subword_ex), 
-        .csr_access_i_BAR(csr_access_ex), .test_si3(test_si23), .test_si2(
-        test_si22), .test_si1(utvec[23]), .test_so3(n71), .test_so2(test_so22), 
-        .test_so1(test_so21), .test_se(test_en_i) );
+        .csr_access_i_BAR(csr_access_ex), .test_si3(instr_rdata_i[105]), 
+        .test_si2(instr_rdata_i[106]), .test_si1(utvec[23]), .test_so3(n30), 
+        .test_so2(apu_master_operands_o[74]), .test_so1(
+        apu_master_operands_o[75]), .test_se(test_en_i) );
   riscv_load_store_unit_test_1 load_store_unit_i ( .clk(clk), .rst_n(rst_ni), 
         .data_req_o(data_req_pmp), .data_gnt_i(data_gnt_pmp), .data_rvalid_i(
         data_rvalid_i), .data_addr_o({data_addr_pmp[31:29], n280, n287, 
@@ -55937,8 +55839,8 @@ module riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800 ( clk_i,
         alu_operand_b_ex[31:10], n360, alu_operand_b_ex[8:0]}), 
         .data_misaligned_o(data_misaligned), .lsu_ready_ex_o(lsu_ready_ex), 
         .lsu_ready_wb_o(lsu_ready_wb), .ex_valid_i(ex_valid), .busy_o(lsu_busy), .data_err_i_BAR(data_err_pmp), .data_misaligned_ex_i_BAR(data_misaligned_ex), 
-        .addr_useincr_ex_i(useincr_addr_ex), .test_si(n2), .test_so(test_so64), 
-        .test_se(test_en_i) );
+        .addr_useincr_ex_i(useincr_addr_ex), .test_si(n2), .test_so(
+        apu_master_operands_o[32]), .test_se(test_en_i) );
   riscv_cs_registers_N_EXT_CNT0_APU0_FPU0_PULP_SECURE1_USE_PMP1_N_PMP_ENTRIES16_test_1 cs_registers_i ( 
         .clk(clk), .rst_n(rst_ni), .core_id_i(core_id_i), .cluster_id_i(
         cluster_id_i), .mtvec_o(mtvec), .utvec_o(utvec), .boot_addr_i({1'b0, 
@@ -56004,16 +55906,21 @@ module riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800 ( clk_i,
         .csr_cause_i_3_(csr_cause[3]), .csr_cause_i_2_(csr_cause[2]), 
         .csr_cause_i_0_(csr_cause[0]), .csr_save_ex_i_BAR(csr_save_ex), 
         .csr_cause_i_1__BAR(csr_cause[1]), .is_decoding_i(is_decoding), 
-        .csr_access_i_BAR(csr_access_ex), .test_si21(test_si21), .test_si20(
-        test_si20), .test_si19(test_si19), .test_si18(test_si18), .test_si17(
-        test_si17), .test_si16(test_si16), .test_si15(test_si15), .test_si14(
-        test_si14), .test_si13(test_si13), .test_si12(test_si12), .test_si11(
-        test_si11), .test_si10(test_si10), .test_si9(test_si9), .test_si8(
-        test_si8), .test_si7(test_si7), .test_si6(test_si6), .test_si5(
-        test_si5), .test_si4(test_si4), .test_si3(test_si3), .test_si2(
-        test_si2), .test_si1(core_busy_q), .test_so6(test_so19), .test_so5(
-        test_so18), .test_so4(test_so17), .test_so3(test_so5), .test_so2(
-        test_so3), .test_so1(test_so1), .test_se(test_en_i) );
+        .csr_access_i_BAR(csr_access_ex), .test_si21(instr_rdata_i[107]), 
+        .test_si20(instr_rdata_i[108]), .test_si19(instr_rdata_i[109]), 
+        .test_si18(instr_rdata_i[110]), .test_si17(instr_rdata_i[111]), 
+        .test_si16(instr_rdata_i[112]), .test_si15(instr_rdata_i[113]), 
+        .test_si14(instr_rdata_i[114]), .test_si13(instr_rdata_i[115]), 
+        .test_si12(instr_rdata_i[116]), .test_si11(instr_rdata_i[117]), 
+        .test_si10(instr_rdata_i[118]), .test_si9(instr_rdata_i[119]), 
+        .test_si8(instr_rdata_i[120]), .test_si7(instr_rdata_i[121]), 
+        .test_si6(instr_rdata_i[122]), .test_si5(instr_rdata_i[123]), 
+        .test_si4(instr_rdata_i[124]), .test_si3(instr_rdata_i[125]), 
+        .test_si2(instr_rdata_i[126]), .test_si1(core_busy_q), .test_so6(
+        apu_master_operands_o[77]), .test_so5(apu_master_operands_o[78]), 
+        .test_so4(apu_master_operands_o[79]), .test_so3(
+        apu_master_operands_o[91]), .test_so2(apu_master_operands_o[93]), 
+        .test_so1(apu_master_operands_o[95]), .test_se(test_en_i) );
   riscv_pmp_N_PMP_ENTRIES16_test_1 RISCY_PMP_pmp_unit_i ( .clk(clk), .rst_n(
         rst_ni), .pmp_privil_mode_i(current_priv_lvl), .pmp_addr_i(pmp_addr), 
         .pmp_cfg_i({1'b0, 1'b0, 1'b0, pmp_cfg[79:75], 1'b0, 1'b0, 1'b0, 
@@ -56067,8 +55974,8 @@ module riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800 ( clk_i,
         .data_addr_o_2_(data_addr_o[2]), .data_addr_o_1_(data_addr_o[1]), 
         .data_addr_o_0_(data_addr_o[0]), .instr_addr_o_18_(instr_addr_o[18]), 
         .instr_addr_o_14_(instr_addr_o[14]), .instr_addr_o_4_(instr_addr_o[4]), 
-        .data_addr_o_31_(data_addr_o[31]), .test_si(test_si1), .test_so(n102), 
-        .test_se(test_en_i) );
+        .data_addr_o_31_(data_addr_o[31]), .test_si(instr_rdata_i[127]), 
+        .test_so(n39), .test_se(test_en_i) );
   CLKBUF_X1 U26 ( .A(alu_operand_a_ex[1]), .Z(n333) );
   CLKBUF_X1 U28 ( .A(alu_operand_a_ex[31]), .Z(n361) );
   CLKBUF_X1 U29 ( .A(alu_operand_a_ex[19]), .Z(n359) );

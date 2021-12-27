@@ -39,7 +39,26 @@ set test_default_scan_style multiplexed_flip_flop
 
 ### Set pins functionality ###
 set_dft_signal  -view existing_dft -type ScanEnable -port test_en_i
-set_dft_signal  -view spec -type ScanEnable -port test_en_i 
+set_dft_signal  -view spec -type ScanEnable -port test_en_i
+
+set count 1
+foreach signal [get_ports instr_rdata_i] {
+	if {$count == $chains} { break } 
+	set name [get_attribute $signal full_name]
+	set_dft_signal -view spec -type ScanDataIn -port $name
+	incr count
+}
+
+set count 1
+foreach signal [get_ports apu_master_operands_o] {
+	if {$count == $chains} { break } 
+	set name [get_attribute $signal full_name]
+	set_dft_signal -view spec -type ScanDataOut -port $name
+	set_scan_path "chain$count" -scan_data_in [get_attribute [lindex [get_ports instr_rdata_i] $count] full_name] -scan_data_out [get_attribute [lindex [get_ports instr_rdata_i] $count]]
+	incr count
+}
+
+	
 set_scan_element false NangateOpenCellLibrary/DLH_X1
 
 set_scan_configuration -chain_count $chains
@@ -47,7 +66,7 @@ set_scan_configuration -chain_count $chains
 
 
 create_test_protocol -infer_asynch -infer_clock
-dft_drc
+dft_drc -coverage_estimate
 #preview_dft
 insert_dft
 
