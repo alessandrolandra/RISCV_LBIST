@@ -200,17 +200,17 @@ begin
 	ext_perf_counters_i <= grid_out(2 downto 1);
  	clock_en_i <= '1';
  	--test_en_i <= '0';
- 	fregfile_disable_i <= lfsr_q(0);
- 	instr_gnt_i <= lfsr_q(1);
-	instr_rvalid_i <= lfsr_q(2);
- 	data_gnt_i <= lfsr_q(3);
- 	data_rvalid_i <= lfsr_q(4);
- 	apu_master_gnt_i <= lfsr_q(5);
-	apu_master_valid_i <= lfsr_q(6);
- 	irq_i <= lfsr_q(7);
- 	irq_sec_i <= lfsr_q(8);
- 	debug_req_i <= lfsr_q(9);
- 	fetch_enable_i <= lfsr_q(10);
+ 	fregfile_disable_i <= grid_out(0);
+ 	instr_gnt_i <= grid_out(1);
+	instr_rvalid_i <= grid_out(2);
+ 	data_gnt_i <= grid_out(3);
+ 	data_rvalid_i <= grid_out(4);
+ 	apu_master_gnt_i <= grid_out(5);
+	apu_master_valid_i <= grid_out(6);
+ 	irq_i <= grid_out(7);
+ 	irq_sec_i <= grid_out(8);
+ 	debug_req_i <= grid_out(9);
+ 	fetch_enable_i <= grid_out(10);
 
 -- ***** CLOCK/RESET ***********************************
 
