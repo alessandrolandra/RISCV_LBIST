@@ -12,6 +12,52 @@ end riscv_testbench;
 
 architecture tb of riscv_testbench is
     
+	component riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800 
+		port (
+			boot_addr_i 			: in std_logic_vector (31 downto 0);
+			core_id_i				: in std_logic_vector (3 downto 0);
+			cluster_id_i			: in std_logic_vector (5 downto 0);
+			instr_rdata_i			: in std_logic_vector (127 downto 0);
+			data_rdata_i			: in std_logic_vector (31 downto 0);
+			apu_master_result_i		: in std_logic_vector (31 downto 0);
+			apu_master_flags_i		: in std_logic_vector (4 downto 0);
+			irq_id_i				: in std_logic_vector (4 downto 0);
+			ext_perf_counters_i		: in std_logic_vector (1 to 2);
+			clk_i					: in std_logic;
+ 			rst_ni					: in std_logic;
+ 			clock_en_i				: in std_logic;
+ 			test_en_i				: in std_logic;
+ 			fregfile_disable_i		: in std_logic;
+ 			instr_gnt_i				: in std_logic;
+			instr_rvalid_i			: in std_logic;
+ 			data_gnt_i				: in std_logic;
+ 			data_rvalid_i			: in std_logic;
+ 			apu_master_gnt_i		: in std_logic;
+			apu_master_valid_i		: in std_logic;
+ 			irq_i					: in std_logic;
+ 			irq_sec_i				: in std_logic;
+ 			debug_req_i				: in std_logic;
+ 			fetch_enable_i			: in std_logic;
+			instr_addr_o			: out std_logic_vector (31 downto 0);
+			data_be_o				: out std_logic_vector (3 downto 0);
+			data_addr_o				: out std_logic_vector (31 downto 0);
+			data_wdata_o			: out std_logic_vector (31 downto 0);
+			apu_master_operands_o 	: out std_logic_vector (95 downto 0);
+			apu_master_op_o			: out std_logic_vector (5 downto 0);
+			apu_master_type_o		: out std_logic_vector (1 to 2);
+			apu_master_flags_o		: out std_logic_vector (14 downto 0);
+			irq_id_o				: out std_logic_vector (4 downto 0);
+			instr_req_o				: out std_logic;
+ 			data_req_o				: out std_logic;
+ 			data_we_o				: out std_logic;
+ 			apu_master_req_o		: out std_logic;
+        	apu_master_ready_o		: out std_logic;
+ 			irq_ack_o				: out std_logic;
+ 			sec_lvl_o				: out std_logic;
+ 			core_busy_o				: out std_logic
+		);
+	end component;
+
 	component lfsr
 	generic (
 		SEED 	: std_logic_vector(64 downto 0)
@@ -35,23 +81,116 @@ architecture tb of riscv_testbench is
 
 	signal tester_clock : std_logic := '0';
 
-    signal dut_clock : std_logic := '0';
-    signal dut_reset : std_logic;
+    signal dut_clock, lfsr_clock : std_logic := '0';
+    signal dut_reset, lfsr_reset: std_logic;
+	
+	-- LFSR inputs
+	signal lfsr_en: std_logic := '1';
+
+    -- LFSR outputs
+	signal lfsr_q: std_logic_vector(64 downto 0);
 	
 	-- DUT inputs
-	signal dut_en: std_logic := '0';
+	signal dut_test_mode : std_logic := '0';
+	signal clock_en_i,test_en_i,fregfile_disable_i,instr_gnt_i,instr_rvalid_i,data_gnt_i,data_rvalid_i,apu_master_gnt_i,apu_master_valid_i,irq_i,irq_sec_i,debug_req_i,fetch_enable_i: std_logic;
+	signal boot_addr_i  			: std_logic_vector (31 downto 0);
+	signal core_id_i				: std_logic_vector (3 downto 0);
+	signal cluster_id_i				: std_logic_vector (5 downto 0);
+	signal instr_rdata_i			: std_logic_vector (127 downto 0);
+	signal data_rdata_i				: std_logic_vector (31 downto 0);
+	signal apu_master_result_i		: std_logic_vector (31 downto 0);
+	signal apu_master_flags_i		: std_logic_vector (4 downto 0);
+	signal irq_id_i					: std_logic_vector (4 downto 0);
+	signal ext_perf_counters_i		: std_logic_vector (1 to 2);
 
     -- DUT outputs
-	signal dut_q: std_logic_vector(64 downto 0);
+	signal instr_req_o,data_req_o,data_we_o,apu_master_req_o,apu_master_ready_o,irq_ack_o,sec_lvl_o,core_busy_o : std_logic;
+	signal instr_addr_o				: std_logic_vector (31 downto 0);
+	signal data_be_o				: std_logic_vector (3 downto 0);
+	signal data_addr_o				: std_logic_vector (31 downto 0);
+	signal data_wdata_o				: std_logic_vector (31 downto 0);
+	signal apu_master_operands_o 	: std_logic_vector (95 downto 0);
+	signal apu_master_op_o			: std_logic_vector (5 downto 0);
+	signal apu_master_type_o		: std_logic_vector (1 to 2);
+	signal apu_master_flags_o 		: std_logic_vector (14 downto 0);
+	signal irq_id_o					: std_logic_vector (4 downto 0);
 
 begin
 
-    dut : lfsr
+    mylfsr : lfsr
 		generic map (SEED => "10101010101010101010101010101010101010101010101010101010101010101")
-		port map (clk => dut_clock,
-            reset => dut_reset,
-			en => dut_en,
-			q => dut_q);
+		port map (clk => lfsr_clock,
+            reset => lfsr_reset,
+			en => lfsr_en,
+			q => lfsr_q);
+			
+	dut: riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800 
+		port map (
+			clock_en_i => clock_en_i,
+		test_en_i => test_en_i,
+		fregfile_disable_i => fregfile_disable_i,
+		instr_gnt_i => instr_gnt_i,
+		instr_rvalid_i => instr_rvalid_i,
+		data_gnt_i => data_gnt_i,
+		data_rvalid_i => data_rvalid_i,
+		apu_master_gnt_i => apu_master_gnt_i,
+		apu_master_valid_i => apu_master_valid_i,
+		irq_i => irq_i,
+		irq_sec_i => irq_sec_i,
+		debug_req_i => debug_req_i,
+		fetch_enable_i => fetch_enable_i,
+		boot_addr_i => boot_addr_i,
+		core_id_i => core_id_i,
+		cluster_id_i => cluster_id_i,
+		instr_rdata_i => instr_rdata_i,
+		data_rdata_i => data_rdata_i,
+		apu_master_result_i => apu_master_result_i,
+		apu_master_flags_i => apu_master_flags_i,
+		irq_id_i => irq_id_i,
+		ext_perf_counters_i => ext_perf_counters_i,
+		instr_req_o => instr_req_o,
+		data_req_o => data_req_o,
+		data_we_o => data_we_o,
+		apu_master_req_o => apu_master_req_o,
+		apu_master_ready_o => apu_master_ready_o,
+		irq_ack_o => irq_ack_o,
+		sec_lvl_o => sec_lvl_o,
+		core_busy_o => core_busy_o,
+		instr_addr_o => instr_addr_o,
+		data_be_o => data_be_o,
+		data_addr_o => data_addr_o,
+		data_wdata_o => data_wdata_o,
+		apu_master_operands_o => apu_master_operands_o,
+		apu_master_op_o => apu_master_op_o,
+		apu_master_type_o => apu_master_type_o,
+		apu_master_flags_o => apu_master_flags_o,
+		irq_id_o =>	irq_id_o,
+		clk_i=>dut_clock,
+		rst_ni=>dut_reset
+	);
+		
+	boot_addr_i <= lfsr_q(31 downto 0);
+	core_id_i<= lfsr_q(3 downto 0);
+	cluster_id_i <= lfsr_q(5 downto 0);
+	instr_rdata_i <= lfsr_q(63 downto 0)&lfsr_q(63 downto 0);
+	data_rdata_i <= lfsr_q(31 downto 0);
+	apu_master_result_i <= lfsr_q(31 downto 0);
+	apu_master_flags_i <= lfsr_q(4 downto 0);
+	irq_id_i <= lfsr_q(4 downto 0);
+	ext_perf_counters_i <= lfsr_q(2 downto 1);
+ 	clock_en_i <= '1';
+ 	test_en_i <= '0';
+ 	fregfile_disable_i <= lfsr_q(0);
+ 	instr_gnt_i <= lfsr_q(1);
+	instr_rvalid_i <= lfsr_q(2);
+ 	data_gnt_i <= lfsr_q(3);
+ 	data_rvalid_i <= lfsr_q(4);
+ 	apu_master_gnt_i <= lfsr_q(5);
+	apu_master_valid_i <= lfsr_q(6);
+ 	irq_i <= lfsr_q(7);
+ 	irq_sec_i <= lfsr_q(8);
+ 	debug_req_i <= lfsr_q(9);
+ 	fetch_enable_i <= lfsr_q(10);
 
 -- ***** CLOCK/RESET ***********************************
 
@@ -68,48 +207,10 @@ begin
 -- lfsr /----\____ ___/----\____ ___/----\____ ___/--
 
     dut_clock <= transport tester_clock after apply_period;
-    --bist_clock <= transport tester_clock after apply_period - clock_t1 + apply_offset;
+    lfsr_clock <= transport tester_clock after apply_period - clock_t1 + apply_offset;
 
     dut_reset <= '0', '1' after clock_t1, '0' after clock_t1 + clock_t2;
-    --bist_reset <= '1', '0' after clock_t1 + clock_t2;
-
-
--- ***** MONITOR **********
-
-    monitor : process(dut_q)
-		function vec2str( input : std_logic_vector ) return string is
-			variable rline : line;
-		begin
-			write( rline, input );
-			return rline.all;
-		end vec2str;
-    begin
-        std.textio.write(std.textio.output, 
-		"boot_addr_i" 			& vec2str(dut_q(31 downto 0)) &
-		"core_id_i"				& vec2str(dut_q(3 downto 0)) &
-		"cluster_id_i"			& vec2str(dut_q(5 downto 0)) &
-		"instr_rdata_i"			& vec2str(dut_q(63 downto 0)&dut_q(63 downto 0)) &
-		"data_rdata_i"			& vec2str(dut_q(31 downto 0)) &
-		"apu_master_result_i"	& vec2str(dut_q(31 downto 0)) &
-		"apu_master_flags_i"	& vec2str(dut_q(4 downto 0)) &
-		"irq_id_i"				& vec2str(dut_q(4 downto 0)) &
-		"ext_perf_counters_i"	& vec2str(dut_q(1 to 2)) &
-		"clk_i"					& dut_clock &
- 		"rst_ni"				& dut_reset &
- 		"clock_en_i"			& '1' &
- 		"test_en_i"				& '0' &
- 		"fregfile_disable_i"	& dut_q(0) &
- 		"instr_gnt_i"			& dut_q(1) &
-		"instr_rvalid_i"		& dut_q(2) &
- 		"data_gnt_i"			& dut_q(3) &
- 		"data_rvalid_i"			& dut_q(4) &
- 		"apu_master_gnt_i"		& dut_q(5) &
-		"apu_master_valid_i"	& dut_q(6) &
- 		"irq_i"					& dut_q(7) &
- 		"irq_sec_i"				& dut_q(8) &
- 		"debug_req_i"			& dut_q(9) &
- 		"fetch_enable_i"		& dut_q(10) & LF);
-    end process;
+    lfsr_reset <= '1', '0' after clock_t1 + clock_t2;
 
 end tb;
 

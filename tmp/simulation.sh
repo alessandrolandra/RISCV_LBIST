@@ -10,13 +10,13 @@ cd ../run
 
 # Build the files
 vlog ../syn/techlib/NangateOpenCellLibrary.v
-vcom -2008 -suppress 1141 ../bist/constants.vhd
-vcom -2008 -suppress 1141 ../bist/COMPONENTS/mux.vhd
-vcom -2008 -suppress 1141 ../bist/COMPONENTS/clk_divisor.vhd
+#vcom -2008 -suppress 1141 ../bist/constants.vhd
+#vcom -2008 -suppress 1141 ../bist/COMPONENTS/mux.vhd
+#vcom -2008 -suppress 1141 ../bist/COMPONENTS/clk_divisor.vhd
 vlog ../bist/LFSR/lfsr.v
 vlog ../syn/output/riscv_core_scan64.v
-vcom -2008 -suppress 1141 ../bist/MISR/misr.vhd
-vcom -2008 -suppress 1141 ../bist/riscv_core_bist.vhd
+#vcom -2008 -suppress 1141 ../bist/MISR/misr.vhd
+#vcom -2008 -suppress 1141 ../bist/riscv_core_bist.vhd
 vcom -2008 -suppress 1141 ../bist/riscv_core_testbench.vhd
 
 # Invoke QuestaSim shell and run the TCL script
