@@ -179,7 +179,7 @@ begin
 	irq_id_i <= lfsr_q(4 downto 0);
 	ext_perf_counters_i <= lfsr_q(2 downto 1);
  	clock_en_i <= '1';
- 	test_en_i <= '0';
+ 	--test_en_i <= '0';
  	fregfile_disable_i <= lfsr_q(0);
  	instr_gnt_i <= lfsr_q(1);
 	instr_rvalid_i <= lfsr_q(2);
@@ -212,6 +212,13 @@ begin
     dut_reset <= '0', '1' after clock_t1, '0' after clock_t1 + clock_t2;
     lfsr_reset <= '1', '0' after clock_t1 + clock_t2;
 
+	sc_mgmt: process
+	begin
+		test_en_i<='0';
+		wait for apply_period*2;
+		test_en_i<='1';
+		wait for apply_period*48;
+	end process;
 end tb;
 
 configuration cfg_riscv_testbench of riscv_testbench is
