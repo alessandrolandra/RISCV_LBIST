@@ -70,6 +70,16 @@ architecture tb of riscv_testbench is
 	);
 	end component;
 
+	component xorGrid is
+	GENERIC (
+		N: integer := 64
+	);
+	PORT(
+		LFSR_OUT: IN std_logic_vector(N-1 DOWNTO 0);
+		PREG_OUT: OUT std_logic_vector(N-1 DOWNTO 0)
+	);
+	end component;
+
 	constant clock_t1      : time := 50 ns;
 	constant clock_t2      : time := 30 ns;
 	constant clock_t3      : time := 20 ns;
@@ -88,7 +98,10 @@ architecture tb of riscv_testbench is
 	signal lfsr_en: std_logic := '1';
 
     -- LFSR outputs
-	signal lfsr_q: std_logic_vector(64 downto 0);
+	signal lfsr_q: std_logic_vector(64 downto 0); 
+
+	-- xorGrid outputs
+	signal grid_out: std_logic_vector(64 downto 0);
 	
 	-- DUT inputs
 	signal dut_test_mode : std_logic := '0';
@@ -168,29 +181,36 @@ begin
 		clk_i=>dut_clock,
 		rst_ni=>dut_reset
 	);
+
+	myxorGrid : xorGrid
+	generic map (N=>64)
+	port map (
+		LFSR_OUT=>lfsr_q,
+		PREG_OUT=>grid_out
+	);
 		
-	boot_addr_i <= lfsr_q(31 downto 0);
-	core_id_i<= lfsr_q(3 downto 0);
-	cluster_id_i <= lfsr_q(5 downto 0);
-	instr_rdata_i <= lfsr_q(63 downto 0)&lfsr_q(63 downto 0);
-	data_rdata_i <= lfsr_q(31 downto 0);
-	apu_master_result_i <= lfsr_q(31 downto 0);
-	apu_master_flags_i <= lfsr_q(4 downto 0);
-	irq_id_i <= lfsr_q(4 downto 0);
-	ext_perf_counters_i <= lfsr_q(2 downto 1);
+	boot_addr_i <= grid_out(31 downto 0);
+	core_id_i<= grid_out(3 downto 0);
+	cluster_id_i <= grid_out(5 downto 0);
+	instr_rdata_i <= grid_out(63 downto 0)&grid_out(63 downto 0);
+	data_rdata_i <= grid_out(31 downto 0);
+	apu_master_result_i <= grid_out(31 downto 0);
+	apu_master_flags_i <= grid_out(4 downto 0);
+	irq_id_i <= grid_out(4 downto 0);
+	ext_perf_counters_i <= grid_out(2 downto 1);
  	clock_en_i <= '1';
  	test_en_i <= '0';
- 	fregfile_disable_i <= lfsr_q(0);
- 	instr_gnt_i <= lfsr_q(1);
-	instr_rvalid_i <= lfsr_q(2);
- 	data_gnt_i <= lfsr_q(3);
- 	data_rvalid_i <= lfsr_q(4);
- 	apu_master_gnt_i <= lfsr_q(5);
-	apu_master_valid_i <= lfsr_q(6);
- 	irq_i <= lfsr_q(7);
- 	irq_sec_i <= lfsr_q(8);
- 	debug_req_i <= lfsr_q(9);
- 	fetch_enable_i <= lfsr_q(10);
+ 	fregfile_disable_i <= grid_out(0);
+ 	instr_gnt_i <= grid_out(1);
+	instr_rvalid_i <= grid_out(2);
+ 	data_gnt_i <= grid_out(3);
+ 	data_rvalid_i <= grid_out(4);
+ 	apu_master_gnt_i <= grid_out(5);
+	apu_master_valid_i <= grid_out(6);
+ 	irq_i <= grid_out(7);
+ 	irq_sec_i <= grid_out(8);
+ 	debug_req_i <= grid_out(9);
+ 	fetch_enable_i <= grid_out(10);
 
 -- ***** CLOCK/RESET ***********************************
 
