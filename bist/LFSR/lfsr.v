@@ -5,29 +5,46 @@
 
 module lfsr
 #(
+    parameter N = 16,
     parameter SEED = 1
 )
 
 (
-    input wire clk, reset, en,
-    output wire [64:0] q
+    input wire clk, reset, 
+    output wire [N:0] q
 );
 
-reg [64:0] r_reg;
-wire [64:0] r_next;
+reg [N:0] r_reg;
+wire [N:0] r_next;
 wire feedback_value;
                         
 always @(posedge clk, posedge reset)
 begin 
     if (reset)
-        r_reg <= SEED;  // use this or uncomment below two line
-    else if (clk == 1'b1 && en == 1'b1)
+        r_reg <= SEED;
+    else if (clk == 1'b1)
         r_reg <= r_next;
 end
 
-//// Feedback polynomial : x^3 + x^2 + 1
-assign feedback_value = r_reg[63] ~^ r_reg[62] ~^ r_reg[13] ~^ r_reg[4] ~^ r_reg[0];
+generate
+case (N)
 
-assign r_next = {feedback_value, r_reg[64:1]};
+16: 	assign feedback_value = r_reg[16] ~^ r_reg[15] ~^ r_reg[13] ~^ r_reg[4] ~^ r_reg[0];
+
+130: 	assign feedback_value = r_reg[130] ~^ r_reg[129] ~^ r_reg[128] ~^ r_reg[125] ~^ r_reg[0];
+
+131: 	assign feedback_value = r_reg[131] ~^ r_reg[129] ~^ r_reg[128] ~^ r_reg[123] ~^ r_reg[0];
+
+
+default: 
+	begin
+		 initial
+			$display("Missing N=%d in the LFSR code, please implement it!", N);
+	end		
+endcase
+endgenerate
+
+
+assign r_next = {feedback_value, r_reg[N:1]};
 assign q = r_reg;
 endmodule
