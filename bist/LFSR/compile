@@ -1,5 +1,8 @@
 vlog lfsr.v
 vcom tb_lfsr.vhd
 
-vsim work.cfg_lfsr_testbench -t ns -voptargs=+acc -do ./simulation.do
+## use option -c if not interest in waveforms debugging
+vsim -c work.cfg_lfsr_testbench -t ns -voptargs=+acc -do ./simulation.do
+#vsim  work.cfg_lfsr_testbench -t ns -voptargs=+acc -do ./simulation.do
+rm -rf ./work transcript vsim.wlf
 
