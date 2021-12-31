@@ -235,15 +235,59 @@ begin
     dut_clock <= transport tester_clock after apply_period;
     lfsr_clock <= transport tester_clock after apply_period - clock_t1 + apply_offset;
 
-    dut_reset <= '0', '1' after clock_t1, '0' after clock_t1 + clock_t2;
+    dut_reset <= '1', '0' after clock_t1, '1' after clock_t1 + clock_t2;
     lfsr_reset <= '1', '0' after clock_t1 + clock_t2;
 
 	sc_mgmt: process
 	begin
-		test_en_i<='0';
-		wait for apply_period*2;
-		test_en_i<='1';
-		wait for apply_period*48;
+		lfsr_ld<='0'; test_en_i<='0';
+		lfsr_seed<="1010101010101010101010101010101010101010101010101010101010101001"; 
+		wait for apply_period;
+		lfsr_ld<='1';
+		wait for apply_period;
+		lfsr_ld<='0';
+		wait for apply_period;
+		for i in 0 to 512 loop 
+			test_en_i<='0';
+			wait for apply_period*2;
+			test_en_i<='1';
+			wait for apply_period*48;
+		end loop;
+		lfsr_seed<="0100100101010000100101010100101010100001001010010101001000010001"; 
+		lfsr_ld<='1';
+		wait for apply_period;
+		lfsr_ld<='0';
+		wait for apply_period;
+		for i in 0 to 512 loop 
+			test_en_i<='0';
+			wait for apply_period*2;
+			test_en_i<='1';
+			wait for apply_period*48;
+		end loop;
+		lfsr_seed<="1110100101010010111111110100101010101011110100000000000101010010"; 
+		lfsr_ld<='1';
+		wait for apply_period;
+		lfsr_ld<='0';
+		wait for apply_period;
+		for i in 0 to 512 loop 
+			test_en_i<='0';
+			wait for apply_period*2;
+			test_en_i<='1';
+			wait for apply_period*48;
+		end loop;
+		lfsr_seed<="1111111111111000000000000000111011100100111111110100100101010010"; 
+		lfsr_ld<='1';
+		wait for apply_period;
+		lfsr_ld<='0';
+		wait for apply_period;
+		for i in 0 to 512 loop 
+			test_en_i<='0';
+			wait for apply_period*2;
+			test_en_i<='1';
+			wait for apply_period*48;
+		end loop;
+
+		wait;
 	end process;
 end tb;
 
