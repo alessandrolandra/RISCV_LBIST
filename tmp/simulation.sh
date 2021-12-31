@@ -9,18 +9,22 @@ mkdir -p ../run
 cd ../run
 
 # Build the files
+
+vlib work
+
 vlog ../syn/techlib/NangateOpenCellLibrary.v
-#vcom -2008 -suppress 1141 ../bist/constants.vhd
-#vcom -2008 -suppress 1141 ../bist/COMPONENTS/mux.vhd
-#vcom -2008 -suppress 1141 ../bist/COMPONENTS/clk_divisor.vhd
-vlog ../bist/LFSR/lfsr.v
+vcom ../bist/constants.vhd
+#vcom ../bist/COMPONENTS/mux.vhd
+#vcom ../bist/COMPONENTS/clk_divisor.vhd
+vcom ../bist/LFSR/lfsr.vhd
+vcom ../bist/PHSHIFT/xorGrid.vhd
 vlog ../syn/output/riscv_core_scan64.v
-#vcom -2008 -suppress 1141 ../bist/MISR/misr.vhd
-#vcom -2008 -suppress 1141 ../bist/riscv_core_bist.vhd
-vcom -2008 -suppress 1141 ../bist/riscv_core_testbench.vhd
+#vcom ../bist/MISR/misr.vhd
+#vcom ../bist/riscv_core_bist.vhd
+vcom ../bist/riscv_core_testbench.vhd
 
 # Invoke QuestaSim shell and run the TCL script
-vsim -t 1ns -c -novopt work.riscv_testbench -do ../tmp/simulation_script.tcl -wlf riscv_core_sim.wlf
+vsim -t 1fs -c -novopt work.riscv_testbench -do ../tmp/simulation_script.tcl -wlf riscv_core_sim.wlf
 cd ..
 
 while getopts "mt" opt; do
