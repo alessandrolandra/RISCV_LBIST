@@ -5,6 +5,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use ieee.std_logic_textio.all;
+use work.constants.all;
 
 entity riscv_testbench is
 end riscv_testbench;
@@ -58,16 +59,15 @@ architecture tb of riscv_testbench is
 		);
 	end component;
 
-	component lfsr
-	generic (
-		SEED 	: std_logic_vector(64 downto 0)
-	);
-	port (
-		clk		: in std_logic;
-		reset	: in std_logic;
-		en		: in std_logic;
-		q		: out std_logic_vector (64 downto 0)
-	);
+	component LFSR
+		port( 
+			CLK : in std_logic; 
+			RESET : in std_logic; 
+			LD : in std_logic; 
+			EN : in std_logic; 
+			DIN : in std_logic_vector (0 to N_LFSR-1); 
+			PRN : out std_logic_vector (0 to N_LFSR-1); 
+			ZERO_D : out std_logic);
 	end component;
 
 	component xorGrid is
@@ -96,12 +96,14 @@ architecture tb of riscv_testbench is
 	
 	-- LFSR inputs
 	signal lfsr_en: std_logic := '1';
+	signal lfsr_ld: std_logic;
+	signal lfsr_seed: std_logic_vector(N_LFSR-1 downto 0);
 
     -- LFSR outputs
-	signal lfsr_q: std_logic_vector(64 downto 0); 
+	signal lfsr_q: std_logic_vector(N_LFSR-1 downto 0); 
 
 	-- xorGrid outputs
-	signal grid_out: std_logic_vector(64 downto 0);
+	signal grid_out: std_logic_vector(N_LFSR-1 downto 0);
 	
 	-- DUT inputs
 	signal dut_test_mode : std_logic := '0';
@@ -130,12 +132,16 @@ architecture tb of riscv_testbench is
 
 begin
 
-    mylfsr : lfsr
-		generic map (SEED => "10101010101010101010101010101010101010101010101010101010101010101")
-		port map (clk => lfsr_clock,
-            reset => lfsr_reset,
-			en => lfsr_en,
-			q => lfsr_q);
+    mylfsr : LFSR
+		port map (
+			CLK 	=>  lfsr_clock, 
+			RESET 	=>  lfsr_reset,
+			LD 		=>  lfsr_ld,
+			EN 		=>  lfsr_en,
+			DIN 	=>  lfsr_seed,
+			PRN 	=>  lfsr_q,
+			ZERO_D 	=>  open
+		);
 			
 	dut: riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800 
 		port map (
