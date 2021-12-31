@@ -12,7 +12,7 @@ cd ../run
 
 vlib work
 
-vlog ../syn/techlib/NangateOpenCellLibrary.v
+vlog +define+functional ../syn/techlib/NangateOpenCellLibrary.v
 vcom ../bist/constants.vhd
 #vcom ../bist/COMPONENTS/mux.vhd
 #vcom ../bist/COMPONENTS/clk_divisor.vhd
@@ -24,7 +24,7 @@ vlog ../syn/output/riscv_core_scan64.v
 vcom ../bist/riscv_core_testbench.vhd
 
 # Invoke QuestaSim shell and run the TCL script
-vsim -t 1fs -c -novopt work.riscv_testbench -do ../tmp/simulation_script.tcl -wlf riscv_core_sim.wlf
+vsim -t 1ps -c -novopt work.riscv_testbench -do ../tmp/simulation_script.tcl -wlf riscv_core_sim.wlf
 cd ..
 
 while getopts "mt" opt; do
