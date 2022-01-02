@@ -13,6 +13,9 @@ source ../bin/$TECH.dc_setup_scan.tcl
 read_ddc ../standalone/$TOPLEVEL.ddc
 #link
 #check_design
+
+create_logic_port -direction in test_mode_tp
+
 compile_ultra -incremental -gate_clock -scan -no_autoungroup
 insert_dft
 

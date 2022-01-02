@@ -40,6 +40,8 @@ set test_default_scan_style multiplexed_flip_flop
 ### Set pins functionality ###
 set_dft_signal  -view existing_dft -type ScanEnable -port test_en_i
 set_dft_signal  -view spec -type ScanEnable -port test_en_i
+set_dft_signal -view existing_dft -type Constant -active_state 1 -port test_mode_tp
+set_dft_signal -view spec -type TestMode -active_state 1 -port test_mode_tp
 
 set count 1
 foreach signal [get_ports instr_rdata_i] {
@@ -64,9 +66,11 @@ set_scan_element false NangateOpenCellLibrary/DLH_X1
 set_scan_configuration -chain_count $chains
 #set_scan_compression_configuration -chain_count $cmp
 
+set_dft_configuration -testability enable
+set_testability_configuration -target core_wrapper 
 
 create_test_protocol -infer_asynch -infer_clock
-dft_drc -coverage_estimate
+dft_drc
 #preview_dft
 insert_dft
 
