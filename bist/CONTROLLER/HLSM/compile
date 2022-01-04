@@ -1,0 +1,2 @@
+vcom controller.vhd
+vcom tb_controller.vhd

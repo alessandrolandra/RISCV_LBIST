@@ -1,4 +1,3 @@
-vcd dumpports /riscv_testbench/dut/* -file riscv_core_dumpports.vcd
-#run $env(SIM_TIME) ns
-run 10000000 ns
+vcd dumpports /tb_riscv_core_bist/uut_core/* -file core_dumpports.vcd
+run 10000 ns
 quit

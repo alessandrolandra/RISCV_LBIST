@@ -1,0 +1,11 @@
+vcom ./constants.vhd
+vlog ../syn/techlib/NangateOpenCellLibrary.v
+vcom ./COMPONENTS/CLK_DIVISOR/clk_divisor.vhd
+vcom ./COMPONENTS/mux.vhd
+vcom ./ROM/rom_mem.vhd
+vcom ./CONTROLLER/HLSM/controller.vhd
+vcom ./CONTROLLER/controller_top.vhd
+vlog ../syn/output/riscv_core_scan12.v
+vcom ./tb_riscv_core_bist.vhd
+
+

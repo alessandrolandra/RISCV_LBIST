@@ -1,0 +1,2 @@
+vcom clk_divisor.vhd
+vcom tb_clk_divisor.vhd

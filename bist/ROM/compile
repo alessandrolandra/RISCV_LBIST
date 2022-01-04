@@ -1,0 +1,3 @@
+vcom ../constants.vhd
+vcom ./rom_mem.vhd
+vcom ./tb_rom_mem.vhd
