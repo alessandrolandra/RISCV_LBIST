@@ -247,9 +247,9 @@ begin
 		wait for apply_period;
 		lfsr_ld<='0';
 		wait for apply_period;
-		for i in 0 to 256 loop 
+		for i in 0 to 32 loop 
 			test_en_i<='0';
-			wait for apply_period*2;
+			wait for apply_period;
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
@@ -258,9 +258,9 @@ begin
 		wait for apply_period;
 		lfsr_ld<='0';
 		wait for apply_period;
-		for i in 0 to 256 loop 
+		for i in 0 to 32 loop 
 			test_en_i<='0';
-			wait for apply_period*2;
+			wait for apply_period;
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
@@ -269,9 +269,9 @@ begin
 		wait for apply_period;
 		lfsr_ld<='0';
 		wait for apply_period;
-		for i in 0 to 256 loop 
+		for i in 0 to 32 loop 
 			test_en_i<='0';
-			wait for apply_period*2;
+			wait for apply_period;
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
@@ -280,9 +280,9 @@ begin
 		wait for apply_period;
 		lfsr_ld<='0';
 		wait for apply_period;
-		for i in 0 to 256 loop 
+		for i in 0 to 32 loop 
 			test_en_i<='0';
-			wait for apply_period*2;
+			wait for apply_period;
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
@@ -291,9 +291,9 @@ begin
 		wait for apply_period;
 		lfsr_ld<='0';
 		wait for apply_period;
-		for i in 0 to 256 loop 
+		for i in 0 to 32 loop 
 			test_en_i<='0';
-			wait for apply_period*2;
+			wait for apply_period;
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
@@ -302,9 +302,9 @@ begin
 		wait for apply_period;
 		lfsr_ld<='0';
 		wait for apply_period;
-		for i in 0 to 256 loop 
+		for i in 0 to 32 loop 
 			test_en_i<='0';
-			wait for apply_period*2;
+			wait for apply_period;
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
@@ -313,9 +313,9 @@ begin
 		wait for apply_period;
 		lfsr_ld<='0';
 		wait for apply_period;
-		for i in 0 to 256 loop 
+		for i in 0 to 32 loop 
 			test_en_i<='0';
-			wait for apply_period*2;
+			wait for apply_period;
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
@@ -324,9 +324,9 @@ begin
 		wait for apply_period;
 		lfsr_ld<='0';
 		wait for apply_period;
-		for i in 0 to 256 loop 
+		for i in 0 to 32 loop 
 			test_en_i<='0';
-			wait for apply_period*2;
+			wait for apply_period;
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
