@@ -1,5 +1,0 @@
-vlog lfsr.v
-vcom tb_lfsr.vhd
-
-vsim work.cfg_lfsr_testbench -t ns -voptargs=+acc -do ./simulation.do
-
