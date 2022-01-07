@@ -18,7 +18,7 @@ set synthetic_library dw_foundation.sldb
 source ../bin/$TECH.dc_setup_synthesis.tcl
 
 ## if you want to use clock gating
-#set_clock_gating_style -sequential_cell latch -positive_edge_logic {and} -negative_edge_logic {or} -control_point before -control_signal scan_enable
+set_clock_gating_style -sequential_cell latch -positive_edge_logic {and} -negative_edge_logic {or} -control_point before -control_signal scan_enable
 
 analyze -format sverilog  -work work ${FPUNEW}/src/fpnew_pkg.sv
 analyze -format sverilog  -work work ${RISCV_PATH}/rtl/include/apu_core_package.sv
@@ -88,7 +88,7 @@ elaborate $TOPLEVEL -work work -parameters $PARAMETERS
 
 link
 uniquify
-check_design 
+check_design > check_design.txt
 
 set_multicycle_path 2 -setup -through [get_pins id_stage_i/registers_i/riscv_register_file_i/mem_reg*/Q]
 set_multicycle_path 1 -hold  -through [get_pins id_stage_i/registers_i/riscv_register_file_i/mem_reg*/Q]
@@ -120,6 +120,7 @@ set_operating_conditions $OPER_COND
 
 #compile_ultra -gate_clock -no_autoungroup
 compile_ultra -no_autoungroup
+check_design > post_syn_check.txt
 change_names -hierarchy -rules verilog
 write -hierarchy -format verilog -output "${GATE_PATH}/${TOPLEVEL}.v"
 write -hierarchy -format ddc -output "${GATE_PATH}/${TOPLEVEL}.ddc"
@@ -127,4 +128,4 @@ write -hierarchy -format ddc -output "${GATE_PATH}/${TOPLEVEL}.ddc"
 write_sdc "${GATE_PATH}/${TOPLEVEL}.sdc"
 #write_test_protocol -output "${GATE_PATH}/${TOPLEVEL}.spf"
 write_tmax_library -path "${GATE_PATH}"
-quit
+#quit

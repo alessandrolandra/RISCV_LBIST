@@ -16,7 +16,7 @@ dc_shell -f ../bin/syn_nangate.tcl | tee ../log/syn_nangate.log
 mv command.log ../log/command_syn_nandgate.log
 rm -rf *
 #gating
-dc_shell -f ../bin/syn_gate_nangate.tcl | tee ../log/syn_gate_nangate.log
-mv command.log ../log/command_syn_gate_nangate.log
+#dc_shell -f ../bin/syn_gate_nangate.tcl | tee ../log/syn_gate_nangate.log
+#mv command.log ../log/command_syn_gate_nangate.log
 
-rm -rf *
+#rm -rf *
