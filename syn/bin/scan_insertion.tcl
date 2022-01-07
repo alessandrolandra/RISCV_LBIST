@@ -60,22 +60,22 @@ set_dft_signal -view spec -type TestMode -active_state 1 -port test_mode_tp
 #set_dft_signal -view existing_dft -type lbistEnable -port test_mode_tp
 #et_dft_signal -view spec -type lbistEnable -port test_mode_tp
 
-#set count 1
-#foreach signal [get_ports instr_rdata_i] {
-#	if {$count == $chains} { break } 
-#	set name [get_attribute $signal full_name]
-#	set_dft_signal -view spec -type ScanDataIn -port $name
-#	incr count
-#}
-#
-#set count 1
-#foreach signal [get_ports apu_master_operands_o] {
-#	if {$count == $chains} { break } 
-#	set name [get_attribute $signal full_name]
-#	set_dft_signal -view spec -type ScanDataOut -port $name
-#	set_scan_path "chain$count" -scan_data_in [get_attribute [lindex [get_ports instr_rdata_i] $count] full_name] -scan_data_out [get_attribute [lindex [get_ports instr_rdata_i] $count]]
-#	incr count
-#}
+set count 1
+foreach signal [get_ports instr_rdata_i] {
+	if {$count == $chains} { break } 
+	set name [get_attribute $signal full_name]
+	set_dft_signal -view spec -type ScanDataIn -port $name
+	incr count
+}
+
+set count 1
+foreach signal [get_ports apu_master_operands_o] {
+	if {$count == $chains} { break } 
+	set name [get_attribute $signal full_name]
+	set_dft_signal -view spec -type ScanDataOut -port $name
+	set_scan_path "chain$count" -scan_data_in [get_attribute [lindex [get_ports instr_rdata_i] $count] full_name] -scan_data_out [get_attribute [lindex [get_ports instr_rdata_i] $count]]
+	incr count
+}
 
 	
 
