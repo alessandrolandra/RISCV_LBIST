@@ -695,7 +695,7 @@ begin
 	sc_mgmt: process
 	begin
 		lfsr_ld<='0'; test_en_i<='1'; dut_reset<='0'; lfsr_reset <='1';
-		lfsr_seed<=x"01234567"; 
+		lfsr_seed<="1010101010101010101010101010101010101010101010101010101010101001"; 
 		wait for apply_period*2;
 		dut_reset<='1'; lfsr_reset <='0';
 		lfsr_ld<='1';
@@ -708,7 +708,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"89ABCDEF"; 
+		lfsr_seed<="0100100101010000100101010100101010100001001010010101001000010001"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
@@ -719,7 +719,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"FEDCBA98"; 
+		lfsr_seed<="1110100101010010111111110100101010101011110100000000000101010010"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
@@ -730,7 +730,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"76543210"; 
+		lfsr_seed<="1111111111111000000000000000111011100100111111110100100101010010"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
@@ -741,7 +741,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"CAFFEBAD"; 
+		lfsr_seed<="0010010101001010100101111110101010100101010010000000101010101010"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
@@ -752,7 +752,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"DABEFFAC"; 
+		lfsr_seed<="0101010010000000000001010101111111010010101010101010100101010101"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
@@ -763,7 +763,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<="01713184"; 
+		lfsr_seed<="1001010100000010101010100000101010010101010101010101010001010100"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
@@ -774,7 +774,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"11CA2201"; 
+		lfsr_seed<="0010101111110100101010101010010001001010101010101000101010101010"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
@@ -785,7 +785,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"88889999"; 
+		lfsr_seed<="1111101010101100101010101010101010100101010101000000000000011101"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
@@ -796,7 +796,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"AAAABBBB"; 
+		lfsr_seed<="0000000000001001010101111111010000000000010100100101000000110101"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
@@ -807,7 +807,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"CCCCDDDD"; 
+		lfsr_seed<="0010101010101010100010010000101111101001010000010100010000010010"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
@@ -818,7 +818,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"DEEEEFFF"; 
+		lfsr_seed<="0101010101010101001000111111111111111111111111110000000000111111"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
