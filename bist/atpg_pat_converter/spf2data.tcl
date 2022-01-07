@@ -100,6 +100,7 @@ while { $EOF >=0 && $DONE == 0 } {
 			}
 
 			set tmp_p_list [transpose_list $tmp_p_list $max_scan_pat_size]
+			set tmp_p_list [lreverse $tmp_p_list]
 			foreach pat $tmp_p_list {
 				puts $fd_out_t $pat
 			}
