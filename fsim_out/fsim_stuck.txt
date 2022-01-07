@@ -2,19 +2,19 @@
  -----------------------------------------------
  fault class                     code   #faults
  ------------------------------  ----  ---------
- Detected                         DT     139399
- Possibly detected                PT       2750
- Undetectable                     UD        166
+ Detected                         DT     215627
+ Possibly detected                PT          4
+ Undetectable                     UD        321
  ATPG untestable                  AU          0
- Not detected                     ND     146419
+ Not detected                     ND      89656
  -----------------------------------------------
- total faults                            288734
- test coverage                            48.78%
- fault coverage                           48.76%
+ total faults                            305608
+ test coverage                            70.63%
+ fault coverage                           70.56%
  -----------------------------------------------
             Pattern Summary Report
  -----------------------------------------------
  #internal patterns                           0
- #external patterns (run/riscv_core_dumpports.vcd)  12550
-     #full_sequential patterns            12550
+ #external patterns (run/riscv_core_dumpports.vcd)  38279
+     #full_sequential patterns            38279
  -----------------------------------------------
