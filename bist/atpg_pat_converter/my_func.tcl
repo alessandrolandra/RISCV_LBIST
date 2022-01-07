@@ -5,7 +5,7 @@ proc strlen s {
 }
 
 
-# @Given a number of patterns, returns the transpose on if
+# @Brief a number of patterns, returns the transpose on if
 proc transpose_list {pat_list max_pat_length} {
 	set count 0
 	set t_list [list]
@@ -38,3 +38,19 @@ proc transpose_list {pat_list max_pat_length} {
 	return $t_list 
 
 }
+
+# @Brief given a string, reverse it
+
+proc string_reverse str {
+	set str_rev -1
+	set len [expr ([strlen $str] -1)]
+	for {set i $len} {$i >= 0} {set i [expr ($i -1)]} {
+		set t_p [string index $str $i]
+		if { $str_rev == -1 } {
+			set str_rev $t_p
+		} else {
+			set str_rev ${str_rev}$t_p
+		}
+	}
+	return $str_rev;
+} 

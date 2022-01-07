@@ -1,0 +1,7 @@
+vcom ../constants.vhd
+vcom ../COMPONENTS/CLK_DIVISOR/clk_divisor.vhd
+vcom ../COMPONENTS/mux.vhd
+vcom ../ROM/rom_mem.vhd
+vcom ./HLSM/controller.vhd
+vcom ./controller_top.vhd
+vcom ./tb_controller_top.vhd

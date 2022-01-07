@@ -5,8 +5,8 @@ Header {
     Title 
     "Minimal STIL for design `riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800'"
     ;
-    Date "Tue Dec 28 17:48:25 2021";
-    Source "DFT Compiler O-2018.06-SP4";
+    Date "Fri Jan  7 10:50:50 2022";
+    Source "DFT Compiler R-2020.09-SP2";
 }
 Signals {
     "apu_master_flags_i[0]" In;
@@ -505,57 +505,13 @@ Signals {
     "test_mode" In;
 }
 SignalGroups {
-    "_si" = '"instr_rdata_i[100]" + "instr_rdata_i[101]" + "instr_rdata_i[102]" 
-    + "instr_rdata_i[103]" + "instr_rdata_i[104]" + "instr_rdata_i[105]" + 
-    "instr_rdata_i[106]" + "instr_rdata_i[107]" + "instr_rdata_i[108]" + 
-    "instr_rdata_i[109]" + "instr_rdata_i[110]" + "instr_rdata_i[111]" + 
-    "instr_rdata_i[112]" + "instr_rdata_i[113]" + "instr_rdata_i[114]" + 
-    "instr_rdata_i[115]" + "instr_rdata_i[116]" + "instr_rdata_i[117]" + 
-    "instr_rdata_i[118]" + "instr_rdata_i[119]" + "instr_rdata_i[120]" + 
-    "instr_rdata_i[121]" + "instr_rdata_i[122]" + "instr_rdata_i[123]" + 
-    "instr_rdata_i[124]" + "instr_rdata_i[125]" + "instr_rdata_i[126]" + 
-    "instr_rdata_i[127]" + "instr_rdata_i[64]" + "instr_rdata_i[65]" + 
-    "instr_rdata_i[66]" + "instr_rdata_i[67]" + "instr_rdata_i[68]" + 
-    "instr_rdata_i[69]" + "instr_rdata_i[70]" + "instr_rdata_i[71]" + 
-    "instr_rdata_i[72]" + "instr_rdata_i[73]" + "instr_rdata_i[74]" + 
-    "instr_rdata_i[75]" + "instr_rdata_i[76]" + "instr_rdata_i[77]" + 
-    "instr_rdata_i[78]" + "instr_rdata_i[79]" + "instr_rdata_i[80]" + 
-    "instr_rdata_i[81]" + "instr_rdata_i[82]" + "instr_rdata_i[83]" + 
-    "instr_rdata_i[84]" + "instr_rdata_i[85]" + "instr_rdata_i[86]" + 
-    "instr_rdata_i[87]" + "instr_rdata_i[88]" + "instr_rdata_i[89]" + 
-    "instr_rdata_i[90]" + "instr_rdata_i[91]" + "instr_rdata_i[92]" + 
-    "instr_rdata_i[93]" + "instr_rdata_i[94]" + "instr_rdata_i[95]" + 
-    "instr_rdata_i[96]" + "instr_rdata_i[97]" + "instr_rdata_i[98]" + 
-    "instr_rdata_i[99]"' {
+    "_si" = '"instr_rdata_i[116]" + "instr_rdata_i[117]" + "instr_rdata_i[118]" 
+    + "instr_rdata_i[119]" + "instr_rdata_i[120]" + "instr_rdata_i[121]" + 
+    "instr_rdata_i[122]" + "instr_rdata_i[123]" + "instr_rdata_i[124]" + 
+    "instr_rdata_i[125]" + "instr_rdata_i[126]" + "instr_rdata_i[127]"' {
         ScanIn;
     }
-    "_so" = '"apu_master_operands_o[32]" + "apu_master_operands_o[33]" + 
-    "apu_master_operands_o[34]" + "apu_master_operands_o[35]" + 
-    "apu_master_operands_o[36]" + "apu_master_operands_o[37]" + 
-    "apu_master_operands_o[38]" + "apu_master_operands_o[39]" + 
-    "apu_master_operands_o[40]" + "apu_master_operands_o[41]" + 
-    "apu_master_operands_o[42]" + "apu_master_operands_o[43]" + 
-    "apu_master_operands_o[44]" + "apu_master_operands_o[45]" + 
-    "apu_master_operands_o[46]" + "apu_master_operands_o[47]" + 
-    "apu_master_operands_o[48]" + "apu_master_operands_o[49]" + 
-    "apu_master_operands_o[50]" + "apu_master_operands_o[51]" + 
-    "apu_master_operands_o[52]" + "apu_master_operands_o[53]" + 
-    "apu_master_operands_o[54]" + "apu_master_operands_o[55]" + 
-    "apu_master_operands_o[56]" + "apu_master_operands_o[57]" + 
-    "apu_master_operands_o[58]" + "apu_master_operands_o[59]" + 
-    "apu_master_operands_o[60]" + "apu_master_operands_o[61]" + 
-    "apu_master_operands_o[62]" + "apu_master_operands_o[63]" + 
-    "apu_master_operands_o[64]" + "apu_master_operands_o[65]" + 
-    "apu_master_operands_o[66]" + "apu_master_operands_o[67]" + 
-    "apu_master_operands_o[68]" + "apu_master_operands_o[69]" + 
-    "apu_master_operands_o[70]" + "apu_master_operands_o[71]" + 
-    "apu_master_operands_o[72]" + "apu_master_operands_o[73]" + 
-    "apu_master_operands_o[74]" + "apu_master_operands_o[75]" + 
-    "apu_master_operands_o[76]" + "apu_master_operands_o[77]" + 
-    "apu_master_operands_o[78]" + "apu_master_operands_o[79]" + 
-    "apu_master_operands_o[80]" + "apu_master_operands_o[81]" + 
-    "apu_master_operands_o[82]" + "apu_master_operands_o[83]" + 
-    "apu_master_operands_o[84]" + "apu_master_operands_o[85]" + 
+    "_so" = '"apu_master_operands_o[84]" + "apu_master_operands_o[85]" + 
     "apu_master_operands_o[86]" + "apu_master_operands_o[87]" + 
     "apu_master_operands_o[88]" + "apu_master_operands_o[89]" + 
     "apu_master_operands_o[90]" + "apu_master_operands_o[91]" + 
@@ -928,450 +884,86 @@ SignalGroups {
 }
 ScanStructures {
     ScanChain "1" {
-        ScanLength 48;
+        ScanLength 253;
         ScanIn "instr_rdata_i[127]";
         ScanOut "apu_master_operands_o[95]";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
     ScanChain "2" {
-        ScanLength 48;
+        ScanLength 253;
         ScanIn "instr_rdata_i[126]";
         ScanOut "apu_master_operands_o[94]";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
     ScanChain "3" {
-        ScanLength 48;
+        ScanLength 253;
         ScanIn "instr_rdata_i[125]";
         ScanOut "apu_master_operands_o[93]";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
     ScanChain "4" {
-        ScanLength 48;
+        ScanLength 252;
         ScanIn "instr_rdata_i[124]";
         ScanOut "apu_master_operands_o[92]";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
     ScanChain "5" {
-        ScanLength 48;
+        ScanLength 252;
         ScanIn "instr_rdata_i[123]";
         ScanOut "apu_master_operands_o[91]";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
     ScanChain "6" {
-        ScanLength 48;
+        ScanLength 252;
         ScanIn "instr_rdata_i[122]";
         ScanOut "apu_master_operands_o[90]";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
     ScanChain "7" {
-        ScanLength 48;
+        ScanLength 252;
         ScanIn "instr_rdata_i[121]";
         ScanOut "apu_master_operands_o[89]";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
     ScanChain "8" {
-        ScanLength 48;
+        ScanLength 252;
         ScanIn "instr_rdata_i[120]";
         ScanOut "apu_master_operands_o[88]";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
     ScanChain "9" {
-        ScanLength 48;
+        ScanLength 252;
         ScanIn "instr_rdata_i[119]";
         ScanOut "apu_master_operands_o[87]";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
     ScanChain "10" {
-        ScanLength 48;
+        ScanLength 252;
         ScanIn "instr_rdata_i[118]";
         ScanOut "apu_master_operands_o[86]";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
     ScanChain "11" {
-        ScanLength 48;
+        ScanLength 252;
         ScanIn "instr_rdata_i[117]";
         ScanOut "apu_master_operands_o[85]";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
     ScanChain "12" {
-        ScanLength 48;
+        ScanLength 252;
         ScanIn "instr_rdata_i[116]";
         ScanOut "apu_master_operands_o[84]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "13" {
-        ScanLength 48;
-        ScanIn "instr_rdata_i[115]";
-        ScanOut "apu_master_operands_o[83]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "14" {
-        ScanLength 48;
-        ScanIn "instr_rdata_i[114]";
-        ScanOut "apu_master_operands_o[82]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "15" {
-        ScanLength 48;
-        ScanIn "instr_rdata_i[113]";
-        ScanOut "apu_master_operands_o[81]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "16" {
-        ScanLength 48;
-        ScanIn "instr_rdata_i[112]";
-        ScanOut "apu_master_operands_o[80]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "17" {
-        ScanLength 48;
-        ScanIn "instr_rdata_i[111]";
-        ScanOut "apu_master_operands_o[79]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "18" {
-        ScanLength 48;
-        ScanIn "instr_rdata_i[110]";
-        ScanOut "apu_master_operands_o[78]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "19" {
-        ScanLength 48;
-        ScanIn "instr_rdata_i[109]";
-        ScanOut "apu_master_operands_o[77]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "20" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[108]";
-        ScanOut "apu_master_operands_o[76]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "21" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[107]";
-        ScanOut "apu_master_operands_o[75]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "22" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[106]";
-        ScanOut "apu_master_operands_o[74]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "23" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[105]";
-        ScanOut "apu_master_operands_o[73]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "24" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[104]";
-        ScanOut "apu_master_operands_o[72]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "25" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[103]";
-        ScanOut "apu_master_operands_o[71]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "26" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[102]";
-        ScanOut "apu_master_operands_o[70]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "27" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[101]";
-        ScanOut "apu_master_operands_o[69]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "28" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[100]";
-        ScanOut "apu_master_operands_o[68]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "29" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[99]";
-        ScanOut "apu_master_operands_o[67]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "30" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[98]";
-        ScanOut "apu_master_operands_o[66]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "31" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[97]";
-        ScanOut "apu_master_operands_o[65]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "32" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[96]";
-        ScanOut "apu_master_operands_o[64]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "33" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[95]";
-        ScanOut "apu_master_operands_o[63]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "34" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[94]";
-        ScanOut "apu_master_operands_o[62]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "35" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[93]";
-        ScanOut "apu_master_operands_o[61]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "36" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[92]";
-        ScanOut "apu_master_operands_o[60]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "37" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[91]";
-        ScanOut "apu_master_operands_o[59]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "38" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[90]";
-        ScanOut "apu_master_operands_o[58]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "39" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[89]";
-        ScanOut "apu_master_operands_o[57]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "40" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[88]";
-        ScanOut "apu_master_operands_o[56]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "41" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[87]";
-        ScanOut "apu_master_operands_o[55]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "42" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[86]";
-        ScanOut "apu_master_operands_o[54]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "43" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[85]";
-        ScanOut "apu_master_operands_o[53]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "44" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[84]";
-        ScanOut "apu_master_operands_o[52]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "45" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[83]";
-        ScanOut "apu_master_operands_o[51]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "46" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[82]";
-        ScanOut "apu_master_operands_o[50]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "47" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[81]";
-        ScanOut "apu_master_operands_o[49]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "48" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[80]";
-        ScanOut "apu_master_operands_o[48]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "49" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[79]";
-        ScanOut "apu_master_operands_o[47]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "50" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[78]";
-        ScanOut "apu_master_operands_o[46]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "51" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[77]";
-        ScanOut "apu_master_operands_o[45]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "52" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[76]";
-        ScanOut "apu_master_operands_o[44]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "53" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[75]";
-        ScanOut "apu_master_operands_o[43]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "54" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[74]";
-        ScanOut "apu_master_operands_o[42]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "55" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[73]";
-        ScanOut "apu_master_operands_o[41]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "56" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[72]";
-        ScanOut "apu_master_operands_o[40]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "57" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[71]";
-        ScanOut "apu_master_operands_o[39]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "58" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[70]";
-        ScanOut "apu_master_operands_o[38]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "59" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[69]";
-        ScanOut "apu_master_operands_o[37]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "60" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[68]";
-        ScanOut "apu_master_operands_o[36]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "61" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[67]";
-        ScanOut "apu_master_operands_o[35]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "62" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[66]";
-        ScanOut "apu_master_operands_o[34]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "63" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[65]";
-        ScanOut "apu_master_operands_o[33]";
-        ScanEnable "test_en_i";
-        ScanMasterClock "clk_i";
-    }
-    ScanChain "64" {
-        ScanLength 47;
-        ScanIn "instr_rdata_i[64]";
-        ScanOut "apu_master_operands_o[32]";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
@@ -1762,8 +1354,8 @@ Procedures {
         Shift {
             V {
                 "_clk" = P1;
-                "_si" = \r64 #;
-                "_so" = \r64 #;
+                "_si" = \r12 #;
+                "_so" = \r12 #;
             }
         }
     }

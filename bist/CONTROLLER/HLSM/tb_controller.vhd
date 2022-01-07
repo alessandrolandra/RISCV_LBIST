@@ -62,9 +62,9 @@ begin
 
 	process
 	begin
-		rst<='1';
+		rst<='0';
 		wait for 2 ns;
-		rst<= '0';
+		rst<= '1';
 		test_start<='1';
 		wait for 1 ns;
 		wait;

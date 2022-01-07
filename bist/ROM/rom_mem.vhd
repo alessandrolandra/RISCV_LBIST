@@ -32,16 +32,16 @@ begin
 	variable i: integer:=0;
 	variable ret: std_logic_Vector(W_SIZE-1 downto 0);
 	begin
-		if (RST = '1') then
+		if (RST = '0') then
 			--READ FROM FILE
 			file_open(VECTOR_SAMPLE, PATT_PATH,  read_mode);
 			while not endfile(VECTOR_SAMPLE) loop
             	readline(VECTOR_SAMPLE, v_ILINE);
-            	for i in 0 to (v_ILINE'length-1) loop
-					case v_ILINE(i+1) is
-						when '0'=> ret(W_SIZE-1-i):='0';
-						when '1'=> ret(W_SIZE-1-i):='1';
-						when others=> ret(W_SIZE-1-i):='0';
+            	for j in 0 to (v_ILINE'length-1) loop
+					case v_ILINE(j+1) is
+						when '0'=> ret(W_SIZE-1-j):='0';
+						when '1'=> ret(W_SIZE-1-j):='1';
+						when others=> ret(W_SIZE-1-j):='0';
 					end case;
 				end loop;
             	MEM(i)<=ret;

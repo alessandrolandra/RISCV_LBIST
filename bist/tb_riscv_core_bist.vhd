@@ -280,10 +280,10 @@ begin
 	--RESET and TEST_START
 	process
 	begin
-		core_reset<='1';
+		core_reset<='0';
 		test_start<='1';
 		wait for 3 ns;
-		core_reset<='0';
+		core_reset<='1';
 		wait;
 	end process;
 

@@ -125,10 +125,10 @@ architecture struct of controller_top is
 	
 begin
 
-	--activate clock and reset only if in test-mode
+	--activate clock only if in test-mode
 	--so if TEST_START=0 (core is in normal mode) the entire bist is deactivated (no clock, no reset)
 	core_clk_g<=CORE_CLK and TEST_START;
-	test_rst_g<=CORE_RST and TEST_START;
+	test_rst_g<='0' when ( ((not CORE_RST) and TEST_START) = '1' ) else '1';
     
 	clock_divisor_uut: clk_divisor
 	generic map(
@@ -193,7 +193,7 @@ begin
 	patterns1_extended(71)<=test_clk_g;
 	patterns1_extended(70 downto 0)<=(others=>'0');
 	--extension on 262 bits for capture patterns
-	patterns2_extended(261 downto 191)<=dout_2(261 downto 191);
+	patterns2_extended(261 downto 260)<=dout_2(261 downto 260);
 	patterns2_extended(259)<=test_rst_g;
 	patterns2_extended(258 downto 72)<=dout_2(258 downto 72);
 	patterns2_extended(71)<=test_clk_g;

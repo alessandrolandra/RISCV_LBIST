@@ -74,9 +74,9 @@ begin
 
 	process
 	begin
-		c_rst<='1';
-		wait for 2 ns;
 		c_rst<='0';
+		wait for 2 ns;
+		c_rst<='1';
 		wait;
 	end process;
 

@@ -10,9 +10,9 @@ set riscvNetlist "../standalone/riscv_core_gating.v"
 # original netlist's entity
 set entity "riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800"
 # scan chain count
-set chains 64
+set chains 12
 # scan compressed chains count (cmp cannot be < $chains)
-set cmp [expr $chains*5]
+set cmp [expr $chains*40]
 # output netlist name
 set coreNetOut "riscv_core_scan$chains.v"
 # output stil file name

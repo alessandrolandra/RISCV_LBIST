@@ -25,7 +25,7 @@ architecture tb of testbench is
 	end component;
 
 	constant W_S: integer:=12;
-	constant W_A: integer:=4;
+	constant W_A: integer:=6;
 	constant period: time:=10 ns;
 
 	signal address: std_logic_vector(W_A-1 downto 0);
@@ -39,7 +39,7 @@ begin
 	uut: ROM 
 	generic map (
 		W_SIZE=>12,
-		W_ADDR_SIZE=>4,
+		W_ADDR_SIZE=>6,
 		M_SIZE=>40,
 		PATT_PATH=>PATT_PATH_LOAD
 	)
@@ -55,13 +55,13 @@ begin
     variable v_TERM: integer;
 	variable data_f: std_logic_vector(W_S-1 downto 0);
 	begin
-		reset<='1';
+		reset<='0';
 		enable<='0';
 		address<=(others=>'Z');
 		wait for period;
 		wait for period;
 		wait for period;
-		reset<='0';
+		reset<='1';
 		wait for period;
 		wait for period;
 		enable<='1';
