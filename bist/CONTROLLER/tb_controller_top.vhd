@@ -51,7 +51,7 @@ begin
 		W_SIZE_CAP			=>262,
 		W_ADDR_SIZE_CAP		=>3,
 		M_SIZE_CAP			=>5,
-		CORE_FREQ			=>100000000,
+		CORE_FREQ				=>100000000,
 		STUCK_AT_FREQ		=>10000000
     )
     port map (

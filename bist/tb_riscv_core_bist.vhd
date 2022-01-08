@@ -141,7 +141,7 @@ begin
 		W_ADDR_SIZE_CAP		=>3,
 		M_SIZE_CAP			=>5,
 		CORE_FREQ			=>100000000,
-		STUCK_AT_FREQ		=>10000000
+		STUCK_AT_FREQ		=>20000000
     )
     port map (
         CORE_CLK=>core_clock,
