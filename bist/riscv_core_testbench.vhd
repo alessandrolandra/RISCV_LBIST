@@ -243,7 +243,7 @@ begin
 	sc_mgmt: process
 	begin
 		lfsr_ld<='0'; test_en_i<='1'; dut_reset<='0'; lfsr_reset <='1';
-		lfsr_seed<=x"01234567"; 
+		lfsr_seed<=x"0123456701234567"; 
 		wait for apply_period*2;
 		dut_reset<='1'; lfsr_reset <='0';
 		lfsr_ld<='1';
@@ -256,7 +256,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"89ABCDEF"; 
+		lfsr_seed<=x"89ABCDEF89ABCDEF"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
@@ -267,7 +267,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"FEDCBA98"; 
+		lfsr_seed<=x"FEDCBA98FEDCBA98"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
@@ -278,7 +278,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"76543210"; 
+		lfsr_seed<=x"7654321076543210"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
@@ -289,7 +289,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"CAFFEBAD"; 
+		lfsr_seed<=x"CAFFEBADCAFFEBAD"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
@@ -300,7 +300,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"DABEFFAC"; 
+		lfsr_seed<=x"DABEFFACDABEFFAC"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
@@ -311,7 +311,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<="01713184"; 
+		lfsr_seed<=x"0171318401713184"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
@@ -322,7 +322,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"11CA2201"; 
+		lfsr_seed<=x"11CA220111CA2201"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
@@ -333,7 +333,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"88889999"; 
+		lfsr_seed<=x"8888999988889999"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
@@ -344,7 +344,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"AAAABBBB"; 
+		lfsr_seed<=x"AAAABBBBAAAABBBB"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
@@ -355,7 +355,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"CCCCDDDD"; 
+		lfsr_seed<=x"CCCCDDDDCCCCDDDD"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
@@ -366,7 +366,7 @@ begin
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"DEEEEFFF"; 
+		lfsr_seed<=x"DEEEEFFFDEEEEFFF"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
