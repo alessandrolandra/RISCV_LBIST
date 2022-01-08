@@ -25,7 +25,7 @@ begin
 
 	process(rst,cnt)
 	begin
-		if rst='1' then
+		if rst='0' then
 			reset<='1';
 			q_s<='0';
 		elsif cnt=SCALING_FACTOR then
