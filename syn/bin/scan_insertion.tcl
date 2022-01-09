@@ -63,7 +63,7 @@ set_dft_signal -view spec -type TestMode -active_state 1 -port test_mode_tp
 set sdis [list]
 set count 1
 foreach_in_collection signal [get_ports instr_rdata_i] {
-	if {$count == $chains} { break } 
+	if {$count == $chains+1} { break } 
 	set name [get_attribute $signal full_name]
 	set_dft_signal -view spec -type ScanDataIn -port $name
 	incr count
@@ -72,7 +72,7 @@ foreach_in_collection signal [get_ports instr_rdata_i] {
 
 set count 1
 foreach_in_collection signal [get_ports apu_master_operands_o] {
-	if {$count == $chains} { break } 
+	if {$count == $chains+1} { break } 
 	set name [get_attribute $signal full_name]
 	set_dft_signal -view spec -type ScanDataOut -port $name
 	set_scan_path "chain$count" -scan_data_in [lindex $sdis $count-1] -scan_data_out $name
