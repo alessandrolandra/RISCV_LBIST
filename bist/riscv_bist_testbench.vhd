@@ -1,4 +1,3 @@
-
 library std;
 use std.textio.all;
 library ieee;
@@ -6,18 +5,18 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use ieee.std_logic_textio.all;
 
-entity riscv_testbench is
-end riscv_testbench;
+entity riscv_bist_testbench is
+end riscv_bist_testbench;
 
 
-architecture tb of riscv_testbench is
+architecture tb of riscv_bist_testbench is
     
 	component riscv_core_bist
-		generic (SEED: std_logic_vector(64 downto 0) := "10101010101010101010101010101010101010101010101010101010101010101");
 		port (
 			clk						: in std_logic;
 			rst						: in std_logic;
 			test_mode				: in std_logic;
+			
 			boot_addr_i 			: in std_logic_vector (31 downto 0);
 			core_id_i				: in std_logic_vector (3 downto 0);
 			cluster_id_i			: in std_logic_vector (5 downto 0);
@@ -27,9 +26,7 @@ architecture tb of riscv_testbench is
 			apu_master_flags_i		: in std_logic_vector (4 downto 0);
 			irq_id_i				: in std_logic_vector (4 downto 0);
 			ext_perf_counters_i		: in std_logic_vector (1 to 2);
-
 			clock_en_i				: in std_logic;
-			test_en_i				: in std_logic;
 			fregfile_disable_i		: in std_logic;
 			instr_gnt_i				: in std_logic;
 			instr_rvalid_i			: in std_logic;
@@ -66,20 +63,14 @@ architecture tb of riscv_testbench is
 	constant clock_t1      : time := 50 ns;
 	constant clock_t2      : time := 30 ns;
 	constant clock_t3      : time := 20 ns;
-	constant apply_offset  : time := 0 ns;
-	constant apply_period  : time := 100 ns;
-	constant strobe_offset : time := 40 ns;
-	constant strobe_period : time := 100 ns;
-
-
-	signal tester_clock : std_logic := '0';
-
-    signal dut_clock : std_logic := '0';
-    signal dut_reset : std_logic;
+	constant clk_period  : time := 100 ns;
+	
+	signal clk : std_logic := '0';
+	signal rst : std_logic;
 	
 	-- DUT inputs
-	signal dut_test_mode : std_logic := '0';
-	signal clock_en_i,test_en_i,fregfile_disable_i,instr_gnt_i,instr_rvalid_i,data_gnt_i,data_rvalid_i,apu_master_gnt_i,apu_master_valid_i,irq_i,irq_sec_i,debug_req_i,fetch_enable_i: std_logic;
+	signal test_mode: std_logic;
+	signal clock_en_i,fregfile_disable_i,instr_gnt_i,instr_rvalid_i,data_gnt_i,data_rvalid_i,apu_master_gnt_i,apu_master_valid_i,irq_i,irq_sec_i,debug_req_i,fetch_enable_i: std_logic;
 	signal boot_addr_i  			: std_logic_vector (31 downto 0);
 	signal core_id_i				: std_logic_vector (3 downto 0);
 	signal cluster_id_i				: std_logic_vector (5 downto 0);
@@ -90,7 +81,7 @@ architecture tb of riscv_testbench is
 	signal irq_id_i					: std_logic_vector (4 downto 0);
 	signal ext_perf_counters_i		: std_logic_vector (1 to 2);
 
-    -- DUT outputs
+    	-- DUT outputs
 	signal instr_req_o,data_req_o,data_we_o,apu_master_req_o,apu_master_ready_o,irq_ack_o,sec_lvl_o,core_busy_o : std_logic;
 	signal instr_addr_o				: std_logic_vector (31 downto 0);
 	signal data_be_o				: std_logic_vector (3 downto 0);
@@ -102,19 +93,18 @@ architecture tb of riscv_testbench is
 	signal apu_master_flags_o 		: std_logic_vector (14 downto 0);
 	signal irq_id_o					: std_logic_vector (4 downto 0);
 	
-    signal dut_go_nogo : std_logic;
+    signal go_nogo : std_logic;
 	
-	constant wait_time: time := strobe_period*300;
+	constant wait_time: time := clk_period*30000;
 
 begin
 
     dut : riscv_core_bist
-		generic map (SEED => "10101010101010101010101010101010101010101010101010101010101010101")
-		port map (clk => dut_clock,
-            rst => dut_reset,
-			test_mode => dut_test_mode,
+		port map (clk => clk,
+            rst => rst,
+			test_mode => test_mode,
+			
 			clock_en_i => clock_en_i,
-			test_en_i => test_en_i,
 			fregfile_disable_i => fregfile_disable_i,
 			instr_gnt_i => instr_gnt_i,
 			instr_rvalid_i => instr_rvalid_i,
@@ -152,28 +142,23 @@ begin
 			apu_master_type_o => apu_master_type_o,
 			apu_master_flags_o => apu_master_flags_o,
 			irq_id_o =>	irq_id_o,
-            go_nogo => dut_go_nogo);
+			
+            go_nogo => go_nogo);
 
 -- ***** CLOCK/RESET ***********************************
 
 	clock_generation : process
 	begin
 		loop
-			wait for clock_t1; tester_clock <= '1';
-			wait for clock_t2; tester_clock <= '0';
+			wait for clock_t1; clk <= '1';
+			wait for clock_t2; clk <= '0';
 			wait for clock_t3;
 		end loop;
 	end process;
 
--- dut  ___/----\____ ___/----\____ ___/----\____ ___
--- lfsr /----\____ ___/----\____ ___/----\____ ___/--
-
-    dut_clock <= transport tester_clock after apply_period;
-    --bist_clock <= transport tester_clock after apply_period - clock_t1 + apply_offset;
-
-    dut_reset <= '0', '1' after clock_t1, '0' after clock_t1 + clock_t2;
-    --bist_reset <= '1', '0' after clock_t1 + clock_t2;
-
+	rst <= '0', '1' after clock_t1, '0' after clock_t1 + clock_t2;
+	test_mode <= '0', '1' after clock_t1 + clock_t2;
+	
 	checker: process
 	begin
 		wait for wait_time;
@@ -183,7 +168,7 @@ begin
 
 end tb;
 
-configuration cfg_riscv_testbench of riscv_testbench is
+configuration cfg_riscv_bist_testbench of riscv_bist_testbench is
     for tb
     end for;
-end cfg_riscv_testbench;
+end cfg_riscv_bist_testbench;
