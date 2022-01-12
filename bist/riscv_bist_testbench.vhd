@@ -160,7 +160,7 @@ begin
 	test_mode <= '0', '1' after clock_t1 + clock_t2;
 	
 	checker: process
-	begin
+	begin		
 		wait for wait_time;
 		assert dut_go_nogo = '1' report "go_nogo wrong value";
 		wait;

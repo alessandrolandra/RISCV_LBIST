@@ -16,8 +16,13 @@ module riscv_wrapper
       parameter RAM_ADDR_WIDTH = 20,
       parameter BOOT_ADDR = 'h80,
       parameter PULP_SECURE = 1)
-    (input logic         clk_i,
-     input logic         rst_ni,
+    (
+	 //input logic         clk_i,
+     //input logic         rst_ni,
+	 input logic         clk,
+	 input logic         rst,
+	 input logic         test_mode,
+	 output logic        go_nogo,
 
      input logic         fetch_enable_i,
      output logic        tests_passed_o,
@@ -63,9 +68,13 @@ module riscv_wrapper
           .PULP_SECURE(PULP_SECURE),
           .FPU(0))
     riscv_core_i
-        (
-         .clk_i                  ( clk_i                 ),
-         .rst_ni                 ( rst_ni                ),
+        (		
+         //.clk_i                  ( clk_i                 ),
+         //.rst_ni                 ( rst_ni                ),
+		 .clk					 ( clk                   ),
+		 .rst					 ( rst				     ),
+		 .test_mode				 ( test_mode			 ),
+		 .go_nogo				 ( go_nogo				 ),
 
          .clock_en_i             ( '1                    ),
          .test_en_i              ( '0                    ),
@@ -115,6 +124,7 @@ module riscv_wrapper
 
          .ext_perf_counters_i    (                       ),
          .fregfile_disable_i     ( 1'b0                  ));
+		 
 
     // this handles read to RAM and memory mapped pseudo peripherals
     mm_ram

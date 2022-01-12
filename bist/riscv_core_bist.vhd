@@ -130,13 +130,15 @@ architecture rtl of riscv_core_bist is
 		generic (
 			GOLDEN_SIGNATURE : std_logic_vector(N_MISR-1 downto 0)
 		);
-		port (
+		port (		
 			clk				: in std_logic;
 			rst				: in std_logic;
 			TEST 			: in std_logic;
+			LFFSR_SEED		: in std_logic_vector(N_MISR-1 downto 0);
 			MISR_OUT		: in std_logic_vector(N_MISR-1 downto 0);
-			GO				: out std_logic;
-			TPG_ODE_MUX_en	: out std_logic
+			LFSR_LD			: out std_logic,
+			TEST_SCAN_EN	: out std_logic,
+			GO				: out std_logic
 		);
 	end component;
 	
@@ -156,8 +158,7 @@ architecture rtl of riscv_core_bist is
 	-- misr 
 	component misr
 		generic (
-			N 		: integer := 64;
-			SEED 	: std_logic_vector(N_MISR downto 0)
+			N 		: integer := 64	
 		);
 		port (
 			clk			: in std_logic;
@@ -179,11 +180,14 @@ architecture rtl of riscv_core_bist is
 		);
 	end component;
 
-	signal clk_internal,rst_n,test_mux_en : std_logic;
+	signal clk_internal,rst_n : std_logic;
 	signal lfsr_out,grid_out,lfsr_seed,misr_signature : std_logic_vector(63 downto 0);
 	
+	signal lfsr_ld,test_scan_en: std_logic;
+			
+	
 	signal instr_rdata_i_s: std_logic_vector (127 downto 0);
-	signal apu_master_operands_o_s: std_logic_vector (95 downto 0);
+	signal apu_master_operands_o_s: std_logic_vector (95 downto 0);	
 	
 	constant golden_signature: std_logic_vector(N_MISR-1 downto 0) := x"0123456701234567"; -- to be computed
 
@@ -202,7 +206,8 @@ begin
 		port map (
 			CLK => clk_internal,
 			RESET => rst,
-			EN => test_mux_en,
+			EN => test_mode,
+			LD => lfsr_ld,
 			DIN => lfsr_seed,
 			PRN => lfsr_out,
 			ZERO_D => open			
@@ -220,7 +225,7 @@ begin
 		port map(
 			A => instr_rdata_i,
 			B => grid_out(63 downto 0)&instr_rdata_i(63 downto 0), --scan chain inputs
-			S => test_mux_en,
+			S => test_mode,
 			Y => instr_rdata_i_s
 		);
 	
@@ -242,7 +247,7 @@ begin
 			rst_ni => rst_n,
 			
 			clock_en_i => clock_en_i,
-			test_en_i => test_mode,
+			test_en_i => test_scan_en,
 			
 			test_mode_tp => test_mode,
 			
@@ -281,11 +286,11 @@ begin
 	apu_master_operands_o <= apu_master_operands_o_s;
 	
 	misri : misr
-		generic map(N=64) -- MISR SEED?
+		generic map(N=64)
 		port map(
 			clk	=> clk_internal,
 			rst	=> rst,
-			en => test_mux_en,
+			en => test_mode,
 			DATA_IN	=> apu_master_operands_o_s(95 downto 32), --scan chain outputs
 			SIGNATURE => misr_signature
 		);
@@ -297,8 +302,10 @@ begin
 			rst	=> rst,
 			TEST => test_mode,
 			MISR_OUT => misr_signature,
+			LFSR_LD => lfsr_ld,			
+			LFFSR_SEED => lfsr_seed,
+			TEST_SCAN_EN => test_scan_en,			
 			GO => go_nogo,
-			TPG_ODE_MUX_en => test_mux_en
 		);
 
 end rtl;
