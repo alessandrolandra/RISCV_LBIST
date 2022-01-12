@@ -162,7 +162,7 @@ begin
 	checker: process
 	begin		
 		wait for wait_time;
-		assert dut_go_nogo = '1' report "go_nogo wrong value";
+		assert go_nogo = '1' report "go_nogo wrong value";
 		wait;
 	end process;
 

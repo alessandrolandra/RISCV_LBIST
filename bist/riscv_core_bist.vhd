@@ -134,10 +134,10 @@ architecture rtl of riscv_core_bist is
 			clk				: in std_logic;
 			rst				: in std_logic;
 			TEST 			: in std_logic;
-			LFFSR_SEED		: in std_logic_vector(N_MISR-1 downto 0);
+			LFSR_SEED		: out std_logic_vector(N_MISR-1 downto 0);
 			MISR_OUT		: in std_logic_vector(N_MISR-1 downto 0);
-			LFSR_LD			: out std_logic,
-			TEST_SCAN_EN	: out std_logic,
+			LFSR_LD			: out std_logic;
+			TEST_SCAN_EN	: out std_logic;
 			GO				: out std_logic
 		);
 	end component;
@@ -186,7 +186,7 @@ architecture rtl of riscv_core_bist is
 	signal lfsr_ld,test_scan_en: std_logic;
 			
 	
-	signal instr_rdata_i_s: std_logic_vector (127 downto 0);
+	signal instr_rdata_i_s,instr_rdata_comp: std_logic_vector (127 downto 0);
 	signal apu_master_operands_o_s: std_logic_vector (95 downto 0);	
 	
 	constant golden_signature: std_logic_vector(N_MISR-1 downto 0) := x"0123456701234567"; -- to be computed
@@ -214,20 +214,22 @@ begin
 		);
 
 	xori : xorGrid
-		generic map (N=64)
+		generic map (N => 64)
 		port map(
 			LFSR_OUT => lfsr_out,
 			PREG_OUT => grid_out
 		);
 		
 	mux_in : mux
-		generic map (N=128)
+		generic map (N => 128)
 		port map(
 			A => instr_rdata_i,
-			B => grid_out(63 downto 0)&instr_rdata_i(63 downto 0), --scan chain inputs
+			B => instr_rdata_comp, --scan chain inputs
 			S => test_mode,
 			Y => instr_rdata_i_s
 		);
+
+	instr_rdata_comp <= grid_out(63 downto 0)&instr_rdata_i(63 downto 0);
 	
 	riscvi : riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800
 		port map (
@@ -286,7 +288,7 @@ begin
 	apu_master_operands_o <= apu_master_operands_o_s;
 	
 	misri : misr
-		generic map(N=64)
+		generic map(N => 64)
 		port map(
 			clk	=> clk_internal,
 			rst	=> rst,
@@ -296,16 +298,16 @@ begin
 		);
 		
 	controlleri : controller
-		generic map(GOLDEN_SIGNATURE=golden_signature)
+		generic map(GOLDEN_SIGNATURE => golden_signature)
 		port map(
 			clk	=> clk_internal,
 			rst	=> rst,
 			TEST => test_mode,
 			MISR_OUT => misr_signature,
 			LFSR_LD => lfsr_ld,			
-			LFFSR_SEED => lfsr_seed,
+			LFSR_SEED => lfsr_seed,
 			TEST_SCAN_EN => test_scan_en,			
-			GO => go_nogo,
+			GO => go_nogo
 		);
 
 end rtl;
