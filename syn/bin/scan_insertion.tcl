@@ -50,8 +50,8 @@ set_dft_signal  -view spec -type ScanEnable -port test_en_i
 #set_dft_signal  -view existing_dft -type wrp_shift -port test_en_i
 #set_dft_signal  -view spec -type wrp_shift -port test_en_i
 #
-#set_dft_signal  -view existing_dft -type ScanClock -port clk_i -timing [list 45 55]
-#set_dft_signal  -view spec -type ScanClock -port clk_i 
+set_dft_signal  -view existing_dft -type ScanClock -port clk_i -timing [list 45 55]
+set_dft_signal  -view spec -type ScanClock -port clk_i 
 #set_dft_signal  -view existing_dft -type wrp_clock -port clk_i -timing [list 45 55]
 #set_dft_signal  -view spec -type wrp_clock -port clk_i 
 #

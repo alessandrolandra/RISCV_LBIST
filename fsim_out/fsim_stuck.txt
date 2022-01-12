@@ -2,15 +2,15 @@
  -----------------------------------------------
  fault class                     code   #faults
  ------------------------------  ----  ---------
- Detected                         DT     215627
- Possibly detected                PT          4
- Undetectable                     UD        321
+ Detected                         DT     203171
+ Possibly detected                PT          5
+ Undetectable                     UD        165
  ATPG untestable                  AU          0
- Not detected                     ND      89656
+ Not detected                     ND      92297
  -----------------------------------------------
- total faults                            305608
- test coverage                            70.63%
- fault coverage                           70.56%
+ total faults                            295638
+ test coverage                            68.76%
+ fault coverage                           68.72%
  -----------------------------------------------
             Pattern Summary Report
  -----------------------------------------------

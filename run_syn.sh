@@ -9,8 +9,6 @@ cd $( dirname $0)
 root_dir=${PWD}
 cd - &>/dev/null
 
-mkdir -p ${root_dir}/syn/run
-mkdir -p ${root_dir}/syn/log
 cd ${root_dir}/syn/run
 
 
