@@ -158,12 +158,13 @@ architecture rtl of riscv_core_bist is
 	-- misr 
 	component misr
 		generic (
-			N 		: integer := 64	
+			N 		: integer := 64;
+			SEED : std_logic_vector(N_MISR downto 0):= (OTHERS => '0')
 		);
 		port (
 			clk			: in std_logic;
 			rst			: in std_logic;
-			en			: in std_logic;
+			EN_i		: in std_logic;
 			DATA_IN		: in std_logic_vector (N-1 downto 0);
 			SIGNATURE	: out std_logic_vector (N-1 downto 0)
 		);
@@ -292,7 +293,7 @@ begin
 		port map(
 			clk	=> clk_internal,
 			rst	=> rst,
-			en => test_mode,
+			EN_i => test_mode,
 			DATA_IN	=> apu_master_operands_o_s(95 downto 32), --scan chain outputs
 			SIGNATURE => misr_signature
 		);
