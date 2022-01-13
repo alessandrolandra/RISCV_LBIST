@@ -225,7 +225,7 @@ begin
 		port map(
 			A => instr_rdata_i,
 			B => instr_rdata_comp, --scan chain inputs
-			S => test_mode,
+			S => test_scan_en,
 			Y => instr_rdata_i_s
 		);
 

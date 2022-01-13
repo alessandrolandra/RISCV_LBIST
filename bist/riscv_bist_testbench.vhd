@@ -59,6 +59,18 @@ architecture tb of riscv_bist_testbench is
 			go_nogo					: out std_logic
 		);
 	end component;
+	
+	component LFSR
+		port( 
+			CLK : in std_logic; 
+			RESET : in std_logic; 
+			LD : in std_logic; 
+			EN : in std_logic; 
+			DIN : in std_logic_vector (0 to N_LFSR-1); 
+			PRN : out std_logic_vector (0 to N_LFSR-1); 
+			ZERO_D : out std_logic
+		);
+	end component;
 
 	constant clock_t1      : time := 50 ns;
 	constant clock_t2      : time := 30 ns;
@@ -94,6 +106,9 @@ architecture tb of riscv_bist_testbench is
 	signal irq_id_o					: std_logic_vector (4 downto 0);
 	
     signal go_nogo : std_logic;
+	
+	signal lfsr_out : std_logic_vector(63 downto 0);
+	constant lfsr_seed: std_logic_vector(63 downto 0):= (OTHERS => '0');
 	
 	constant wait_time: time := clk_period*30000;
 
@@ -144,6 +159,39 @@ begin
 			irq_id_o =>	irq_id_o,
 			
             go_nogo => go_nogo);
+			
+	lfsri : LFSR --to generate random input values for the core
+		port map (
+			CLK => clk,
+			RESET => rst,
+			EN => '1',
+			LD => '0',
+			DIN => lfsr_seed,
+			PRN => lfsr_out,
+			ZERO_D => open			
+		);
+			
+	boot_addr_i <= lfsr_out(31 downto 0);
+	core_id_i<= lfsr_out(3 downto 0);
+	cluster_id_i <= lfsr_out(5 downto 0);
+	instr_rdata_i <= lfsr_out(63 downto 0)&lfsr_out(63 downto 0);
+	data_rdata_i <= lfsr_out(31 downto 0);
+	apu_master_result_i <= lfsr_out(31 downto 0);
+	apu_master_flags_i <= lfsr_out(4 downto 0);
+	irq_id_i <= lfsr_out(4 downto 0);
+	ext_perf_counters_i <= lfsr_out(2 downto 1);
+ 	clock_en_i <= '1';
+ 	fregfile_disable_i <= lfsr_out(0);
+ 	instr_gnt_i <= lfsr_out(1);
+	instr_rvalid_i <= lfsr_out(2);
+ 	data_gnt_i <= lfsr_out(3);
+ 	data_rvalid_i <= lfsr_out(4);
+ 	apu_master_gnt_i <= lfsr_out(5);
+	apu_master_valid_i <= lfsr_out(6);
+ 	irq_i <= lfsr_out(7);
+ 	irq_sec_i <= lfsr_out(8);
+ 	debug_req_i <= lfsr_out(9);
+ 	fetch_enable_i <= lfsr_out(10);
 
 -- ***** CLOCK/RESET ***********************************
 
