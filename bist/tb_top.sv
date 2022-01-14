@@ -48,12 +48,9 @@ module tb_top
 
     // make the core start fetching instruction immediately
     assign fetch_enable = '1;
-	
-	const time wait_time = 6000000ns;
 
     // allow vcd dump
     initial begin
-		#(wait_time);
         if ($test$plusargs("vcd")) begin
             $dumpfile("riscy_tb.vcd");
             $dumpvars(0, tb_top);
@@ -65,23 +62,27 @@ module tb_top
     initial begin: load_prog	
         automatic string firmware;
         automatic int prog_size = 6;
-		#(wait_time);
+		wait (go_nogo == 1); //test finished
+		#150ns;
+		if(go_nogo==1) begin
+			#100ns;
+			if($value$plusargs("firmware=%s", firmware)) begin
+				if($test$plusargs("verbose"))
+					$display("[TESTBENCH] %t: loading firmware %0s ...",
+							$time, firmware);
+				$readmemh(firmware, riscv_wrapper_i.ram_i.dp_ram_i.mem);
 
-        if($value$plusargs("firmware=%s", firmware)) begin
-            if($test$plusargs("verbose"))
-                $display("[TESTBENCH] %t: loading firmware %0s ...",
-                         $time, firmware);
-            $readmemh(firmware, riscv_wrapper_i.ram_i.dp_ram_i.mem);
-
-        end else begin
-            $display("No firmware specified");
-            $finish;
-        end
+			end else begin
+				$display("No firmware specified");
+				$finish;
+			end
+		end
     end
 
     // clock generation
     initial begin: clock_gen
-		#(wait_time);
+		wait (go_nogo == 1); //test finished
+		#250ns;
         forever begin
             #CLK_PHASE_HI clk = 1'b0;
             #CLK_PHASE_LO clk = 1'b1;
@@ -90,7 +91,8 @@ module tb_top
 
     // reset generation
     initial begin: reset_gen
-		#(wait_time);
+		wait (go_nogo == 1); //test finished
+		#250ns;
         rst_n          = 1'b0;
 
         // wait a few cycles

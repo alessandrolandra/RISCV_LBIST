@@ -26,6 +26,9 @@ export RUN_GATE=0
 
 cd ${run_dir}
 
+./compile.sh
+vsim -gui -t ns -novopt work.riscv_bist_testbench -do dumport_generate.tcl
 
+./compile_testbench.sh
 #the following has been delayed
-vsim -gui -work work_rtl tb_top_vopt "+firmware=${program}" +dumpports+nocollapse -do ${root_dir}/vsim.tcl
+vsim -gui -work work_rtl tb_top_vopt "+firmware=${program}" # +dumpports+nocollapse -do ${root_dir}/vsim.tcl

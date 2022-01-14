@@ -206,12 +206,16 @@ begin
 	end process;
 
 	rst <= '0', '1' after clock_t1, '0' after clock_t1 + clock_t2;
-	test_mode <= '0', '1' after clock_t1 + clock_t2;
 	
 	checker: process
-	begin		
-		wait for wait_time;
-		assert go_nogo = '1' report "go_nogo wrong value";
+	begin
+		test_mode <= '0';
+		wait for clock_t1 + clock_t2;
+		test_mode <= '1';
+		wait until go_nogo = '1'; -- test finished
+		wait for 1.5*clk_period;
+		assert go_nogo = '1' report "test failed";
+		test_mode <= '0';
 		wait;
 	end process;
 

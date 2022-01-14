@@ -17,14 +17,15 @@ entity controller is
 end entity controller;
 
 architecture rtl of controller is
-    type StateType is (S_Wait, S_capture, S_fill, S_Test, S_Reseed, S_Go);
+    type StateType is (S_Wait, S_capture, S_fill, S_Test, S_Reseed, S_Go, S_GoTrue);
     signal currState, nextState: StateType;
 	
 	signal cnt,next_cnt: unsigned(15 downto 0);
 	signal cnt_reseed,next_cnt_reseed: unsigned(3 downto 0);
 	signal cnt_chain,next_cnt_chain: unsigned(5 downto 0);
+	signal lfsr_seed_i: std_logic_vector(N_LFSR-1 downto 0);
 	constant cnt_max: integer:= 100;
-	constant cnt_chain_max: integer:= 48;
+	constant cnt_chain_max: integer:= 47;
 	constant cnt_reseed_max: integer:= 11;
 begin
     
@@ -36,7 +37,6 @@ begin
 				cnt <= (OTHERS=>'0');
 				cnt_reseed <= (OTHERS=>'0');
 				cnt_chain <= (OTHERS=>'0');
-				LFSR_SEED <= x"0123456701234567"; 
             else 
                 currState <= nextState;
 				cnt <= next_cnt;
@@ -45,6 +45,40 @@ begin
             end if;
         end if;
     end process regs;
+
+	reseeder: process (cnt_reseed)
+	begin
+		case (to_integer(cnt_reseed)) is
+						when 0=>
+							lfsr_seed_i<=x"0123456701234567";
+						when 1=>
+							lfsr_seed_i<=x"89ABCDEF89ABCDEF";
+						when 2=>
+							lfsr_seed_i<=x"4444555566667777";
+						when 3=>
+							lfsr_seed_i<=x"0123456789ABCDEF";
+						when 4=>
+							lfsr_seed_i<=x"CAFFEBADCAFFEBAD";
+						when 5=>
+							lfsr_seed_i<=x"DABEFFACDABEFFAC";
+						when 6=>
+							lfsr_seed_i<=x"FEDCBA9876543210";
+						when 7=>
+							lfsr_seed_i<=x"CAFFEBADDABEFFAC";
+						when 8=>
+							lfsr_seed_i<=x"0171318411CA2201";
+						when 9=>
+							lfsr_seed_i<=x"88889999AAAABBBB";
+						when 10=>
+							lfsr_seed_i<=x"CCCCDDDDDEEEEFFF"; 
+						when 11=>
+							lfsr_seed_i<=x"0000111122223333"; 
+						when others=>
+							lfsr_seed_i<=x"0123456701234567";
+					end case;
+	end process;
+
+	LFSR_SEED <= lfsr_seed_i;
     
     comb: process(currState,TEST,MISR_OUT,cnt,cnt_reseed,cnt_chain)
     begin
@@ -52,7 +86,10 @@ begin
 		LFSR_LD<='0';
 		TEST_SCAN_EN<='0';
         case currState is
-            when S_Wait => 
+            when S_Wait =>
+				next_cnt <= cnt;
+				next_cnt_reseed <= cnt_reseed;
+				next_cnt_chain <= cnt_chain; 
                 if(TEST = '1') then
                     nextState<=S_fill; 
                 else
@@ -63,8 +100,10 @@ begin
 				if(to_integer(cnt_chain) < cnt_chain_max) then
 					next_cnt_chain <= cnt_chain+1;
                     nextState<=S_fill;
+				else
+					next_cnt_chain <= (OTHERS=>'0');
+					nextState<=S_Test;
 				end if;
-				nextState<=S_Test;
 			when S_capture =>
 				TEST_SCAN_EN<='0';
 				nextState<=S_fill;				
@@ -79,45 +118,25 @@ begin
 					nextState<=S_Reseed;
 					next_cnt_reseed <= cnt_reseed+1;
                 else 
+					GO<='1';
                     nextState<=S_Go;
                 end if;
 			when S_Reseed =>
-				LFSR_LD<='1';
                 if(TEST = '0') then
                     nextState<=S_wait;
                 else
-					case (to_integer(cnt_reseed)) is
-						when 1=>
-							LFSR_SEED<=x"89ABCDEF89ABCDEF";
-						when 2=>
-							LFSR_SEED<=x"4444555566667777";
-						when 3=>
-							LFSR_SEED<=x"0123456789ABCDEF";
-						when 4=>
-							LFSR_SEED<=x"CAFFEBADCAFFEBAD";
-						when 5=>
-							LFSR_SEED<=x"DABEFFACDABEFFAC";
-						when 6=>
-							LFSR_SEED<=x"FEDCBA9876543210";
-						when 7=>
-							LFSR_SEED<=x"CAFFEBADDABEFFAC";
-						when 8=>
-							LFSR_SEED<=x"0171318411CA2201";
-						when 9=>
-							LFSR_SEED<=x"88889999AAAABBBB";
-						when 10=>
-							LFSR_SEED<=x"CCCCDDDDDEEEEFFF"; 
-						when 11=>
-							LFSR_SEED<=x"0000111122223333"; 
-						when others=>
-							LFSR_SEED<=x"0123456701234567";
-					end case;
-					nextState<=S_Test;
+					LFSR_LD<='1';					
+					nextState<=S_capture;
 				end if;
-            when S_Go =>                 
+            when S_Go =>    
+				GO<='1';
                 if(MISR_OUT = GOLDEN_SIGNATURE) then
-					GO<='1';
+					nextState<=S_GoTrue;
+				else
+					nextState<=S_wait;
                 end if;
+            when S_GoTrue =>    
+				GO<='1';
 				nextState<=S_wait;
             when others =>
                 nextState<=S_wait;
