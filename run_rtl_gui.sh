@@ -31,5 +31,3 @@ export RUN_GATE=0
 
 #the following has been delayed
 vsim -gui -t ns tb_top_vopt "+firmware=${program}" -suppress 3009 +dumpports+nocollapse -do ${root_dir}/vsim.tcl
-run 6061250 ns
-run 10000 ns

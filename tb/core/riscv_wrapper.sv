@@ -17,8 +17,6 @@ module riscv_wrapper
       parameter BOOT_ADDR = 'h80,
       parameter PULP_SECURE = 1)
     (
-	 //input logic         clk_i,
-     //input logic         rst_ni,
 	 input logic         clk,
 	 input logic         rst,
 	 input logic 		 test_mode,
@@ -72,6 +70,24 @@ module riscv_wrapper
     assign irq_sec     = '0;
 
     assign debug_req_i = 1'b0;
+	assign lfsr_en = 1'b1;
+	assign lfsr_ld = 1'b0;
+
+	LFSR lfsri //to generate random input values for the core
+		(.CLK		(clk),
+		 .RESET		(rst),
+		 .EN		(lfsr_en),
+		 .LD		(lfsr_ld),
+		 .PRN		(lfsr_out));
+
+	assign instr_rdata <= lfsr_out(63 downto 0)&lfsr_out(63 downto 0);
+	assign data_rdata <= lfsr_out(31 downto 0);
+	assign irq_id_in <= lfsr_out(4 downto 0);
+ 	assign instr_gnt <= lfsr_out(1);
+	assign instr_rvalid <= lfsr_out(2);
+ 	assign data_gnt <= lfsr_out(3);
+ 	assign data_rvalid <= lfsr_out(4);
+	assign irq = lfsr_out(7);
 
     // instantiate the core bist
     riscv_core_bist
@@ -80,9 +96,7 @@ module riscv_wrapper
           .FPU(0))
     riscv_core_bist_i
         (		
-         //.clk_i                  ( clk_i                 ),
-         //.rst_ni                 ( rst_ni                ),
-		 .clk					 ( clk                   ),
+         .clk					 ( clk                   ),
 		 .rst					 ( rst				     ),
 		 .test_mode				 ( test_mode			 ),
 		 .go_nogo				 ( go_nogo				 ),
@@ -110,14 +124,14 @@ module riscv_wrapper
 
          .apu_master_req_o       (                       ),
          .apu_master_ready_o     (                       ),
-         .apu_master_gnt_i       (                       ),
+         .apu_master_gnt_i       ( lfsr_out(5)                     ),
          .apu_master_operands_o  (                       ),
          .apu_master_op_o        (                       ),
          .apu_master_type_o      (                       ),
          .apu_master_flags_o     (                       ),
-         .apu_master_valid_i     (                       ),
-         .apu_master_result_i    (                       ),
-         .apu_master_flags_i     (                       ),
+         .apu_master_valid_i     ( lfsr_out(6)                       ),
+         .apu_master_result_i    ( lfsr_out(31 downto 0)                      ),
+         .apu_master_flags_i     ( lfsr_out(4 downto 0)                      ),
 
          .irq_i                  ( irq                   ),
          .irq_id_i               ( irq_id_in             ),
@@ -132,7 +146,7 @@ module riscv_wrapper
          .fetch_enable_i         ( fetch_enable_i        ),
          .core_busy_o            ( core_busy_o           ),
 
-         .ext_perf_counters_i    (                       ),
+         .ext_perf_counters_i    ( lfsr_out(2 downto 1)                      ),
          .fregfile_disable_i     ( fregfile_disable_i    ));
 		 
 

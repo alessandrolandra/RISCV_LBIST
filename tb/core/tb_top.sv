@@ -49,9 +49,6 @@ module tb_top
     // signals for ri5cy
     logic                   fetch_enable;
 
-    // make the core start fetching instruction immediately
-    assign fetch_enable = '1;
-
     // allow vcd dump
     initial begin
         if ($test$plusargs("vcd")) begin
@@ -93,35 +90,45 @@ module tb_top
 
     // reset generation
     initial begin: reset_gen
-        rst          = 0'b0;
+        rst          = 1'b0;
+		#CLK_PERIOD rst = 1'b1;
 		#CLK_PERIOD rst = 1'b0;
-		#CLK_PERIOD rst = 0'b0;
 		wait (go_nogo_i == 1); //test finished
 		#CLK_PERIOD;
 		#CLK_PERIOD;
-		#CLK_PHASE_HI;
-
+		#CLK_PHASE_HI rst = 1'b1;
         // wait a few cycles
         repeat (RESET_WAIT_CYCLES) begin
             @(posedge clk); //TODO: was posedge, see below
         end
 
         // start running
-        #RESET_DEL rst = 0'b1;
+        #RESET_DEL rst = 0'b0;
         if($test$plusargs("verbose"))
             $display("reset deasserted", $time);
-
+		#50000ns;
+		$fatal(2, "Simulation aborted due to maximum cycle limit");
     end: reset_gen
 	
 	// test generation
     initial begin: test_gen
-        test_mode    = 0'b0;
-		#CLK_PERIOD test_mode = 1'b0;		
+        test_mode    = 1'b0;
+		#CLK_PERIOD test_mode = 1'b1;		
 		wait (go_nogo_i == 1); //test finished
 		#CLK_PERIOD;
 		#CLK_PERIOD;
-		#CLK_PHASE_HI test_mode    = 0'b0;
+		#CLK_PHASE_HI test_mode    = 1'b0;
     end: test_gen
+
+    // make the core start fetching instruction after bist
+	initial begin: fetch_enabler
+        fetch_enable = 1'b0;
+		wait (go_nogo_i == 1); //test finished
+		#CLK_PERIOD;
+		#CLK_PERIOD;
+		#CLK_PHASE_HI fetch_enable = 1'b1;
+    end: fetch_enabler
+
 
     // set timing format
     initial begin: timing_format
@@ -130,15 +137,15 @@ module tb_top
 
     // check if we succeded
     always_ff @(posedge clk, posedge rst) begin
-        if (tests_passed) begin
+        if (!test_mode && tests_passed) begin
             $display("ALL TESTS PASSED");
             $finish;
         end
-        if (tests_failed) begin
+        if (!test_mode && tests_failed) begin
             $display("TEST(S) FAILED!");
             $finish;
         end
-        if (exit_valid) begin
+        if (!test_mode && exit_valid) begin
             if (exit_value == 0)
                 $display("EXIT SUCCESS");
             else
@@ -150,47 +157,13 @@ module tb_top
     //PoliTo: Memory map check
     always_ff @(posedge clk, posedge rst) begin
 	//if (tb_top.riscv_wrapper_i.riscv_core_bist_i.riscvi.load_store_unit_i.data_we_ex_i == 1'h1) begin
-	if (tb_top.riscv_wrapper_i.data_req == 1'h1 && tb_top.riscv_wrapper_i.data_we == 1'h1) begin
+	if (!test_mode && tb_top.riscv_wrapper_i.data_req == 1'h1 && tb_top.riscv_wrapper_i.data_we == 1'h1) begin
 	  if (tb_top.riscv_wrapper_i.riscv_core_bist_i.riscvi.load_store_unit_i.data_addr_o < 32'h200000 || tb_top.riscv_wrapper_i.riscv_core_bist_i.riscvi.load_store_unit_i.data_addr_o > 32'h240000) begin
 		  $display("MEMORY MAP WARNING: Writing OUTSIDE DRAM at address %h, time %t", tb_top.riscv_wrapper_i.riscv_core_bist_i.riscvi.load_store_unit_i.data_addr_o, $realtime); 
 	  end 
 	end
     end	
 	
-	//lfsri : LFSR --to generate random input values for the core
-		//port map (
-			//CLK => clk,
-			//RESET => rst,
-			//EN => '1',
-			//LD => '0',
-			//DIN => lfsr_seed,
-			//PRN => lfsr_out,
-			//ZERO_D => open			
-		//);
-
-	//boot_addr_i <= lfsr_out(31 downto 0);
-	//core_id_i<= lfsr_out(3 downto 0);
-	//cluster_id_i <= lfsr_out(5 downto 0);
-	//instr_rdata_i <= lfsr_out(63 downto 0)&lfsr_out(63 downto 0);
-	//data_rdata_i <= lfsr_out(31 downto 0);
-	//apu_master_result_i <= lfsr_out(31 downto 0);
-	//apu_master_flags_i <= lfsr_out(4 downto 0);
-	//irq_id_i <= lfsr_out(4 downto 0);
-	//ext_perf_counters_i <= lfsr_out(2 downto 1);
- 	//clock_en_i <= '1';
- 	//fregfile_disable_i <= lfsr_out(0);
- 	//instr_gnt_i <= lfsr_out(1);
-	//instr_rvalid_i <= lfsr_out(2);
- 	//data_gnt_i <= lfsr_out(3);
- 	//data_rvalid_i <= lfsr_out(4);
- 	//apu_master_gnt_i <= lfsr_out(5);
-	//apu_master_valid_i <= lfsr_out(6);
- 	//irq_i <= lfsr_out(7);
- 	//irq_sec_i <= lfsr_out(8);
- 	//debug_req_i <= lfsr_out(9);
- 	//fetch_enable_i <= lfsr_out(10);	
-	
-
     // wrapper for riscv, the memory system and stdout peripheral
     riscv_wrapper
         #(.INSTR_RDATA_WIDTH (INSTR_RDATA_WIDTH),
