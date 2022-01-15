@@ -21,9 +21,14 @@ module tb_top
     // comment to record execution trace
     `define TRACE_EXECUTION
 
-    const time CLK_PHASE_HI       = 5ns;
-    const time CLK_PHASE_LO       = 5ns;
-    const time CLK_PERIOD         = CLK_PHASE_HI + CLK_PHASE_LO;
+    //const time CLK_PHASE_HI       = 5ns;
+    //const time CLK_PHASE_LO       = 5ns;
+
+	const time CLK_PHASE_HI       = 5ns;
+	const time CLK_PHASE_LO       = 3ns;
+	const time CLK_PHASE_LO_2     = 2ns;
+
+    const time CLK_PERIOD         = CLK_PHASE_HI + CLK_PHASE_LO + CLK_PHASE_LO_2;
     const time STIM_APPLICATION_DEL = CLK_PERIOD * 0.1;
     const time RESP_ACQUISITION_DEL = CLK_PERIOD * 0.9;
     const time RESET_DEL = STIM_APPLICATION_DEL;
@@ -31,8 +36,8 @@ module tb_top
 
 
     // clock and reset for tb
-    logic                   clk   = 'b1;
-    logic                   rst   = 'b1;
+    logic                   clk   = 'b0;
+    logic                   rst   = 'b0;
 
     // cycle counter
     int unsigned            cycle_cnt_q;
@@ -76,23 +81,30 @@ module tb_top
 			end else begin
 				$display("No firmware specified");
 				$finish;
-			end
+			end		
+		end else begin
+			$display("No firmware loaded, bist failed");
 		end
     end
 
     // clock generation
     initial begin: clock_gen		
         forever begin
-            #CLK_PHASE_HI clk = 1'b0;
-            #CLK_PHASE_LO clk = 1'b1;
+            //#CLK_PHASE_HI clk = 1'b0;
+            //#CLK_PHASE_LO clk = 1'b1;
+
+			#CLK_PHASE_HI clk = 1'b1;
+			#CLK_PHASE_LO clk = 1'b0;
+			#CLK_PHASE_LO_2;
+
         end
     end: clock_gen
 
     // reset generation
     initial begin: reset_gen
         rst          = 1'b0;
-		#CLK_PERIOD rst = 1'b1;
-		#CLK_PERIOD rst = 1'b0;
+		#CLK_PHASE_HI rst = 1'b1;
+		#CLK_PHASE_LO rst = 1'b0;
 		wait (go_nogo_i == 1); //test finished
 		#CLK_PERIOD;
 		#CLK_PERIOD;
@@ -113,11 +125,11 @@ module tb_top
 	// test generation
     initial begin: test_gen
         test_mode    = 1'b0;
-		#CLK_PERIOD test_mode = 1'b1;		
+		#CLK_PHASE_HI;
+		#CLK_PHASE_LO test_mode = 1'b1;		
 		wait (go_nogo_i == 1); //test finished
 		#CLK_PERIOD;
-		#CLK_PERIOD;
-		#CLK_PHASE_HI test_mode    = 1'b0;
+		#CLK_PERIOD test_mode    = 1'b0;
     end: test_gen
 
     // make the core start fetching instruction after bist
