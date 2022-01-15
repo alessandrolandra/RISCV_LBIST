@@ -6,7 +6,7 @@ use work.constants.all;
 entity misr is
     generic (
         N : integer := 64;
-        SEED : std_logic_vector(N_MISR downto 0)
+        SEED : std_logic_vector(N_MISR downto 0):= (OTHERS => '0')
     );
     port (
         clk, rst, EN_i : in std_logic;
