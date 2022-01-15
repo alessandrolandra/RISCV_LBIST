@@ -1,9 +1,9 @@
 ###################################################################
 
-# Created by write_sdc on Fri Jan  7 07:40:19 2022
+# Created by write_sdc on Wed Jan 12 18:48:41 2022
 
 ###################################################################
-set sdc_version 2.0
+set sdc_version 2.1
 
 set_units -time ns -resistance MOhm -capacitance fF -voltage V -current mA
 set_operating_conditions typical -library NangateOpenCellLibrary
