@@ -24,3 +24,7 @@ add wave -position insertpoint  \
 sim:/riscv_bist_testbench/dut/controlleri/TEST_SCAN_EN
 add wave -position insertpoint  \
 sim:/riscv_bist_testbench/dut/controlleri/LFSR_LD
+add wave -position insertpoint  \
+sim:/riscv_bist_testbench/test_mode
+add wave -position insertpoint  \
+sim:/riscv_bist_testbench/go_nogo

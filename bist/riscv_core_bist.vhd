@@ -190,7 +190,7 @@ architecture rtl of riscv_core_bist is
 	signal instr_rdata_i_s,instr_rdata_comp: std_logic_vector (127 downto 0);
 	signal apu_master_operands_o_s: std_logic_vector (95 downto 0);	
 	
-	constant golden_signature: std_logic_vector(N_MISR-1 downto 0) := x"1C59CA3FC92F06B7";
+	constant golden_signature: std_logic_vector(N_MISR-1 downto 0) := x"B5010F9F7C718DFD";
 
 begin
 

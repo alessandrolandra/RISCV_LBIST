@@ -16,14 +16,25 @@ module riscv_wrapper
       parameter RAM_ADDR_WIDTH = 20,
       parameter BOOT_ADDR = 'h80,
       parameter PULP_SECURE = 1)
-    (input logic         clk_i,
-     input logic         rst_ni,
+    (
+	 //input logic         clk_i,
+     //input logic         rst_ni,
+	 input logic         clk,
+	 input logic         rst,
+	 input logic 		 test_mode,
+	 output logic        go_nogo,
 
      input logic         fetch_enable_i,
      output logic        tests_passed_o,
      output logic        tests_failed_o,
      output logic [31:0] exit_value_o,
      output logic        exit_valid_o);
+	 
+	
+	logic 				 clock_en_i;
+	logic 				 fregfile_disable_i;
+	logic [3:0]		 	 core_id_i;
+	logic [5:0]		 	 cluster_id_i;
 
     // signals connecting core to memory
     logic                         instr_req;
@@ -52,27 +63,35 @@ module riscv_wrapper
     logic                         irq_sec;
 
 
+	assign clock_en_i  = '1;
+	assign fregfile_disable_i = 1'b0;
+	assign core_id_i = 4'h0;
+	assign cluster_id_i = 6'h0;
+
     // interrupts (only timer for now)
     assign irq_sec     = '0;
 
     assign debug_req_i = 1'b0;
 
-    // instantiate the core
-    riscv_core
+    // instantiate the core bist
+    riscv_core_bist
         #(.INSTR_RDATA_WIDTH (INSTR_RDATA_WIDTH),
           .PULP_SECURE(PULP_SECURE),
           .FPU(0))
-    riscv_core_i
-        (
-         .clk_i                  ( clk_i                 ),
-         .rst_ni                 ( rst_ni                ),
+    riscv_core_bist_i
+        (		
+         //.clk_i                  ( clk_i                 ),
+         //.rst_ni                 ( rst_ni                ),
+		 .clk					 ( clk                   ),
+		 .rst					 ( rst				     ),
+		 .test_mode				 ( test_mode			 ),
+		 .go_nogo				 ( go_nogo				 ),
 
-         .clock_en_i             ( '1                    ),
-         .test_en_i              ( '0                    ),
+         .clock_en_i             ( clock_en_i            ),
 
          .boot_addr_i            ( BOOT_ADDR             ),
-         .core_id_i              ( 4'h0                  ),
-         .cluster_id_i           ( 6'h0                  ),
+         .core_id_i              ( core_id_i             ),
+         .cluster_id_i           ( cluster_id_i          ),
 
          .instr_addr_o           ( instr_addr            ),
          .instr_req_o            ( instr_req             ),
@@ -114,7 +133,8 @@ module riscv_wrapper
          .core_busy_o            ( core_busy_o           ),
 
          .ext_perf_counters_i    (                       ),
-         .fregfile_disable_i     ( 1'b0                  ));
+         .fregfile_disable_i     ( fregfile_disable_i    ));
+		 
 
     // this handles read to RAM and memory mapped pseudo peripherals
     mm_ram
@@ -144,7 +164,7 @@ module riscv_wrapper
          .irq_id_o       ( irq_id_in                      ),
          .irq_o          ( irq                            ),
 
-         .pc_core_id_i   ( riscv_core_i.pc_id             ),
+         .pc_core_id_i   ( riscv_core_bist_i.riscvi.pc_id             ),
 
          .tests_passed_o ( tests_passed_o                 ),
          .tests_failed_o ( tests_failed_o                 ),

@@ -17,7 +17,7 @@ entity controller is
 end entity controller;
 
 architecture rtl of controller is
-    type StateType is (S_Wait, S_capture, S_fill, S_Test, S_Reseed, S_Go, S_GoTrue);
+    type StateType is (S_Wait, S_capture, S_fill, S_Test, S_Reseed, S_Go);
     signal currState, nextState: StateType;
 	
 	signal cnt,next_cnt: unsigned(15 downto 0);
@@ -128,15 +128,10 @@ begin
 					LFSR_LD<='1';					
 					nextState<=S_capture;
 				end if;
-            when S_Go =>    
-				GO<='1';
+            when S_Go =>
                 if(MISR_OUT = GOLDEN_SIGNATURE) then
-					nextState<=S_GoTrue;
-				else
-					nextState<=S_wait;
-                end if;
-            when S_GoTrue =>    
-				GO<='1';
+					GO<='1';
+				end if;
 				nextState<=S_wait;
             when others =>
                 nextState<=S_wait;
