@@ -1,3 +1,3 @@
-vcd dumpports /riscv_bist_testbench/dut/* -file riscv_bist_dumpports.vcd
+vcd dumpports /riscv_testbench/dut/* -file riscv_dumpports.vcd
 run 6061250 ns
 quit

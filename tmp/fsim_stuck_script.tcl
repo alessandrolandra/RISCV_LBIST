@@ -146,7 +146,7 @@ remove_po_masks apu_master_operands_o[95]
 
 run_drc ./syn/output/riscv_core_scan64.spf
 
-set_patterns -external run/riscv_core_dumpports.vcd -sensitive -strobe_period {100 ns} -strobe_offset {40 ns} -vcd_clock auto
+set_patterns -external run/riscv_dumpports.vcd -sensitive -strobe_period {100 ns} -strobe_offset {40 ns} -vcd_clock auto
 report_pi_constraints
 report_po_masks
 

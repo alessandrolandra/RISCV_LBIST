@@ -16,11 +16,10 @@ vcom ../bist/LFSR/lfsr.vhd
 vcom ../bist/PHSHIFT/xorGrid.vhd
 vlog ../syn/output/riscv_core_scan64.v
 vcom ../bist/MISR/misr.vhd
-vcom ../bist/riscv_core_bist.vhd
-vcom ../bist/riscv_bist_testbench.vhd
+vcom ../bist/riscv_core_testbench.vhd
 
 # Invoke QuestaSim shell and run the TCL script
-vsim -t 1ps -c -novopt work.riscv_bist_testbench -do ../tmp/simulation_script.tcl
+vsim -t 1ps -c -novopt work.riscv_testbench -do ../tmp/simulation_script.tcl
 cd ..
 
 tmax tmp/fsim_stuck_script.tcl -shell

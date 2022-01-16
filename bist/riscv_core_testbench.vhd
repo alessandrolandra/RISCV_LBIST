@@ -249,7 +249,7 @@ begin
 		wait for apply_period;
 		lfsr_ld<='0';
 		wait for apply_period*40;
-		for i in 0 to 64 loop 
+		for i in 0 to 100 loop 
 			test_en_i<='0';
 			wait for apply_period;
 			test_en_i<='1';
@@ -260,29 +260,29 @@ begin
 		wait for apply_period;
 		lfsr_ld<='0';
 		wait for apply_period;
-		for i in 0 to 64 loop 
+		for i in 0 to 100 loop 
 			test_en_i<='0';
 			wait for apply_period;
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"FEDCBA98FEDCBA98"; 
+		lfsr_seed<=x"4444555566667777"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
 		wait for apply_period;
-		for i in 0 to 64 loop 
+		for i in 0 to 100 loop 
 			test_en_i<='0';
 			wait for apply_period;
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"7654321076543210"; 
+		lfsr_seed<=x"0123456789ABCDEF"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
 		wait for apply_period;
-		for i in 0 to 64 loop 
+		for i in 0 to 100 loop 
 			test_en_i<='0';
 			wait for apply_period;
 			test_en_i<='1';
@@ -293,7 +293,7 @@ begin
 		wait for apply_period;
 		lfsr_ld<='0';
 		wait for apply_period;
-		for i in 0 to 64 loop 
+		for i in 0 to 100 loop 
 			test_en_i<='0';
 			wait for apply_period;
 			test_en_i<='1';
@@ -304,73 +304,73 @@ begin
 		wait for apply_period;
 		lfsr_ld<='0';
 		wait for apply_period;
-		for i in 0 to 64 loop 
+		for i in 0 to 100 loop 
 			test_en_i<='0';
 			wait for apply_period;
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"0171318401713184"; 
+		lfsr_seed<=x"FEDCBA9876543210"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
 		wait for apply_period;
-		for i in 0 to 64 loop 
+		for i in 0 to 100 loop 
 			test_en_i<='0';
 			wait for apply_period;
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"11CA220111CA2201"; 
+		lfsr_seed<=x"CAFFEBADDABEFFAC"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
 		wait for apply_period;
-		for i in 0 to 64 loop 
+		for i in 0 to 100 loop 
 			test_en_i<='0';
 			wait for apply_period;
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"8888999988889999"; 
+		lfsr_seed<=x"0171318411CA2201"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
 		wait for apply_period;
-		for i in 0 to 64 loop 
+		for i in 0 to 100 loop 
 			test_en_i<='0';
 			wait for apply_period;
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"AAAABBBBAAAABBBB"; 
+		lfsr_seed<=x"88889999AAAABBBB"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
 		wait for apply_period;
-		for i in 0 to 64 loop 
+		for i in 0 to 100 loop 
 			test_en_i<='0';
 			wait for apply_period;
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"CCCCDDDDCCCCDDDD"; 
+		lfsr_seed<=x"CCCCDDDDDEEEEFFF"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
 		wait for apply_period;
-		for i in 0 to 64 loop 
+		for i in 0 to 100 loop 
 			test_en_i<='0';
 			wait for apply_period;
 			test_en_i<='1';
 			wait for apply_period*48;
 		end loop;
-		lfsr_seed<=x"DEEEEFFFDEEEEFFF"; 
+		lfsr_seed<=x"0000111122223333"; 
 		lfsr_ld<='1';
 		wait for apply_period;
 		lfsr_ld<='0';
 		wait for apply_period;
-		for i in 0 to 64 loop 
+		for i in 0 to 100 loop 
 			test_en_i<='0';
 			wait for apply_period;
 			test_en_i<='1';
