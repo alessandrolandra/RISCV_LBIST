@@ -11,14 +11,10 @@ set riscvNetlist "../standalone/riscv_core.v"
 set entity "riscv_core_0_128_1_16_1_1_0_0_0_0_0_0_0_0_0_3_6_15_5_1a110800"
 # scan chain count
 set chains 64
-# scan compressed chains count (cmp cannot be < $chains)
-set cmp [expr $chains*3]
 # output netlist name
 set coreNetOut "riscv_core_scan$chains.v"
 # output stil file name
 set coreStilOut "riscv_core_scan$chains.spf"
-# output compressor stil file name
-set coreStilComOut "riscv_core_scan${chains}_cmp$cmp.spf"
 # output directory
 set outDir "../output/"
 

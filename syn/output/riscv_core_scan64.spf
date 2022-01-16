@@ -1075,133 +1075,133 @@ SignalGroups {
     "test_so63" + "test_so64"';
 }
 ScanStructures {
-    ScanChain "1" {
+    ScanChain "chain1" {
         ScanLength 48;
         ScanIn "test_si1";
         ScanOut "test_so1";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "2" {
+    ScanChain "chain2" {
         ScanLength 48;
         ScanIn "test_si2";
         ScanOut "test_so2";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "3" {
+    ScanChain "chain3" {
         ScanLength 48;
         ScanIn "test_si3";
         ScanOut "test_so3";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "4" {
+    ScanChain "chain4" {
         ScanLength 48;
         ScanIn "test_si4";
         ScanOut "test_so4";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "5" {
+    ScanChain "chain5" {
         ScanLength 48;
         ScanIn "test_si5";
         ScanOut "test_so5";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "6" {
+    ScanChain "chain6" {
         ScanLength 48;
         ScanIn "test_si6";
         ScanOut "test_so6";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "7" {
+    ScanChain "chain7" {
         ScanLength 48;
         ScanIn "test_si7";
         ScanOut "test_so7";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "8" {
+    ScanChain "chain8" {
         ScanLength 48;
         ScanIn "test_si8";
         ScanOut "test_so8";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "9" {
+    ScanChain "chain9" {
         ScanLength 48;
         ScanIn "test_si9";
         ScanOut "test_so9";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "10" {
+    ScanChain "chain10" {
         ScanLength 48;
         ScanIn "test_si10";
         ScanOut "test_so10";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "11" {
+    ScanChain "chain11" {
         ScanLength 48;
         ScanIn "test_si11";
         ScanOut "test_so11";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "12" {
+    ScanChain "chain12" {
         ScanLength 48;
         ScanIn "test_si12";
         ScanOut "test_so12";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "13" {
+    ScanChain "chain13" {
         ScanLength 48;
         ScanIn "test_si13";
         ScanOut "test_so13";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "14" {
+    ScanChain "chain14" {
         ScanLength 48;
         ScanIn "test_si14";
         ScanOut "test_so14";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "15" {
+    ScanChain "chain15" {
         ScanLength 48;
         ScanIn "test_si15";
         ScanOut "test_so15";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "16" {
+    ScanChain "chain16" {
         ScanLength 48;
         ScanIn "test_si16";
         ScanOut "test_so16";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "17" {
+    ScanChain "chain17" {
         ScanLength 48;
         ScanIn "test_si17";
         ScanOut "test_so17";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "18" {
+    ScanChain "chain18" {
         ScanLength 48;
         ScanIn "test_si18";
         ScanOut "test_so18";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "19" {
+    ScanChain "chain19" {
         ScanLength 48;
         ScanIn "test_si19";
         ScanOut "test_so19";
@@ -1348,175 +1348,175 @@ ScanStructures {
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "40" {
+    ScanChain "chain40" {
         ScanLength 47;
         ScanIn "test_si40";
         ScanOut "test_so40";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "41" {
+    ScanChain "chain41" {
         ScanLength 47;
         ScanIn "test_si41";
         ScanOut "test_so41";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "42" {
+    ScanChain "chain42" {
         ScanLength 47;
         ScanIn "test_si42";
         ScanOut "test_so42";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "43" {
+    ScanChain "chain43" {
         ScanLength 47;
         ScanIn "test_si43";
         ScanOut "test_so43";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "44" {
+    ScanChain "chain44" {
         ScanLength 47;
         ScanIn "test_si44";
         ScanOut "test_so44";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "45" {
+    ScanChain "chain45" {
         ScanLength 47;
         ScanIn "test_si45";
         ScanOut "test_so45";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "46" {
+    ScanChain "chain46" {
         ScanLength 47;
         ScanIn "test_si46";
         ScanOut "test_so46";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "47" {
+    ScanChain "chain47" {
         ScanLength 47;
         ScanIn "test_si47";
         ScanOut "test_so47";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "48" {
+    ScanChain "chain48" {
         ScanLength 47;
         ScanIn "test_si48";
         ScanOut "test_so48";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "49" {
+    ScanChain "chain49" {
         ScanLength 47;
         ScanIn "test_si49";
         ScanOut "test_so49";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "50" {
+    ScanChain "chain50" {
         ScanLength 47;
         ScanIn "test_si50";
         ScanOut "test_so50";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "51" {
+    ScanChain "chain51" {
         ScanLength 47;
         ScanIn "test_si51";
         ScanOut "test_so51";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "52" {
+    ScanChain "chain52" {
         ScanLength 47;
         ScanIn "test_si52";
         ScanOut "test_so52";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "53" {
+    ScanChain "chain53" {
         ScanLength 47;
         ScanIn "test_si53";
         ScanOut "test_so53";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "54" {
+    ScanChain "chain54" {
         ScanLength 47;
         ScanIn "test_si54";
         ScanOut "test_so54";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "55" {
+    ScanChain "chain55" {
         ScanLength 47;
         ScanIn "test_si55";
         ScanOut "test_so55";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "56" {
+    ScanChain "chain56" {
         ScanLength 47;
         ScanIn "test_si56";
         ScanOut "test_so56";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "57" {
+    ScanChain "chain57" {
         ScanLength 47;
         ScanIn "test_si57";
         ScanOut "test_so57";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "58" {
+    ScanChain "chain58" {
         ScanLength 47;
         ScanIn "test_si58";
         ScanOut "test_so58";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "59" {
+    ScanChain "chain59" {
         ScanLength 47;
         ScanIn "test_si59";
         ScanOut "test_so59";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "60" {
+    ScanChain "chain60" {
         ScanLength 47;
         ScanIn "test_si60";
         ScanOut "test_so60";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "61" {
+    ScanChain "chain61" {
         ScanLength 47;
         ScanIn "test_si61";
         ScanOut "test_so61";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "62" {
+    ScanChain "chain62" {
         ScanLength 47;
         ScanIn "test_si62";
         ScanOut "test_so62";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "63" {
+    ScanChain "chain63" {
         ScanLength 47;
         ScanIn "test_si63";
         ScanOut "test_so63";
         ScanEnable "test_en_i";
         ScanMasterClock "clk_i";
     }
-    ScanChain "64" {
+    ScanChain "chain64" {
         ScanLength 47;
         ScanIn "test_si64";
         ScanOut "test_so64";
@@ -1851,6 +1851,9 @@ Procedures {
         F {
             "test_mode_tp" = 1;
         }
+        F {
+            "test_mode_tp" = 1;
+        }
         V {
             "_pi" = \r326 #;
             "_po" = \r294 #;
@@ -1861,6 +1864,9 @@ Procedures {
         C {
             "all_inputs" = \r71 N 0 \r187 N 1N1 \r64 N;
             "all_outputs" = \r294 X;
+        }
+        F {
+            "test_mode_tp" = 1;
         }
         F {
             "test_mode_tp" = 1;
@@ -1879,6 +1885,9 @@ Procedures {
         F {
             "test_mode_tp" = 1;
         }
+        F {
+            "test_mode_tp" = 1;
+        }
         V {
             "_pi" = \r326 #;
             "_po" = \r294 #;
@@ -1889,6 +1898,9 @@ Procedures {
         C {
             "all_inputs" = \r71 N 0 \r187 N 1N1 \r64 N;
             "all_outputs" = \r294 X;
+        }
+        F {
+            "test_mode_tp" = 1;
         }
         F {
             "test_mode_tp" = 1;

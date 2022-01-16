@@ -21,9 +21,14 @@ module tb_top
     // comment to record execution trace
     `define TRACE_EXECUTION
 
-    const time CLK_PHASE_HI       = 5ns;
-    const time CLK_PHASE_LO       = 5ns;
-    const time CLK_PERIOD         = CLK_PHASE_HI + CLK_PHASE_LO;
+    //const time CLK_PHASE_HI       = 5ns;
+    //const time CLK_PHASE_LO       = 5ns;
+
+	const time CLK_PHASE_HI       = 5ns;
+	const time CLK_PHASE_LO       = 3ns;
+	const time CLK_PHASE_LO_2     = 2ns;
+
+    const time CLK_PERIOD         = CLK_PHASE_HI + CLK_PHASE_LO + CLK_PHASE_LO_2;
     const time STIM_APPLICATION_DEL = CLK_PERIOD * 0.1;
     const time RESP_ACQUISITION_DEL = CLK_PERIOD * 0.9;
     const time RESET_DEL = STIM_APPLICATION_DEL;
@@ -31,8 +36,8 @@ module tb_top
 
 
     // clock and reset for tb
-    logic                   clk   = 'b1;
-    logic                   rst_n = 'b0;
+    logic                   clk   = 'b0;
+    logic                   rst   = 'b0;
 
     // cycle counter
     int unsigned            cycle_cnt_q;
@@ -42,94 +47,117 @@ module tb_top
     logic                   tests_failed;
     logic                   exit_valid;
     logic [31:0]            exit_value;
+	
+	logic					go_nogo_i;
+	logic					test_mode;
 
     // signals for ri5cy
     logic                   fetch_enable;
 
-    // make the core start fetching instruction immediately
-    assign fetch_enable = '1;
-
     // allow vcd dump
     initial begin
         if ($test$plusargs("vcd")) begin
-            $dumpfile("riscy_tb.vcd");
+            $dumpfile("riscv_tb_top_dumpports.vcd");
             $dumpvars(0, tb_top);
         end
     end
 
     // we either load the provided firmware or execute a small test program that
     // doesn't do more than an infinite loop with some I/O
-    initial begin: load_prog
+    initial begin: load_prog	
         automatic string firmware;
         automatic int prog_size = 6;
+		wait (go_nogo_i == 1); //test finished
+		#CLK_PERIOD;
+		#CLK_PHASE_HI;
+		if(go_nogo_i==1) begin
+			#CLK_PERIOD;
+			if($value$plusargs("firmware=%s", firmware)) begin
+				if($test$plusargs("verbose"))
+					$display("[TESTBENCH] %t: loading firmware %0s ...",
+							$time, firmware);
+				$readmemh(firmware, riscv_wrapper_i.ram_i.dp_ram_i.mem);
 
-        if($value$plusargs("firmware=%s", firmware)) begin
-            if($test$plusargs("verbose"))
-                $display("[TESTBENCH] %t: loading firmware %0s ...",
-                         $time, firmware);
-            $readmemh(firmware, riscv_wrapper_i.ram_i.dp_ram_i.mem);
-
-        end else begin
-            $display("No firmware specified");
-            $finish;
-        end
+			end else begin
+				$display("No firmware specified");
+				$finish;
+			end		
+		end else begin
+			$display("No firmware loaded, bist failed");
+		end
     end
 
     // clock generation
-    initial begin: clock_gen
+    initial begin: clock_gen		
         forever begin
-            #CLK_PHASE_HI clk = 1'b0;
-            #CLK_PHASE_LO clk = 1'b1;
+            //#CLK_PHASE_HI clk = 1'b0;
+            //#CLK_PHASE_LO clk = 1'b1;
+
+			#CLK_PHASE_HI clk = 1'b1;
+			#CLK_PHASE_LO clk = 1'b0;
+			#CLK_PHASE_LO_2;
+
         end
     end: clock_gen
 
     // reset generation
     initial begin: reset_gen
-        rst_n          = 1'b0;
-
+        rst          = 1'b0;
+		#CLK_PHASE_HI rst = 1'b1;
+		#CLK_PHASE_LO rst = 1'b0;
+		wait (go_nogo_i == 1); //test finished
+		#CLK_PERIOD;
+		#CLK_PERIOD;
+		#CLK_PHASE_HI rst = 1'b1;
         // wait a few cycles
         repeat (RESET_WAIT_CYCLES) begin
             @(posedge clk); //TODO: was posedge, see below
         end
 
         // start running
-        #RESET_DEL rst_n = 1'b1;
+        #RESET_DEL rst = 0'b0;
         if($test$plusargs("verbose"))
             $display("reset deasserted", $time);
-
+		#50000ns;
+		$fatal(2, "Simulation aborted due to maximum cycle limit");
     end: reset_gen
+	
+	// test generation
+    initial begin: test_gen
+        test_mode    = 1'b0;
+		#CLK_PHASE_HI;
+		#CLK_PHASE_LO test_mode = 1'b1;		
+		wait (go_nogo_i == 1); //test finished
+		#CLK_PERIOD;
+		#CLK_PERIOD test_mode    = 1'b0;
+    end: test_gen
+
+    // make the core start fetching instruction after bist
+	initial begin: fetch_enabler
+        fetch_enable = 1'b0;
+		wait (go_nogo_i == 1); //test finished
+		#CLK_PERIOD;
+		#CLK_PERIOD;
+		#CLK_PHASE_HI fetch_enable = 1'b1;
+    end: fetch_enabler
+
 
     // set timing format
     initial begin: timing_format
         $timeformat(-9, 0, "ns", 9);
     end: timing_format
 
-    // abort after n cycles, if we want to
-    always_ff @(posedge clk, negedge rst_n) begin
-        automatic int maxcycles;
-        if($value$plusargs("maxcycles=%d", maxcycles)) begin
-            if (~rst_n) begin
-                cycle_cnt_q <= 0;
-            end else begin
-                cycle_cnt_q     <= cycle_cnt_q + 1;
-                if (cycle_cnt_q >= maxcycles) begin
-                    $fatal(2, "Simulation aborted due to maximum cycle limit");
-                end
-            end
-        end
-    end
-
     // check if we succeded
-    always_ff @(posedge clk, negedge rst_n) begin
-        if (tests_passed) begin
+    always_ff @(posedge clk, posedge rst) begin
+        if (!test_mode && tests_passed) begin
             $display("ALL TESTS PASSED");
             $finish;
         end
-        if (tests_failed) begin
+        if (!test_mode && tests_failed) begin
             $display("TEST(S) FAILED!");
             $finish;
         end
-        if (exit_valid) begin
+        if (!test_mode && exit_valid) begin
             if (exit_value == 0)
                 $display("EXIT SUCCESS");
             else
@@ -139,15 +167,15 @@ module tb_top
     end
 
     //PoliTo: Memory map check
-    always_ff @(posedge clk, negedge rst_n) begin
-	//if (tb_top.riscv_wrapper_i.riscv_core_i.load_store_unit_i.data_we_ex_i == 1'h1) begin
-	if (tb_top.riscv_wrapper_i.data_req == 1'h1 && tb_top.riscv_wrapper_i.data_we == 1'h1) begin
-	  if (tb_top.riscv_wrapper_i.riscv_core_i.load_store_unit_i.data_addr_o < 32'h200000 || tb_top.riscv_wrapper_i.riscv_core_i.load_store_unit_i.data_addr_o > 32'h240000) begin
-		  $display("MEMORY MAP WARNING: Writing OUTSIDE DRAM at address %h, time %t", tb_top.riscv_wrapper_i.riscv_core_i.load_store_unit_i.data_addr_o, $realtime); 
+    always_ff @(posedge clk, posedge rst) begin
+	//if (tb_top.riscv_wrapper_i.riscv_core_bist_i.riscvi.load_store_unit_i.data_we_ex_i == 1'h1) begin
+	if (!test_mode && tb_top.riscv_wrapper_i.data_req == 1'h1 && tb_top.riscv_wrapper_i.data_we == 1'h1) begin
+	  if (tb_top.riscv_wrapper_i.riscv_core_bist_i.riscvi.load_store_unit_i.data_addr_o < 32'h200000 || tb_top.riscv_wrapper_i.riscv_core_bist_i.riscvi.load_store_unit_i.data_addr_o > 32'h240000) begin
+		  $display("MEMORY MAP WARNING: Writing OUTSIDE DRAM at address %h, time %t", tb_top.riscv_wrapper_i.riscv_core_bist_i.riscvi.load_store_unit_i.data_addr_o, $realtime); 
 	  end 
 	end
-    end
-
+    end	
+	
     // wrapper for riscv, the memory system and stdout peripheral
     riscv_wrapper
         #(.INSTR_RDATA_WIDTH (INSTR_RDATA_WIDTH),
@@ -156,13 +184,15 @@ module tb_top
           .PULP_SECURE (1))
 
     riscv_wrapper_i
-        (.clk_i          ( clk          ),
-         .rst_ni         ( rst_n        ),
+        (.clk   	     ( clk          ),
+         .rst	         ( rst          ),
          .fetch_enable_i ( fetch_enable ),
          .tests_passed_o ( tests_passed ),
          .tests_failed_o ( tests_failed ),
          .exit_valid_o   ( exit_valid   ),
-         .exit_value_o   ( exit_value   ));
+         .exit_value_o   ( exit_value   ),
+		 .test_mode      ( test_mode    ),
+		 .go_nogo   	 ( go_nogo_i   ));
 
 `ifndef VERILATOR
     initial begin
