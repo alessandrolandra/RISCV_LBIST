@@ -21,4 +21,4 @@ The constraints in terms of test coverage, are at least 70% of coverage for the 
 
 ### Further information
 
-[REPORT](./assignment_report.docx) <br>
+[REPORT](./assignment_report.pdf) <br>
